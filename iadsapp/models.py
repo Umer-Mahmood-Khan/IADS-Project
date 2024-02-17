@@ -1,6 +1,5 @@
 from django.contrib.auth.models import User
 from django.db import models
-from django.db import models
 
 
 # Create your models here.
@@ -26,7 +25,7 @@ class Rating(models.Model):
         return f"Rating: {self.rating}"
 
 
-class GameDetails(models.Model):
+class GameDetail(models.Model):
     # Define fields
     game_name = models.CharField(max_length=200)
     game_image = models.ImageField(upload_to='game_images/')
@@ -43,6 +42,31 @@ class GameDetails(models.Model):
         return self.game_name
 
 
-from django.db import models
+class GameNew(models.Model):
+    title = models.CharField(max_length=200)
+    image = models.ImageField(upload_to='news_images/')
+    bio = models.TextField()
+    description = models.TextField()
+    link = models.URLField()
 
-# Create your models here.
+    def __str__(self):
+        return self.title
+
+
+class UpcomingRelease(models.Model):
+    country = models.CharField(max_length=100)
+    game_name = models.CharField(max_length=200)
+    game_release_date = models.DateField()
+    game_image = models.ImageField(upload_to='upcoming_images/')
+
+    def __str__(self):
+        return self.game_name
+
+
+class Award(models.Model):
+    award_name = models.CharField(max_length=100)
+    link = models.URLField()
+
+    def __str__(self):
+        return self.award_name
+
