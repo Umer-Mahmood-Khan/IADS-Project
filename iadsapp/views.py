@@ -69,3 +69,10 @@ def forgot_password_view(request, username):
 
 def homepage_view(request):
     return HttpResponse('Welcome to the Homepage!')
+
+
+def search_view(request):
+    return HttpResponse('Welcome to the Search Results!')
+
+def profile_view(request):
+    return HttpResponse('Profile page!')
