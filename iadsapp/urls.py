@@ -9,5 +9,8 @@ urlpatterns = [
     path('', views.homepage_view, name='homepage'),
     path('search/', views.search_view, name='search_results'),
     path('profile/', views.profile_view, name='profile'),
+    path('game_type/', views.game_type_view, name='game_type'),
+    path('game_detail/<int:game_type_id>/', views.game_detail_view, name='game_detail'),
+    path('upcoming_releases/', views.upcoming_release_view, name='upcoming_releases'),
 
 ]

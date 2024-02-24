@@ -1,7 +1,10 @@
+from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+
+from iadsapp.models import GameType, GameDetail, UpcomingRelease
 
 
 def signin_view(request):
@@ -76,3 +79,39 @@ def search_view(request):
 
 def profile_view(request):
     return HttpResponse('Profile page!')
+
+
+def game_type_view(request):
+    game_types = GameType.objects.all()
+    response=HttpResponse()
+    for game in game_types:
+        response.write(game.name + '\n')
+    return response
+
+def game_detail_view(request, game_type_id):
+    try:
+        game_type = GameType.objects.get(id=game_type_id)
+        game_details = GameDetail.objects.filter(game_type=game_type)
+        response = HttpResponse(content_type="text/plain")
+        for game_detail in game_details:
+            response.write(f"Game Name: {game_detail.game_name}\n")
+            response.write(f"Game Image: {game_detail.game_image}\n")
+            response.write(f"Production: {game_detail.game_production}\n")
+            response.write(f"Release Date: {game_detail.game_release}\n")
+            response.write(f"Platform: {game_detail.game_platform}\n")
+            response.write(f"Rating: {game_detail.game_rating}\n")
+            response.write(f"Bio: {game_detail.game_bio}\n")
+            response.write("\n")  # Add an empty line after each game detail
+    except GameType.DoesNotExist:
+        response = HttpResponse("Game type does not exist", content_type="text/plain", status=404)
+    return response
+
+def upcoming_release_view(request):
+    upcoming_releases = UpcomingRelease.objects.all()
+    response = HttpResponse(content_type="text/plain")
+    for release in upcoming_releases:
+        response.write(f"Game Name: {release.game_name}\n")
+        response.write(f"Game Image: {release.game_image}\n")
+        response.write(f"Country: {release.country}\n")
+        response.write(f"Release Date: {release.game_release_date}\n\n")
+    return response
