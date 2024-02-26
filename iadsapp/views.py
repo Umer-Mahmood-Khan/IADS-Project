@@ -1,8 +1,11 @@
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.db.models import Avg
+
 
 from iadsapp.models import GameType, GameDetail, UpcomingRelease
 
@@ -80,6 +83,10 @@ def search_view(request):
 def profile_view(request):
     return HttpResponse('Profile page!')
 
+#@login_required
+def edit_profile_view(request):
+    return HttpResponse('Edit Profile Page!')
+
 
 def game_type_view(request):
     game_types = GameType.objects.all()
@@ -115,3 +122,15 @@ def upcoming_release_view(request):
         response.write(f"Country: {release.country}\n")
         response.write(f"Release Date: {release.game_release_date}\n\n")
     return response
+
+def most_popular_games_view(request):
+    popular_games = GameDetail.objects.annotate(avg_rating=Avg('game_rating')).order_by('-avg_rating')[:50]
+    response = HttpResponse(content_type="text/plain")
+    for game in popular_games:
+        response.write(f"Game Name: {game.game_name}\n")
+        response.write(f"Average Rating: {game.avg_rating}\n")
+        response.write("\n")
+
+    return response
+
+
