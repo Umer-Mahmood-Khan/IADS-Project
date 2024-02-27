@@ -14,5 +14,5 @@ urlpatterns = [
     path('game_detail/<int:game_type_id>/', views.game_detail_view, name='game_detail'),
     path('most_popular_games/', views.most_popular_games_view, name='most_popular_games'),
     path('upcoming_releases/', views.upcoming_release_view, name='upcoming_releases'),
-
+    path('top100/', views.top100_games, name='top100_games'),
 ]

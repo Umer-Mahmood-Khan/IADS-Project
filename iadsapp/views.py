@@ -49,6 +49,7 @@ def signup_view(request):
 
     return HttpResponse('Sign-up form goes here')  # You can return an HTML form directly in this example
 
+
 def forgot_password_view(request, username):
     if request.method == 'POST':
         new_password = request.POST.get('new_password')
@@ -72,7 +73,6 @@ def forgot_password_view(request, username):
     return HttpResponse('Forgot password form goes here')  # You can return an HTML form directly in this example
 
 
-
 def homepage_view(request):
     return HttpResponse('Welcome to the Homepage!')
 
@@ -80,8 +80,10 @@ def homepage_view(request):
 def search_view(request):
     return HttpResponse('Welcome to the Search Results!')
 
+
 def profile_view(request):
     return HttpResponse('Profile page!')
+
 
 #@login_required
 def edit_profile_view(request):
@@ -94,6 +96,7 @@ def game_type_view(request):
     for game in game_types:
         response.write(game.name + '\n')
     return response
+
 
 def game_detail_view(request, game_type_id):
     try:
@@ -113,6 +116,7 @@ def game_detail_view(request, game_type_id):
         response = HttpResponse("Game type does not exist", content_type="text/plain", status=404)
     return response
 
+
 def upcoming_release_view(request):
     upcoming_releases = UpcomingRelease.objects.all()
     response = HttpResponse(content_type="text/plain")
@@ -122,6 +126,7 @@ def upcoming_release_view(request):
         response.write(f"Country: {release.country}\n")
         response.write(f"Release Date: {release.game_release_date}\n\n")
     return response
+
 
 def most_popular_games_view(request):
     popular_games = GameDetail.objects.annotate(avg_rating=Avg('game_rating')).order_by('-avg_rating')[:50]
@@ -134,3 +139,5 @@ def most_popular_games_view(request):
     return response
 
 
+def top100_games(request):
+    return HttpResponse('This is Top 100 Games Pages')
