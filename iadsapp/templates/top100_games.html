@@ -1,0 +1,19 @@
+<!-- top_100_games.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Top 100 Games</title>
+</head>
+<body>
+    <h1>Top 100 Games</h1>
+    <div>
+        {% for game in top_games %}
+            <div>
+                <img src="{{ game.game_image.url }}" alt="{{ game.game_name }} Image">
+                <h2>{{ game.game_name }}</h2>
+                <p>Rating: {{ game.game_rating }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

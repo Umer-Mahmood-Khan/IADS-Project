@@ -5,6 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
+from .models import GameDetail
 
 
 from iadsapp.models import GameType, GameDetail, UpcomingRelease
@@ -139,5 +140,13 @@ def most_popular_games_view(request):
     return response
 
 
+
 def top100_games(request):
-    return HttpResponse('This is Top 100 Games Pages')
+    # Retrieve the top 100 games based on the rating in descending order
+    top_games = GameDetail.objects.order_by('-game_rating')[:100]
+
+    context = {
+        'top_games': top_games,
+    }
+
+    return render(request, 'top100_games.html', context)
