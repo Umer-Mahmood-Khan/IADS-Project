@@ -7,7 +7,7 @@
 
 .game-image-container {
     flex: 0 0 auto; /* Make the image container non-flexible */
-    margin-right: 20px; /* Add some space between the image and details */
+    margin-right: 40px; /* Add some space between the image and details */
 }
 
 .game-details-container {

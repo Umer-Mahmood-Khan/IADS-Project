@@ -8,9 +8,9 @@
 </head>
 <body>
     <ul>
-        {% for game in game_types %}
+        {% for games in game_types %}
             <li>
-                {{ game.id }} <a href="{% url 'game_detail' game.id %}">{{ game.name }}</a>
+                {{ games.id }} <a href="{% url 'game_detail' games.id %}">{{ games.name }}</a>
             </li>
         {% endfor %}
     </ul>
