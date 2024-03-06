@@ -97,7 +97,6 @@ def game_type_view(request):
 
 
 def game_detail_view(request, game_type_id):
-
         game_type = GameType.objects.get(id=game_type_id)
         game_details = GameDetail.objects.filter(game_type=game_type)
 

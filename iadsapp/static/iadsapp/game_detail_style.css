@@ -2,7 +2,7 @@
     display: flex; /* Use flexbox layout */
     border: 10px solid #ccc;
     padding: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
 
 .game-image-container {
