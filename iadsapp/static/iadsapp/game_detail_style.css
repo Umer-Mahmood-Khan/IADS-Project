@@ -1,0 +1,20 @@
+.game-container {
+    display: flex; /* Use flexbox layout */
+    border: 10px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.game-image-container {
+    flex: 0 0 auto; /* Make the image container non-flexible */
+    margin-right: 20px; /* Add some space between the image and details */
+}
+
+.game-details-container {
+    flex: 1; /* Expand to fill remaining space */
+}
+
+.game-image {
+    max-width: 300px;
+    max-height: 300px;
+}

@@ -1,0 +1,18 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Types</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'iadsapp/game_type_style.css' %}">
+</head>
+<body>
+    <ul>
+        {% for game in game_types %}
+            <li>
+                {{ game.id }} <a href="{% url 'game_detail' game.id %}">{{ game.name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
