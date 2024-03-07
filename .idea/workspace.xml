@@ -5,52 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="256667df-2250-4680-9d41-4bbe7dfe17b8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/IADS-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IADS-Project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/icons/RT.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/icons/actor.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/icons/actor_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/icons/banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/icons/game.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/icons/imdb_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/icons/meta.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/icons/meta_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/icons/rt_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/6.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/7.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/antje.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/background1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/background2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/background3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/call.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/dark-banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/fifa.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/fifa1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/fifa2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/fifa3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/icons/RT.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/icons/actor.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/icons/actor_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/icons/banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/icons/game.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/icons/imdb_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/icons/meta.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/icons/meta_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/icons/rt_icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/joker-movie-banner.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/no_avatar.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/no_poster.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/game_images/img/profile.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/iads/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/iads/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/templates/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iadsapp/templates/search_results.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/search_results.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iadsapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +85,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1709836460655</updated>
-      <workItem from="1709836461702" duration="6652000" />
+      <workItem from="1709836461702" duration="7889000" />
     </task>
     <servers />
   </component>
