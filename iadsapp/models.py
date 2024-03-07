@@ -41,6 +41,9 @@ class GameDetail(models.Model):
     def __str__(self):
         return self.game_name
 
+    class Meta:
+        ordering=['game_type']
+
 
 class GameNew(models.Model):
     title = models.CharField(max_length=200)
