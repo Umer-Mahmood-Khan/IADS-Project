@@ -69,7 +69,7 @@ def homepage_view(request):
 
 
 def search_view(request):
-    return HttpResponse('Welcome to the Search Results!')
+    return render(request,'search_results.html')
 
 
 def profile_view(request):
