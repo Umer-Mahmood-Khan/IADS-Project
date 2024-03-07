@@ -65,7 +65,7 @@ def forgot_password_view(request, username):
 
 
 def homepage_view(request):
-    return HttpResponse('Welcome to the Homepage!')
+    return render(request, 'index.html')
 
 
 def search_view(request):
