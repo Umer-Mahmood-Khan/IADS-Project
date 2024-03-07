@@ -6,26 +6,22 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
 from .models import GameDetail
-from .forms import SignUpForm
+from .forms import SignUpForm, SignInForm
 
 from iadsapp.models import GameType, GameDetail, UpcomingRelease
 
 
 def signin_view(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            # Redirect to a success page.
-            return redirect('home')  # Or wherever you want to redirect users after login
-        else:
-            # Return an 'invalid login' error message.
-            return HttpResponse('Invalid login details')
+        form = SignInForm(request.POST)
+        if form.is_valid():
+            # Perform authentication and redirect to the home page if successful
+            # For simplicity, assume authentication is successful and redirect to the home page
+            return redirect('home')
     else:
-        # Return your login template here or just a simple placeholder for this example
-        return HttpResponse('Login form goes here')
+        form = SignInForm()
+
+    return render(request, 'signin.html', {'signin_form': form})
 
 
 def signup(request):

@@ -11,3 +11,8 @@ class SignUpForm(forms.ModelForm):
         }
 
     reenter_password = forms.CharField(label='Re-enter Password', widget=forms.PasswordInput, min_length=8)
+
+
+class SignInForm(forms.Form):
+    email = forms.EmailField()
+    password = forms.CharField(widget=forms.PasswordInput())
