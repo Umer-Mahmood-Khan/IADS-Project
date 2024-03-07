@@ -8,23 +8,22 @@
 
 </head>
 <body>
-
-{% for gamedetail in game_details %}
-  <div class="game-container">
-    <div class="game-image-container">
-        <img src="/game_images/{{ gamedetail.game_image }}" alt="{{ gamedetail.game_name }}" class="game-image">
-    </div>
-    <div class="game-details-container">
-        <h2>{{ gamedetail.game_name }}</h2>
-        <p><strong>Production:</strong> {{ gamedetail.game_production }}</p>
-        <p><strong>Release Date:</strong> {{ gamedetail.game_release }}</p>
-        <p><strong>Rating:</strong> {{ gamedetail.game_rating }}</p>
-        <p><strong> Platform:</strong> {{ gamedetail.game_platform }}</p>
-        <p>{{ gamedetail.game_bio }}</p>
-    </div>
-</div>
+    {% for game_detail in game_details %}
+        <div class="game-container">
+            <div class="game-image-container">
+                <img src="{% static '' %}{{ game_detail.game_image }}" alt="{{ game_detail.game_name }}" class="game-image">
+            </div>
+            <div class="game-details-container">
+                <h2 class="game-name">{{ game_detail.game_name }}</h2>
+                <p><strong>Production:</strong> {{ game_detail.game_production }}</p>
+                <p><strong>Released on </strong> {{ game_detail.game_release }}</p>
+                <p><strong>Rating:</strong> {{ game_detail.game_rating }}</p>
+                <p><strong> Platform </strong> {{ game_detail.game_platform }}</p>
+                <p>{{ game_detail.game_bio }}</p>
 
 
-{% endfor %}
+            </div>
+        </div>
+    {% endfor %}
 </body>
 </html>

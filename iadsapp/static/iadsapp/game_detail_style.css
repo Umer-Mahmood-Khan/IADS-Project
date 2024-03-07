@@ -1,20 +1,23 @@
 .game-container {
-    display: flex; /* Use flexbox layout */
-    border: 10px solid #ccc;
+    display: flex;
     padding: 20px;
     margin-bottom: 18px;
 }
 
 .game-image-container {
-    flex: 0 0 auto; /* Make the image container non-flexible */
-    margin-right: 40px; /* Add some space between the image and details */
+    flex: 0 0 auto;
+    margin-right: 40px;
 }
 
 .game-details-container {
-    flex: 1; /* Expand to fill remaining space */
+    flex: 1;
 }
 
 .game-image {
     max-width: 300px;
     max-height: 300px;
+}
+
+.game-name {
+    color: #ff0080; /* Changing the color of the game name */
 }
