@@ -6,7 +6,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
 from .models import GameDetail
-
+from .forms import SignUpForm
 
 from iadsapp.models import GameType, GameDetail, UpcomingRelease
 
@@ -28,27 +28,21 @@ def signin_view(request):
         return HttpResponse('Login form goes here')
 
 
-def signup_view(request):
+def signup(request):
     if request.method == 'POST':
-        username = request.POST.get('username')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        password_confirm = request.POST.get('password_confirm')
+        form = SignUpForm(request.POST)
+        if form.is_valid():
+            # Check if passwords match
+            if form.cleaned_data['password'] == form.cleaned_data['reenter_password']:
+                # Save the user profile if the passwords match
+                form.save()
+                return redirect('signup_success')  # Redirect to a success page or login page
+            else:
+                form.add_error('reenter_password', 'Passwords do not match.')
+    else:
+        form = SignUpForm()
 
-        if password == password_confirm:
-            # Check if the username or email already exists
-            if User.objects.filter(username=username).exists() or User.objects.filter(email=email).exists():
-                return HttpResponse('Username or email already exists. Please choose a different one.')
-
-            # Create a new user
-            user = User.objects.create_user(username=username, email=email, password=password)
-
-            # Redirect to the login page after successful registration
-            return redirect('login')  # Update 'login' to your actual login URL
-        else:
-            return HttpResponse('Passwords do not match. Please try again.')
-
-    return HttpResponse('Sign-up form goes here')  # You can return an HTML form directly in this example
+    return render(request, 'signup.html', {'form': form})
 
 
 def forgot_password_view(request, username):
