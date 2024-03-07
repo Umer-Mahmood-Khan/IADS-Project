@@ -115,14 +115,13 @@ def upcoming_release_view(request):
 
 
 def most_popular_games_view(request):
-    popular_games = GameDetail.objects.annotate(avg_rating=Avg('game_rating')).order_by('-avg_rating')[:50]
-    response = HttpResponse(content_type="text/plain")
-    for game in popular_games:
-        response.write(f"Game Name: {game.game_name}\n")
-        response.write(f"Average Rating: {game.avg_rating}\n")
-        response.write("\n")
+    popular_games = GameDetail.objects.order_by('-game_rating')[:50]
 
-    return response
+    context = {
+        'popular_games': popular_games,
+    }
+
+    return render(request, 'most_popular_games.html', context)
 
 
 
