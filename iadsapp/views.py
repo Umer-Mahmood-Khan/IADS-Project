@@ -126,3 +126,5 @@ def game_detail_view(request, game_id):
 
     # Render the template with the context
     return render(request, 'game_details.html', context)
+
+
