@@ -1,102 +1,55 @@
 <!-- top100_games.html -->
-<!DOCTYPE html>
-{% load static %}
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Top 100 Games</title>
+{% extends 'base.html' %}
 
-    <!-- CSS -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
-</head>
-<body>
-<ul id="dropdown1" class="dropdown-content">
-  <li><a href="">Calender</a></li>
-  <li><a href="{% url 'top100_games' %}">Top 100 Games</a></li>
-  <li><a href="{% url 'most_popular_games' %}">Most Popular</a></li>
-  <li><a href="{% url 'game_type' %}">Games by Genre</a></li>
-  <li><a href="#!">Awards</a></li>
-  <li class="divider"></li>
-  <li><a href="{% url 'upcoming_releases' %}">Games News</a></li>
-</ul>
-<nav class="light-blue">
-    <div class="nav-wrapper">
-        <style>
-            .brand-logo img {
-                width: 50px;
-                height: 50px;
-                padding-left: 10px;
-                padding-top: 10px;
-            }
-        </style>
-        <a href="#!" class="brand-logo"><img src="{% static 'img/icons/game.png' %}" alt=""></a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
-            <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
-        </ul>
-    </div>
-</nav>
+{% block title %}
+    Top 100 Games
+{% endblock %}
 
-<div class="container">
-    <div class="section">
-        <!-- Game List Section -->
-        <div class="row">
-            <!-- Left Column: Top 100 Games -->
-            <div class="col s12 m8">
-                <h2 class="header teal-text text-lighten-2" style="display: inline-block; font-size: 1.5rem;">Top 100 Games On Ratings</h2>
-            </div>
-
-            <!-- Right Column: Alphabetical Filter -->
-            <div class="col s12 m4 right-align">
-                <div class="input-field">
-                    <form id="filterForm" method="get">
-                        <select name="sort" onchange="document.getElementById('filterForm').submit();">
-                            <option value="" {% if not request.GET.sort %}selected{% endif %}>No Filter</option>
-                            <option value="a_m" {% if request.GET.sort == "a_m" %}selected{% endif %}>A-M</option>
-                            <option value="n_z" {% if request.GET.sort == "n_z" %}selected{% endif %}>N-Z</option>
-                        </select>
-                        <label>Sort Alphabetically</label>
-                    </form>
+{% block content %}
+    <div class="container">
+        <div class="section">
+            <!-- Game List Section -->
+            <div class="row">
+                <!-- Left Column: Top 100 Games -->
+                <div class="col s12 m8">
+                    <h2 class="header teal-text text-lighten-2" style="display: inline-block; font-size: 1.5rem;">Top 100 Games On Ratings</h2>
                 </div>
-            </div>
 
-            <div class="col s12">
-                <div class="row">
-                    {% for game in top_games %}
-                        <div class="col s12 m6 l3">
-                            <div class="card">
-                                <div class="card-image" style="height: 200px; overflow: hidden;">
-                                    <img src="{{ game.game_image.url }}" alt="{{ game.game_name }}" class="game-image" style="object-fit: cover; height: 100%;">
-                                </div>
-                                <div class="card-content" style="height: 100px;">
-                                    <span class="card-title" style="font-size: 1rem; font-weight: bold; line-height: 1.25rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ game.game_name }}</span>
-                                    <p style="font-size: 0.8rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">Rating: {{ game.game_rating }}</p>
+                <!-- Right Column: Alphabetical Filter -->
+                <div class="col s12 m4 right-align">
+                    <div class="input-field">
+                        <form id="filterForm" method="get">
+                            <select name="sort" onchange="document.getElementById('filterForm').submit();">
+                                <option value="" {% if not request.GET.sort %}selected{% endif %}>No Filter</option>
+                                <option value="a_m" {% if request.GET.sort == "a_m" %}selected{% endif %}>A-M</option>
+                                <option value="n_z" {% if request.GET.sort == "n_z" %}selected{% endif %}>N-Z</option>
+                            </select>
+                            <label>Sort Alphabetically</label>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col s12">
+                    <div class="row">
+                        {% for game in top_games %}
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                    <div class="card-image" style="height: 200px; overflow: hidden;">
+                                        <img src="{{ game.game_image.url }}" alt="{{ game.game_name }}" class="game-image" style="object-fit: cover; height: 100%;">
+                                    </div>
+                                    <div class="card-content" style="height: 100px;">
+                                        <span class="card-title" style="font-size: 1rem; font-weight: bold; line-height: 1.25rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ game.game_name }}</span>
+                                        <p style="font-size: 0.8rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">Rating: {{ game.game_rating }}</p>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        {% if forloop.counter|divisibleby:4 and not forloop.last %}
-                            </div><div class="row">
-                        {% endif %}
-                    {% endfor %}
+                            {% if forloop.counter|divisibleby:4 and not forloop.last %}
+                                </div><div class="row">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="{% static 'js/materialize.js' %}"></script>
-<script src="{% static 'js/init.js' %}"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var elems = document.querySelectorAll('select');
-        var instances = M.FormSelect.init(elems);
-    });
-</script>
-
-</body>
-</html>
+{% endblock %}
