@@ -66,11 +66,11 @@ def game_type_view(request):
     return render(request,'game_types.html',{'game_types':game_types})
 
 
-def game_detail_view(request, game_type_id):
-        game_type = GameType.objects.get(id=game_type_id)
-        game_details = GameDetail.objects.filter(game_type=game_type)
-
-        return render(request,'game_detail.html',{'game_details':game_details})
+# def game_detail_view(request, game_type_id):
+#         game_type = GameType.objects.get(id=game_type_id)
+#         game_details = GameDetail.objects.filter(game_type=game_type)
+#
+#         return render(request,'game_detail.html',{'game_details':game_details})
 
 
 def upcoming_release_view(request):
@@ -115,17 +115,13 @@ def top100_games(request):
     return render(request, 'top100_games.html', context)
 
 
-def game_detail(request, game_id):
-    # Fetch the GameDetail object based on game_id or any other identifier
+def game_detail_view(request, game_id):
+    # Fetch the GameDetail object based on game_id
     game = get_object_or_404(GameDetail, pk=game_id)
-
-    # Fetch additional related data (assuming ForeignKey to GameType exists)
-    game_type = game.game_type
 
     # Prepare the context to pass to the template
     context = {
         'game': game,
-        'game_type': game_type,
     }
 
     # Render the template with the context
