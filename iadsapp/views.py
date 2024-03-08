@@ -41,28 +41,6 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
-def forgot_password_view(request, username):
-    if request.method == 'POST':
-        new_password = request.POST.get('new_password')
-        confirm_password = request.POST.get('confirm_password')
-
-        if new_password == confirm_password:
-            try:
-                # Find the user based on the provided username
-                user = User.objects.get(username=username)
-
-                # Reset the user's password
-                user.set_password(new_password)
-                user.save()
-
-                return HttpResponse('Password reset successfully. You can now log in with your new password.')
-            except User.DoesNotExist:
-                return HttpResponse('User not found. Please check the username and try again.')
-        else:
-            return HttpResponse('Passwords do not match. Please try again.')
-
-    return HttpResponse('Forgot password form goes here')  # You can return an HTML form directly in this example
-
 
 def homepage_view(request):
     return render(request, 'index.html')
