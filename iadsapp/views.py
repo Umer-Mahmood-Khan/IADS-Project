@@ -5,10 +5,12 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
-from .models import GameDetail
+from .models import GameDetail, UpcomingRelease, GameType
 from .forms import SignUpForm, SignInForm
+from django.shortcuts import render, get_object_or_404
+from .models import GameDetail, GameType
 
-from iadsapp.models import GameType, GameDetail, UpcomingRelease
+# from iadsapp.models import GameType, GameDetail, UpcomingRelease
 
 
 def signin_view(request):
@@ -112,12 +114,19 @@ def top100_games(request):
 
     return render(request, 'top100_games.html', context)
 
-def game_detail_view(request):
-    # Retrieve the game details from the database, you might want to retrieve it dynamically based on some ID or slug
-    game_detail = GameDetail.objects.all()  # Just an example, you might need to modify this based on your requirements
 
+def game_detail(request, game_id):
+    # Fetch the GameDetail object based on game_id or any other identifier
+    game = get_object_or_404(GameDetail, pk=game_id)
+
+    # Fetch additional related data (assuming ForeignKey to GameType exists)
+    game_type = game.game_type
+
+    # Prepare the context to pass to the template
     context = {
-        'game_detail': game_detail  # Pass the game detail object to the template
+        'game': game,
+        'game_type': game_type,
     }
 
+    # Render the template with the context
     return render(request, 'game_details.html', context)
