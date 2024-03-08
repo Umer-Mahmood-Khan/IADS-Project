@@ -116,11 +116,21 @@ def most_popular_games_view(request):
 
 
 def top100_games(request):
-    # Retrieve the top 100 games based on the rating in descending order
-    top_games = GameDetail.objects.order_by('-game_rating')[:100]
+    sort_filter = request.GET.get('sort', '')
+
+    if sort_filter == 'a_m':
+        # Retrieve top 100 games with names starting from A to M
+        top_games = GameDetail.objects.filter(game_name__istartswith='a') | GameDetail.objects.filter(game_name__istartswith='b') | GameDetail.objects.filter(game_name__istartswith='c') | GameDetail.objects.filter(game_name__istartswith='d') | GameDetail.objects.filter(game_name__istartswith='e') | GameDetail.objects.filter(game_name__istartswith='f') | GameDetail.objects.filter(game_name__istartswith='g') | GameDetail.objects.filter(game_name__istartswith='h') | GameDetail.objects.filter(game_name__istartswith='i') | GameDetail.objects.filter(game_name__istartswith='j') | GameDetail.objects.filter(game_name__istartswith='k') | GameDetail.objects.filter(game_name__istartswith='l') | GameDetail.objects.filter(game_name__istartswith='m')
+    elif sort_filter == 'n_z':
+        # Retrieve top 100 games with names starting from N to Z
+        top_games = GameDetail.objects.filter(game_name__istartswith='n') | GameDetail.objects.filter(game_name__istartswith='o') | GameDetail.objects.filter(game_name__istartswith='p') | GameDetail.objects.filter(game_name__istartswith='q') | GameDetail.objects.filter(game_name__istartswith='r') | GameDetail.objects.filter(game_name__istartswith='s') | GameDetail.objects.filter(game_name__istartswith='t') | GameDetail.objects.filter(game_name__istartswith='u') | GameDetail.objects.filter(game_name__istartswith='v') | GameDetail.objects.filter(game_name__istartswith='w') | GameDetail.objects.filter(game_name__istartswith='x') | GameDetail.objects.filter(game_name__istartswith='y') | GameDetail.objects.filter(game_name__istartswith='z')
+    else:
+        # Retrieve the top 100 games based on the rating in descending order
+        top_games = GameDetail.objects.order_by('-game_rating')[:100]
 
     context = {
         'top_games': top_games,
     }
 
     return render(request, 'top100_games.html', context)
+

@@ -2,6 +2,8 @@
 from django.urls import path
 from . import views
 from .views import signup, signin_view
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('signin/', signin_view, name='signin'),
@@ -17,3 +19,5 @@ urlpatterns = [
     path('upcoming_releases/', views.upcoming_release_view, name='upcoming_releases'),
     path('top100/', views.top100_games, name='top100_games'),
 ]
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
