@@ -134,3 +134,12 @@ def top100_games(request):
 
     return render(request, 'top100_games.html', context)
 
+def game_detail_view(request):
+    # Retrieve the game details from the database, you might want to retrieve it dynamically based on some ID or slug
+    game_detail = GameDetail.objects.all()  # Just an example, you might need to modify this based on your requirements
+
+    context = {
+        'game_detail': game_detail  # Pass the game detail object to the template
+    }
+
+    return render(request, 'game_details.html', context)

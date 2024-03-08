@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="256667df-2250-4680-9d41-4bbe7dfe17b8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iads/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/iads/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iadsapp/templates/top100_games.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/top100_games.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/views.py" afterDir="false" />
     </list>
@@ -37,7 +34,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "django.template.preview.state": "SHOW_EDITOR",
     "git-widget-placeholder": "Sprint3__templates",
-    "last_opened_file_path": "C:/Users/chand/OneDrive/Desktop/project/IADS-Project",
+    "last_opened_file_path": "D:/SEMESTER 3/i/PROJECT/IADS-Project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -58,7 +55,7 @@
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
+      <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="launchJavascriptDebuger" value="false" />
@@ -76,7 +73,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-d68999036c7f-b11f5e8da5ad-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.14475.56" />
+        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -92,6 +89,7 @@
       <workItem from="1709846655672" duration="622000" />
       <workItem from="1709851287654" duration="16000" />
       <workItem from="1709851305110" duration="6241000" />
+      <workItem from="1709922341556" duration="916000" />
     </task>
     <servers />
   </component>
