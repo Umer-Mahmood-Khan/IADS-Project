@@ -43,6 +43,18 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+def signin1(request):
+    if request.method == 'POST':
+        form = SignInForm(request.POST)
+        if form.is_valid():
+            # Add your authentication logic here
+            # For example, checking credentials against the database
+            return redirect('home')  # Replace 'home' with the URL of your home page
+    else:
+        form = SignInForm()
+
+    return render(request, 'signin1.html', {'form': form})
+
 
 def homepage_view(request):
     return render(request, 'index.html')

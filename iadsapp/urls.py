@@ -1,11 +1,12 @@
 # accounts/urls.py
 from django.urls import path
 from . import views
-from .views import signup, signin_view
+from .views import signup, signin_view, signin1
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
+    path('signin1/', signin1, name='signin1'),
     path('signin/', signin_view, name='signin'),
     path('signup/', signup, name='signup'),
     path('', views.homepage_view, name='homepage'),
