@@ -8,7 +8,7 @@ from django.db.models import Avg
 from .models import GameDetail, UpcomingRelease, GameType
 from .forms import SignUpForm, SignInForm
 from django.shortcuts import render, get_object_or_404
-from .models import GameDetail, GameType
+from .models import GameDetail, GameType, GameNew
 
 # from iadsapp.models import GameType, GameDetail, UpcomingRelease
 
@@ -140,3 +140,10 @@ def game_detail_view(request, game_id):
     return render(request, 'game_details.html', context)
 
 
+def game_news(request):
+    # Retrieve all game news objects from the database
+    game_news = GameNew.objects.all()
+    context = {
+        'game_news': game_news
+    }
+    return render(request, 'game_news.html', context)

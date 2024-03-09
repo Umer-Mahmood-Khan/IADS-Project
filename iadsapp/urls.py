@@ -20,6 +20,7 @@ urlpatterns = [
     path('top100/', views.top100_games, name='top100_games'),
     # path('game_detail/<int:game_id>/', views.game_detail_view, name='game_detail'),
     path('game_detail/<int:game_id>/', views.game_detail_view, name='game_detail'),
+    path('game_news/', views.game_news, name='game_news'),
 ]
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

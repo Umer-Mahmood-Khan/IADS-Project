@@ -50,7 +50,6 @@ class GameNew(models.Model):
     image = models.ImageField(upload_to='news_images/')
     bio = models.TextField()
     description = models.TextField()
-    link = models.URLField()
 
     def __str__(self):
         return self.title
