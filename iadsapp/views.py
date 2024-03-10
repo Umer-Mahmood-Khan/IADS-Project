@@ -1,4 +1,5 @@
 from django.contrib.auth.models import User
+from django.contrib import messages
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
@@ -6,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
 from .models import GameDetail, UpcomingRelease, GameType
-from .forms import SignUpForm, SignInForm
+from .forms import SignUpForm, SignInForm, UpdateUserForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 
@@ -68,11 +69,28 @@ def profile_view(request):
     return HttpResponse('Profile page!')
 
 
-#@login_required
+'''
 def edit_profile_view(request):
-    return HttpResponse('Edit Profile Page!')
+    return render(request, 'edit_user.html', {})
+'''
+def edit_profile_view(request):
+	#if request.user.is_authenticated:
+		#current_user = User.objects.get(id=request.user.id)
+		#user_form = UpdateUserForm(request.POST or None, instance=current_user)
 
+		#if user_form.is_valid():
+		#	user_form.save()
 
+		#	login(request, current_user)
+		#	messages.success(request, "User Has Been Updated!!")
+		#	return redirect('homepage')
+		#return render(request, "edit_user.html", {'user_form':user_form})
+
+        return render(request, "edit_user.html", {})
+	#else:
+		#messages.success(request, "You Must Be Logged In To Access That Page!!")
+		#return redirect('homepage')
+#
 def game_type_view(request):
     game_types = GameType.objects.all()
     return render(request,'game_types.html',{'game_types':game_types})
