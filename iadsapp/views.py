@@ -10,6 +10,7 @@ from .models import GameDetail, UpcomingRelease, GameType
 from .forms import SignUpForm, SignInForm, UpdateUserForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
+from .models import Award
 
 # from iadsapp.models import GameType, GameDetail, UpcomingRelease
 
@@ -139,6 +140,9 @@ def upcoming_release_view(request):
         response.write(f"Release Date: {release.game_release_date}\n\n")
     return response
 
+# def awards(request):
+
+
 
 def most_popular_games_view(request):
     popular_games = GameDetail.objects.order_by('-game_rating')[:50]
@@ -191,3 +195,12 @@ def game_news(request):
         'game_news': game_news
     }
     return render(request, 'game_news.html', context)
+
+def awards_list(request):
+    awards = Award.objects.all()
+    return render(request, 'awards_list.html', {'awards': awards})
+
+def award_detail(request, award_id):
+    award = get_object_or_404(Award, pk=award_id)
+    return render(request, 'award_detail.html', {'award': award})
+

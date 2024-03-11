@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+    Awards List
+{% endblock %}
+
+{% block content %}
+    <h1>Awards List</h1>
+    <ul>
+        {% for award in awards %}
+            <li><a href="{% url 'award_detail' award_id=award.id %}">{{ award.award_name }}</a></li>
+            <hr>
+        {% endfor %}
+    </ul>
+
+    <!-- Inserting the image -->
+    <img src="{% static 'awards.png' %}" alt="Awards Image" class="right-image">
+{% endblock %}

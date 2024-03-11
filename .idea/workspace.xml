@@ -9,8 +9,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/iadsapp/templates/game_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/game_details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/templates/game_types.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/game_types.html" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/iadsapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/base.html" afterDir="false" />
+>>>>>>> Stashed changes
       <change beforePath="$PROJECT_DIR$/iadsapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/views.py" afterDir="false" />
     </list>
@@ -26,6 +31,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -40,26 +46,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;Django Server.IADS-Project.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.pycharm.django.structure.promotion.once.per.project&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;django.template.preview.state&quot;: &quot;SHOW_EDITOR&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Sprint3__templates&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/SEMESTER 3/i/PROJECT/IADS-Project&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "Django Server.IADS-Project.executor": "Run",
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "Sprint3__templates",
+    "last_opened_file_path": "D:/SEMESTER 3/i/PROJECT/IADS-Project",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="IADS-Project" type="Python.DjangoServer" factoryName="Django server">
       <module name="IADS-Project" />
@@ -114,9 +121,14 @@
       <workItem from="1710001225321" duration="1577000" />
       <workItem from="1710021142967" duration="3358000" />
       <workItem from="1710100150553" duration="8505000" />
+<<<<<<< Updated upstream
       <workItem from="1710111502247" duration="4376000" />
       <workItem from="1710119094750" duration="5736000" />
       <workItem from="1710125917068" duration="890000" />
+=======
+      <workItem from="1710118533196" duration="6763000" />
+      <workItem from="1710126299030" duration="1589000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>

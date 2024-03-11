@@ -65,12 +65,22 @@ class UpcomingRelease(models.Model):
         return self.game_name
 
 
+from django.db import models
+
+from django.db import models
+from datetime import date
+
 class Award(models.Model):
-    award_name = models.CharField(max_length=100)
-    link = models.URLField()
+    award_name = models.CharField(max_length=100, unique=True)
+    award_date = models.DateField(default=date.today)  # Set default value to today's date
+    award_description = models.TextField(default='')
+    game_name = models.CharField(max_length=100, unique=True, default='')
 
     def __str__(self):
         return self.award_name
+
+
+
 
 
 class UserProfile(models.Model):

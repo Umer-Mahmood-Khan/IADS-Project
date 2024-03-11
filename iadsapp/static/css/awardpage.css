@@ -1,0 +1,6 @@
+/* awards/static/css/style.css */
+.right-image {
+    float: right; /* Float the image to the right */
+    margin-left: 20px; /* Add some margin to the left for spacing */
+    max-width: 100%; /* Ensure the image doesn't exceed its container's width */
+}

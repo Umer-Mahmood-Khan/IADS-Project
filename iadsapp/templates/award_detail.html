@@ -1,0 +1,9 @@
+<!-- awards/templates/awards/award_detail.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>{{ award.award_name }} Details</h1>
+    <p>Date: {{ award.award_date }}</p>
+    <p>Description: {{ award.award_description }}</p>
+    <p>Game: {{ award.game_name }}</p>
+{% endblock %}
