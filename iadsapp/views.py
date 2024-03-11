@@ -96,11 +96,37 @@ def game_type_view(request):
     return render(request,'game_types.html',{'game_types':game_types})
 
 
-# def game_detail_view(request, game_type_id):
-#         game_type = GameType.objects.get(id=game_type_id)
-#         game_details = GameDetail.objects.filter(game_type=game_type)
-#
-#         return render(request,'game_detail.html',{'game_details':game_details})
+# View for game genre
+#def games_by_genre_view(request):
+ #   games_by_genre= GameType.objects.all()
+  #  game_genre_selected= None
+   # games=GameDetail.objects.all()
+
+    # checking for game genre
+    #games_by_genre_id=request.GET.get('game_by_genre_id')
+    #if games_by_genre_id:
+    #    game_genre_selected=get_object_or_404(GameType,pk=games_by_genre_id)
+    #    games=games.filter(genre=game_genre_selected)
+
+    #return render(request,'games_by_genre.html',{'games_by_genre':games_by_genre , 'game_genre_selected':game_genre_selected,'games':games})
+
+
+def games_by_genre_view(request, game_type_id):
+        game_genre = GameType.objects.get(id=game_type_id)
+        sort_filter = request.GET.get('sort', '')
+        games_by_genre = GameDetail.objects.filter(game_type=game_genre)
+
+        if sort_filter == 'a_z':
+            games_by_genre = games_by_genre.order_by('game_name')
+        elif sort_filter == 'z_a':
+            games_by_genre = games_by_genre.order_by('-game_name')
+        elif sort_filter == 'rating':
+            games_by_genre = games_by_genre.order_by('-game_rating')
+        elif sort_filter == 'release_date':
+            games_by_genre = games_by_genre.order_by('-game_release')
+
+
+        return render(request,'games_by_genre.html',{'games_by_genre':games_by_genre})
 
 
 def upcoming_release_view(request):

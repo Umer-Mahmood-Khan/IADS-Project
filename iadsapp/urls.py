@@ -18,9 +18,10 @@ urlpatterns = [
     path('most_popular_games/', views.most_popular_games_view, name='most_popular_games'),
     path('upcoming_releases/', views.upcoming_release_view, name='upcoming_releases'),
     path('top100/', views.top100_games, name='top100_games'),
-    # path('game_detail/<int:game_id>/', views.game_detail_view, name='game_detail'),
     path('game_detail/<int:game_id>/', views.game_detail_view, name='game_detail'),
     path('game_news/', views.game_news, name='game_news'),
+    path('games_by_genre/<int:game_type_id>/', views.games_by_genre_view, name='games_by_genre'),
 ]
+
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

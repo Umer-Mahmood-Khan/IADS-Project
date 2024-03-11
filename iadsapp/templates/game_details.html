@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% load static%}
+
 <html lang="en">
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -48,7 +50,8 @@
           <h2 class="header", style="margin-left: 35px;"><b>Game Details</b></h2>
           <div class="card horizontal ", style="width: 1200px; margin-left: 35px;">
             <div class="card-image">
-              <img src="{{ game.game_image.url }}", style="height: 900px; width: 700px;">
+              <img src="{% static '' %}{{ game.game_image }}" alt="{{ game.game_name }}", style="height: 900px; width: 700px;">
+
             </div>
             <div class="card-stacked">
               <div class="card-content">
