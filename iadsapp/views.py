@@ -204,3 +204,23 @@ def award_detail(request, award_id):
     award = get_object_or_404(Award, pk=award_id)
     return render(request, 'award_detail.html', {'award': award})
 
+def search_view(request):
+    query = request.GET.get('q', '')
+    game_type_name = request.GET.get('game_type', '')  # Retrieve game type name from the query parameters
+    results = []
+
+    # Fetch game types for populating the dropdown
+    game_types = GameType.objects.all()
+    # Pass game types to the template context
+    context = {'game_types': game_types, 'query': query}
+
+    # Filter games based on the provided game type name or search query
+    if game_type_name:
+        games = GameDetail.objects.filter(game_type__name__iexact=game_type_name)  # Filter games by game type name
+        results = games
+    else:
+        results = GameDetail.objects.filter(game_name__icontains=query)
+
+    context['results'] = results  # Add results to the template context
+
+    return render(request, 'search_results.html', context)

@@ -11,6 +11,7 @@
   <link href="{% static 'css/materialize.css'%}" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="{% static 'css/style.css'%}" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
+
 <body>
   <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
@@ -22,13 +23,13 @@
   <li class="divider"></li>
   <li><a href="{% url 'upcoming_releases' %}">Games News</a></li>
 </ul>
-<nav class = 'light-blue'>
+<nav  style="background-color: #26a69a;">
   <div class="nav-wrapper">
     <style>
       .brand-logo img {
           width: 50px;
           height: 50px;
-          padding-left: 10px; 
+          padding-left: 10px;
           padding-top: 10px;
       }
   </style>
@@ -47,19 +48,25 @@
         <br><br>
         <h1 class="header center teal-text text-lighten-2">Find your favorite game</h1>
         <div class="row">
-          <form class="col s12">
-          <div class="row">
-          <div class="input-field col s12">
-          <textarea id="textareal" class="materialize-textarea white-text"></textarea>
-          <label for="textarea1">Search</label>
-          </div>
-          
-            <a  class="waves-effect waves-light btn center-align"><i class="material-icons left">search</i>
-              Search</a>
-          
-         
-            </div>
-          </form>
+            <form action="{% url 'search_view' %}" method="get">
+                <div class="row">
+                        <div class="input-field col s12">
+                            <input id="search" type="text"  class="validate white-text"  name="q">
+            <label for="search">Search</label>
+        </div>
+        <div class="input-field col s12">
+            <select name="game_type" >
+                <option value="" selected>All</option>
+                {% for game_type in game_types %}
+                    <option value="{{ game_type.name }}">{{ game_type.name }}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+        <button type="submit" class="waves-effect waves-light btn center-align" style="width: 950px;"><i class="material-icons left">search</i>Search</button>
+    </div>
+            </form>
+
         </div>
   
         
