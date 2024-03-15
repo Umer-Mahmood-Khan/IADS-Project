@@ -92,6 +92,7 @@ class CalendarEvent(models.Model):
 
 
 class UserProfile(models.Model):
-    username = models.CharField(max_length=50)
+    FirstName = models.CharField(max_length=50)
+    LastName = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=100)

@@ -20,8 +20,11 @@
                 <h2 class="create-account-title">Create Your Account</h2>
                 <form method="post" action="{% url 'signup' %}">
                     {% csrf_token %}
-                    {{ form.username.label_tag }}
-                    {{ form.username }}
+                    {{ form.FirstName.label_tag }}
+                    {{ form.FirstName }}
+
+                    {{ form.LastName.label_tag }}
+                    {{ form.LastName }}
 
                     {{ form.email.label_tag }}
                     {{ form.email }}

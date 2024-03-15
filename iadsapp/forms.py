@@ -6,7 +6,7 @@ from .models import UserProfile
 class SignUpForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['username', 'email', 'password']
+        fields = ['FirstName', 'LastName', 'email', 'password']
         widgets = {
             'password': forms.PasswordInput(),
         }
@@ -29,7 +29,7 @@ class UpdateUserForm(UserChangeForm):
 
     class Meta:
         model = UserProfile
-        fields = ('username','email')
+        fields = ('FirstName', 'LastName','email')
     def __init__(self, *args, **kwargs):
         super(UpdateUserForm, self).__init__(*args, **kwargs)
 
