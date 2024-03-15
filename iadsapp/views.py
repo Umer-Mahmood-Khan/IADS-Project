@@ -11,7 +11,11 @@ from .forms import SignUpForm, SignInForm, UpdateUserForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
+<<<<<<< Updated upstream
 from .models import CalendarEvent
+=======
+
+>>>>>>> Stashed changes
 # from iadsapp.models import GameType, GameDetail, UpcomingRelease
 
 
@@ -196,6 +200,7 @@ def game_news(request):
     }
     return render(request, 'game_news.html', context)
 
+<<<<<<< Updated upstream
 # def awards_list(request):
 #     awards = Award.objects.all()
 #     return render(request, 'awards_list.html', {'awards': awards})
@@ -206,12 +211,17 @@ def awards_list(request):
     # Filter awards based on the search query
     awards = Award.objects.filter(award_name__icontains=query)
 
+=======
+def awards_list(request):
+    awards = Award.objects.all()
+>>>>>>> Stashed changes
     return render(request, 'awards_list.html', {'awards': awards})
 
 def award_detail(request, award_id):
     award = get_object_or_404(Award, pk=award_id)
     return render(request, 'award_detail.html', {'award': award})
 
+<<<<<<< Updated upstream
 def search_view(request):
     query = request.GET.get('q', '')
     game_type_name = request.GET.get('game_type', '')  # Retrieve game type name from the query parameters
@@ -236,3 +246,5 @@ def search_view(request):
 def calendar_view(request):
     events = CalendarEvent.objects.all()
     return render(request, 'iadsapp/calendar.html', {'events': events})
+=======
+>>>>>>> Stashed changes

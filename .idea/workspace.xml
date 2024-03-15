@@ -10,8 +10,13 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <change beforePath="$PROJECT_DIR$/iadsapp/templates/game_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/game_details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/templates/game_types.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/game_types.html" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/iadsapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/base.html" afterDir="false" />
+>>>>>>> Stashed changes
 =======
       <change beforePath="$PROJECT_DIR$/iadsapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/models.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/base.html" afterDir="false" />
@@ -122,9 +127,14 @@
       <workItem from="1710021142967" duration="3358000" />
       <workItem from="1710100150553" duration="8505000" />
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
       <workItem from="1710111502247" duration="4376000" />
       <workItem from="1710119094750" duration="5736000" />
       <workItem from="1710125917068" duration="890000" />
+=======
+      <workItem from="1710118533196" duration="6763000" />
+      <workItem from="1710126299030" duration="1589000" />
+>>>>>>> Stashed changes
 =======
       <workItem from="1710118533196" duration="6763000" />
       <workItem from="1710126299030" duration="1589000" />
