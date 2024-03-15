@@ -1,18 +1,30 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block title %}
     Awards List
 {% endblock %}
 
 {% block content %}
-    <h1>Awards List</h1>
-    <ul>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h1 style="display: inline;">Awards List</h1>
+
+        <!-- Add the styled search box aligned to the right -->
+        <div style="display: flex; align-items: center; background-color: #f0f0f0; padding: 5px; border-radius: 5px;">
+            <form method="GET" action="{% url 'awards_list' %}" style="margin-right: 10px;">
+                <input type="text" name="search" placeholder="Search" style="width: 120px; border: none; outline: none;">
+                <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Search</button>
+            </form>
+        </div>
+    </div>
+
+    <ul style="list-style-type: none; padding: 0;">
+        <img src="{% static 'awards.png' %}" alt="Awards Image" class="right-image" style="margin-right: 10px;">
+<!--        <img src="{% static 'awards2.jpg' %}" alt="Awards Image" class="right-image">-->
+
         {% for award in awards %}
             <li><a href="{% url 'award_detail' award_id=award.id %}">{{ award.award_name }}</a></li>
             <hr>
         {% endfor %}
     </ul>
-
-    <!-- Inserting the image -->
-    <img src="{% static 'awards.png' %}" alt="Awards Image" class="right-image">
 {% endblock %}

@@ -5,6 +5,7 @@ from .views import signup, signin_view, signin1
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import awards_list, award_detail
+from .views import calendar_view
 
 urlpatterns = [
     path('signin1/', signin1, name='signin1'),
@@ -27,6 +28,7 @@ urlpatterns = [
 
     path('awards_list/', views.awards_list, name='awards_list'),  # Update 'views.awards' to 'views.awards_list'
     path('award_detail/<int:award_id>/', award_detail, name='award_detail'),
+path('calendar/', calendar_view, name='calendar'),
 #>>>>>>> Stashed changes
 ]
 

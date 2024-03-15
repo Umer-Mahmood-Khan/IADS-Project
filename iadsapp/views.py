@@ -11,7 +11,7 @@ from .forms import SignUpForm, SignInForm, UpdateUserForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
-
+from .models import CalendarEvent
 # from iadsapp.models import GameType, GameDetail, UpcomingRelease
 
 
@@ -196,8 +196,16 @@ def game_news(request):
     }
     return render(request, 'game_news.html', context)
 
+# def awards_list(request):
+#     awards = Award.objects.all()
+#     return render(request, 'awards_list.html', {'awards': awards})
+
 def awards_list(request):
-    awards = Award.objects.all()
+    query = request.GET.get('search', '')
+
+    # Filter awards based on the search query
+    awards = Award.objects.filter(award_name__icontains=query)
+
     return render(request, 'awards_list.html', {'awards': awards})
 
 def award_detail(request, award_id):
@@ -224,3 +232,7 @@ def search_view(request):
     context['results'] = results  # Add results to the template context
 
     return render(request, 'search_results.html', context)
+
+def calendar_view(request):
+    events = CalendarEvent.objects.all()
+    return render(request, 'iadsapp/calendar.html', {'events': events})
