@@ -62,3 +62,16 @@ footer.page-footer {
   align-items: center;
   height:8vh; /* Adjust this if needed */
 }
+
+#img-custom-circle-actor {
+  position: absolute;
+  max-width: 30%;
+  height: 40%;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: white;
+  border-width: 5px;
+  z-index: 1;
+  left: 35%;
+  top: 50%;
+}

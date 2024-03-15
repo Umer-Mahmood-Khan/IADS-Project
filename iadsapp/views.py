@@ -70,6 +70,9 @@ def signin1(request):
 def homepage_view(request):
     return render(request, 'index.html')
 
+def profilepage_view(request):
+    return render(request, 'profile.html')
+
 
 def profile_view(request):
     return HttpResponse('Profile page!')
