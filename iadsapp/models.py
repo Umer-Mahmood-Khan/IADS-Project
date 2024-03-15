@@ -1,5 +1,7 @@
 from django.contrib.auth.models import User
 from django.db import models
+from datetime import date
+from django.contrib.auth.hashers import make_password
 
 
 # Create your models here.
@@ -65,41 +67,34 @@ class UpcomingRelease(models.Model):
         return self.game_name
 
 
-from django.db import models
-
-from django.db import models
-from datetime import date
-
 class Award(models.Model):
     award_name = models.CharField(max_length=100, unique=True)
     award_date = models.DateField(default=date.today)  # Set default value to today's date
     award_description = models.TextField(default='')
-<<<<<<< Updated upstream
-    game_name = models.CharField(max_length=100, default='')  # Remove unique constraint
-=======
     game_name = models.CharField(max_length=100, unique=True, default='')
->>>>>>> Stashed changes
+
 
     def __str__(self):
         return self.award_name
 
-
-
-<<<<<<< Updated upstream
-# iadsapp/models.py
-from django.db import models
 
 class CalendarEvent(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     date = models.DateField()
 
-=======
->>>>>>> Stashed changes
-
 
 class UserProfile(models.Model):
-    FirstName = models.CharField(max_length=50)
+    FirstName = models.CharField(max_length=50, default='')
     LastName = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
-    password = models.CharField(max_length=100)
+    password = models.CharField(max_length=100)  # Store hashed password
+
+    def save(self, *args, **kwargs):
+        # Hash the password before saving
+        if self.password:
+            self.password = make_password(self.password)
+        super().save(*args, **kwargs)
+
+    def __str__(self):
+        return self.FirstName

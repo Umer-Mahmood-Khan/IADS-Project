@@ -11,25 +11,30 @@ from .forms import SignUpForm, SignInForm, UpdateUserForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
-<<<<<<< Updated upstream
 from .models import CalendarEvent
-=======
-
->>>>>>> Stashed changes
-# from iadsapp.models import GameType, GameDetail, UpcomingRelease
 
 
 def signin_view(request):
+    error_message = None
+
     if request.method == 'POST':
         form = SignInForm(request.POST)
         if form.is_valid():
-            # Perform authentication and redirect to the home page if successful
-            # For simplicity, assume authentication is successful and redirect to the home page
-            return redirect('home')
+            email = form.cleaned_data.get('email')
+            password = form.cleaned_data.get('password')
+            # Authenticate user
+            user = authenticate(request, email=email, password=password)
+            if user is not None:
+                # User authenticated, log in the user
+                login(request, user)
+                return redirect('homepage')
+            else:
+                # Authentication failed, display error message
+                error_message = 'Invalid email or password.'
     else:
         form = SignInForm()
 
-    return render(request, 'signin.html', {'signin_form': form})
+    return render(request, 'signin.html', {'signin_form': form, 'error_message': error_message})
 
 
 def signup(request):
@@ -40,7 +45,7 @@ def signup(request):
             if form.cleaned_data['password'] == form.cleaned_data['reenter_password']:
                 # Save the user profile if the passwords match
                 form.save()
-                return redirect('signup_success')  # Redirect to a success page or login page
+                return redirect('signin')  # Redirect to the sign-in page
             else:
                 form.add_error('reenter_password', 'Passwords do not match.')
     else:
@@ -55,7 +60,7 @@ def signin1(request):
         if form.is_valid():
             # Add your authentication logic here
             # For example, checking credentials against the database
-            return redirect('home')  # Replace 'home' with the URL of your home page
+            return redirect('homepage')  # Replace 'home' with the URL of your home page
     else:
         form = SignInForm()
 
@@ -64,10 +69,6 @@ def signin1(request):
 
 def homepage_view(request):
     return render(request, 'index.html')
-
-
-def search_view(request):
-    return render(request,'search_results.html')
 
 
 def profile_view(request):
@@ -200,28 +201,20 @@ def game_news(request):
     }
     return render(request, 'game_news.html', context)
 
-<<<<<<< Updated upstream
-# def awards_list(request):
-#     awards = Award.objects.all()
-#     return render(request, 'awards_list.html', {'awards': awards})
 
-def awards_list(request):
-    query = request.GET.get('search', '')
 
-    # Filter awards based on the search query
-    awards = Award.objects.filter(award_name__icontains=query)
-
-=======
 def awards_list(request):
     awards = Award.objects.all()
->>>>>>> Stashed changes
+
     return render(request, 'awards_list.html', {'awards': awards})
+
 
 def award_detail(request, award_id):
     award = get_object_or_404(Award, pk=award_id)
     return render(request, 'award_detail.html', {'award': award})
 
-<<<<<<< Updated upstream
+
+
 def search_view(request):
     query = request.GET.get('q', '')
     game_type_name = request.GET.get('game_type', '')  # Retrieve game type name from the query parameters
@@ -243,8 +236,8 @@ def search_view(request):
 
     return render(request, 'search_results.html', context)
 
+
 def calendar_view(request):
     events = CalendarEvent.objects.all()
     return render(request, 'iadsapp/calendar.html', {'events': events})
-=======
->>>>>>> Stashed changes
+

@@ -1,4 +1,3 @@
-<!-- signin.html -->
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -24,9 +23,15 @@
                     {% csrf_token %}
                     {{ signin_form.email.label_tag }}
                     {{ signin_form.email }}
+                    {% if signin_form.email.errors %}
+                        <p class="error-message">{{ signin_form.email.errors }}</p>
+                    {% endif %}
 
                     {{ signin_form.password.label_tag }}
                     {{ signin_form.password }}
+                    {% if signin_form.password.errors %}
+                        <p class="error-message">{{ signin_form.password.errors }}</p>
+                    {% endif %}
                     <p class="forgot-password"><a href="#">Forgot your password?</a></p>
                     <label for="keep-signed-in">
                         <input type="checkbox" id="keep-signed-in" name="keep-signed-in"> Keep me signed in
@@ -34,6 +39,9 @@
 
                     <button type="submit" class="sign-in-button">Sign In</button>
                 </form>
+                {% if error_message %}
+                    <p class="error-message">{{ error_message }}</p>
+                {% endif %}
             </div>
 
             <div class="new-to-gamecritichub">

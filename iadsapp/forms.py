@@ -16,7 +16,20 @@ class SignUpForm(forms.ModelForm):
 
 class SignInForm(forms.Form):
     email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput())
+    password = forms.CharField(widget=forms.PasswordInput)
+
+    def clean(self):
+        cleaned_data = super().clean()
+        email = cleaned_data.get('email')
+        password = cleaned_data.get('password')
+
+        # Perform custom validation for email and password if needed
+        if not email:
+            raise forms.ValidationError("Email field is required.")
+        if not password:
+            raise forms.ValidationError("Password field is required.")
+
+        return cleaned_data
 
 
 class UpdateUserForm(UserChangeForm):
