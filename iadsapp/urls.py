@@ -5,7 +5,9 @@ from .views import signup, signin_view, signin1
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import awards_list, award_detail
+
 from .views import calendar_view
+from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
@@ -28,7 +30,12 @@ urlpatterns = [
     path('awards_list/', views.awards_list, name='awards_list'),  # Update 'views.awards' to 'views.awards_list'
     path('award_detail/<int:award_id>/', award_detail, name='award_detail'),
     path('calendar/', calendar_view, name='calendar'),
-
+    path('forgot-password/', views.forgot_password, name='forgot_password'),
+    #path('reset-password/<str:uidb64>/<str:token>/', views.reset_password, name='reset_password'),
+    path('password_reset/', auth_views.PasswordResetView.as_view(template_name='forgot_password.html'), name='password_reset'),
+    path('password_reset_done/', auth_views.PasswordResetDoneView.as_view(template_name='password_reset_done.html'), name='password_reset_done'),
+    path('password_reset_confirm/uidb64/token/',auth_views.PasswordResetConfirmView.as_view(template_name='password_reset_confirm.html'), name='password_reset_confirm'),
+    path('password_reset_complete/', auth_views.PasswordResetCompleteView.as_view(template_name='password_reset_complete.html'), name='password_reset_complete'),
 ]
 
 if settings.DEBUG:

@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
 from .models import GameDetail, UpcomingRelease, GameType
-from .forms import SignUpForm, SignInForm, UpdateUserForm
+from .forms import SignUpForm, SignInForm, UpdateUserForm,CustomPasswordResetForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
@@ -244,3 +244,16 @@ def calendar_view(request):
     events = CalendarEvent.objects.all()
     return render(request, 'iadsapp/calendar.html', {'events': events})
 
+#FORGOT PASSWORD
+# views.py
+from django.contrib.auth.forms import PasswordResetForm
+
+def forgot_password(request):
+    if request.method == 'POST':
+        form = CustomPasswordResetForm(request.POST)
+        if form.is_valid():
+            form.save(request=request)
+            return redirect('password_reset_done')
+    else:
+        form = CustomPasswordResetForm()
+    return render(request, 'forgot_password.html', {'form': form})

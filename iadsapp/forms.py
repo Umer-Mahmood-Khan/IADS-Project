@@ -50,3 +50,16 @@ class UpdateUserForm(UserChangeForm):
         self.fields['username'].widget.attrs['placeholder'] = 'User Name'
         self.fields['username'].label = ''
         self.fields['username'].help_text = '<span class="form-text text-muted"><small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small></span>'
+
+
+#forgot password
+# forms.py
+
+from django.contrib.auth.forms import PasswordResetForm
+
+class CustomPasswordResetForm(PasswordResetForm):
+    email = forms.EmailField(label="Email", max_length=254)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
