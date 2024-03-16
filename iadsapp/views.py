@@ -140,21 +140,32 @@ def game_type_view(request):
 
 #Jaspreet: Games by Genre
 def games_by_genre_view(request, game_type_id):
-        game_genre = GameType.objects.get(id=game_type_id)
-        sort_filter = request.GET.get('sort', '')
-        games_by_genre = GameDetail.objects.filter(game_type=game_genre)
+    game_genre = GameType.objects.get(id=game_type_id)
+    sort_filter = request.GET.get('sort', '')
+    search_query = request.GET.get('query', '')  # Get the search query
+    games_by_genre = GameDetail.objects.filter(game_type=game_genre)
 
-        if sort_filter == 'a_z':
-            games_by_genre = games_by_genre.order_by('game_name')
-        elif sort_filter == 'z_a':
-            games_by_genre = games_by_genre.order_by('-game_name')
-        elif sort_filter == 'rating':
-            games_by_genre = games_by_genre.order_by('-game_rating')
-        elif sort_filter == 'release_date':
-            games_by_genre = games_by_genre.order_by('-game_release')
+    # Apply sorting based on the sort_filter parameter
+    if sort_filter == 'a_z':
+        games_by_genre = games_by_genre.order_by('game_name')
+    elif sort_filter == 'z_a':
+        games_by_genre = games_by_genre.order_by('-game_name')
+    elif sort_filter == 'rating':
+        games_by_genre = games_by_genre.order_by('-game_rating')
+    elif sort_filter == 'release_date':
+        games_by_genre = games_by_genre.order_by('-game_release', 'id')
 
+    # Apply search filtering if a search query is provided
+    if search_query:
+        games_by_genre = games_by_genre.filter(game_name__icontains=search_query)
 
-        return render(request,'games_by_genre.html',{'games_by_genre':games_by_genre})
+    # Check if any games were found
+    if not games_by_genre:  # If no games found
+        message = "No games found "
+    else:
+        message = ""
+
+    return render(request, 'games_by_genre.html', {'games_by_genre': games_by_genre, 'query': search_query, 'message': message})
 
 #JasPreet: Upcoming releases
 def upcoming_release_view(request):

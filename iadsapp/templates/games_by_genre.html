@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Games by Genre
+{% endblock %}
+
+{% block content %}
+<style>
+    .card:hover {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        /* Add a box shadow on hover */
+        transform: scale(1.05);
+        /* Increase the size of the card on hover */
+        transition: all 0.3s ease;
+        /* Add a smooth transition effect */
+    }
+</style>
+
+<div class="container">
+    <div class="section">
+        <!-- Game Search and Filter Section -->
+        <div class="row">
+            <!-- Back button to game_type.html -->
+            <div class="col s12 text-right" style="color: #00b8d4">
+                <a href="{% url 'game_type' %}" class="btn">Back</a>
+            </div>
+
+            <!-- Game Search -->
+            <div class="col s12 m6">
+                <form action="" method="get"> <!-- Change the action to an empty string -->
+                    <div class="input-field" style="display: flex;">
+                        <input id="search" type="text" name="query" placeholder="Search Game">
+                        <button type="submit" class="btn" style="color: #00b0ff ; background-color: transparent"><i class="material-icons">search</i></button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Sort Dropdown -->
+            <div class="col s12 m3 offset-m3">
+                <div class="input-field">
+                    <form id="filterForm" method="get">
+                        <select name="sort" onchange="document.getElementById('filterForm').submit();">
+                            <option value="" {% if not request.GET.sort %}selected{% endif %}>No Filter</option>
+                            <option value="a_z" {% if request.GET.sort == "a_z" %}selected{% endif %}>A-Z</option>
+                            <option value="z_a" {% if request.GET.sort == "z_a" %}selected{% endif %}>Z-A</option>
+                            <option value="rating" {% if request.GET.sort == "rating" %}selected{% endif %}>By Rating</option>
+                            <option value="release_date" {% if request.GET.sort == "release_date" %}selected{% endif %}>By Release Date</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Message for no games found -->
+        {% if message %}
+            <p>{{ message }}</p>
+        {% endif %}
+
+        <!-- Game List Section -->
+        <div class="row">
+            {% for game in games_by_genre %}
+                <div class="col s12 m6 l3">
+                    <div class="card" style="height: 350px;">
+                        <div class="card-image" style="height: 200px; width: 100%; overflow: hidden;">
+                            <img src="{% static '' %}{{ game.game_image }}" alt="{{ game.game_name }}" class="game-image" style="width: 100%; height: auto; object-fit: contain;">
+                        </div>
+                        <div class="card-content" style="height: 150px;">
+                            <span class="card-title" style="font-size: 1rem; font-weight: bold; line-height: 1.25rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                                <a href="{% url 'game_detail' game.id %}">{{ game.game_name }}</a>
+                            </span>
+                            <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">{{ game.game_release }}</p>
+                            <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
+                                <span style="color: yellow; font-size: 24px;">&#9733;</span> {{ game.game_rating }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% if forloop.counter|divisibleby:4 and not forloop.last %}
+                    </div><div class="row">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -3,26 +3,55 @@
 {% load static %}
 
 <div class="container">
-
     <div class="row">
-        <div class="col-md-6">
-        <h2 class="gradient-text">Games Genres</h2>
+        <!-- Right Column: Images -->
+        <div class="right-column">
+            <div class="scrollable-images">
+                <!-- Add images here --><br><br><br><br><br>
+                <img src="{% static 'game_images/1r.jpg' %}" alt="Image 1">
+                <img src="{% static 'game_images/3r.jpg' %}" alt="Image 3">
+                <img src="{% static 'game_images/4r.jpg' %}" alt="Image 4">
+                <img src="{% static 'game_images/5r.jpg' %}" alt="Image 5">
+                <!-- Add more images as needed -->
+            </div>
+        </div>
 
+        <!-- Left Column: Game Genres -->
+        <div class="left-column">
+            <h2 class="gradient-text" style="color: #00acc1">Games Genres</h2>
             <ul class="game-types">
                 {% for game in game_types %}
-                    <li class="game-type" > <a href="{% url 'games_by_genre' game.id %}">{{ game.name }}</a></li>
+                    <li class="game-type"><a href="{% url 'games_by_genre' game.id %}">{{ game.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>
-        <div class="col-md-6">
-            <div class="image-gallery"><br>
-                <br><br><br><br>
-                <img src="{% static 'images/image1.jpg' %}" alt="Image 1">
-                <img src="{% static 'images/image3.jpg' %}" alt="Image 3">
-                <img src="{% static 'images/image4.jpg' %}" alt="Image 4">
-                <img src="{% static 'images/image6.jpg' %}" alt="Image 6">
-            </div>
-        </div>
     </div>
 </div>
-{% endblock%}
+
+<style>
+    .scrollable-images {
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Prevent images from wrapping to next line */
+    }
+
+    .scrollable-images img {
+        display: inline-block; /* Display images side by side */
+        margin-right: 10px; /* Add some space between images */
+        width: auto; /* Auto-adjust width */
+        height: 200px; /* Set a fixed height for consistency */
+    }
+
+    .right-column {
+        flex: 1; /* Take up remaining space */
+    }
+
+    .left-column {
+        flex: 1; /* Take up remaining space */
+    }
+
+    .row {
+        display: flex; /* Use flexbox layout */
+    }
+</style>
+
+{% endblock %}

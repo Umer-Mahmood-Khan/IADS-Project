@@ -4,24 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="256667df-2250-4680-9d41-4bbe7dfe17b8" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/IADS-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IADS-Project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="af6601b0-f06f-4217-b277-dae916759cf7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      <change beforePath="$PROJECT_DIR$/iadsapp/templates/game_details.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/game_details.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/templates/game_types.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/game_types.html" afterDir="false" />
-=======
-      <change beforePath="$PROJECT_DIR$/iadsapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iadsapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/base.html" afterDir="false" />
->>>>>>> Stashed changes
-=======
-      <change beforePath="$PROJECT_DIR$/iadsapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iadsapp/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/base.html" afterDir="false" />
->>>>>>> Stashed changes
-      <change beforePath="$PROJECT_DIR$/iadsapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -32,38 +18,27 @@
   <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
     <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
   </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="HTML File" />
-        <option value="CSS File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 3
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2dN70eUFT4aMPoI6UZAKQ0D726e" />
+  <component name="ProjectId" id="2dmiGFLIx2HoTuodFUYQYXylSXN" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "Django Server.IADS-Project.executor": "Run",
     "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.pycharm.django.structure.promotion.once.per.project": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "django.template.preview.state": "SHOW_EDITOR",
     "git-widget-placeholder": "Sprint3__templates",
-    "last_opened_file_path": "D:/SEMESTER 3/i/PROJECT/IADS-Project",
-    "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -72,33 +47,6 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="IADS-Project" type="Python.DjangoServer" factoryName="Django server">
-      <module name="IADS-Project" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-        <env name="DJANGO_SETTINGS_MODULE" value="iads.settings" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <option name="port" value="8000" />
-      <option name="host" value="localhost" />
-      <option name="additionalOptions" value="" />
-      <option name="browserUrl" value="" />
-      <option name="runTestServer" value="false" />
-      <option name="runNoReload" value="false" />
-      <option name="useCustomRunCommand" value="false" />
-      <option name="customRunCommand" value="" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -109,62 +57,18 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="256667df-2250-4680-9d41-4bbe7dfe17b8" name="Changes" comment="" />
-      <created>1709836460655</created>
+      <changelist id="af6601b0-f06f-4217-b277-dae916759cf7" name="Changes" comment="" />
+      <created>1710619558199</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1709836460655</updated>
-      <workItem from="1709836461702" duration="7889000" />
-      <workItem from="1709846655672" duration="622000" />
-      <workItem from="1709851287654" duration="16000" />
-      <workItem from="1709851305110" duration="6241000" />
-      <workItem from="1709922341556" duration="2281000" />
-      <workItem from="1709925466634" duration="50000" />
-      <workItem from="1709938182572" duration="854000" />
-      <workItem from="1709998862000" duration="386000" />
-      <workItem from="1710000661051" duration="518000" />
-      <workItem from="1710001225321" duration="1577000" />
-      <workItem from="1710021142967" duration="3358000" />
-      <workItem from="1710100150553" duration="8505000" />
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-      <workItem from="1710111502247" duration="4376000" />
-      <workItem from="1710119094750" duration="5736000" />
-      <workItem from="1710125917068" duration="890000" />
-=======
-      <workItem from="1710118533196" duration="6763000" />
-      <workItem from="1710126299030" duration="1589000" />
->>>>>>> Stashed changes
-=======
-      <workItem from="1710118533196" duration="6763000" />
-      <workItem from="1710126299030" duration="1589000" />
->>>>>>> Stashed changes
+      <updated>1710619558199</updated>
+      <workItem from="1710619559331" duration="92000" />
+      <workItem from="1710620356351" duration="61000" />
+      <workItem from="1710620429129" duration="727000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/iadsapp/urls.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
