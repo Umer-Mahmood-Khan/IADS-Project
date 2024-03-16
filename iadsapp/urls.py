@@ -1,7 +1,7 @@
 # accounts/urls.py
 from django.urls import path
 from . import views
-from .views import signup, signin_view, signin1
+from .views import signup, signin_view, signin1, logout_view
 from django.conf import settings
 from django.conf.urls.static import static
 from .views import awards_list, award_detail
@@ -11,16 +11,15 @@ from django.contrib.auth import views as auth_views
 
 
 urlpatterns = [
+    path('logout/', views.logout_view, name='logout'),
     path('signin1/', signin1, name='signin1'),
     path('signin/', signin_view, name='signin'),
     path('signup/', signup, name='signup'),
     path('', views.homepage_view, name='homepage'),
     path('profile/', views.profilepage_view, name='profilepage_view'),
     path('search/', views.search_view, name='search_view'),
-    path('profile/', views.profile_view, name='profile'),
     path('edit_profile/', views.edit_profile_view, name='edit_profile'),
     path('game_type/', views.game_type_view, name='game_type'),
-    # path('game_detail/<int:game_type_id>/', views.game_detail_view, name='game_detail'),
     path('most_popular_games/', views.most_popular_games_view, name='most_popular_games'),
     path('upcoming_releases/', views.upcoming_release_view, name='upcoming_releases'),
     path('top100/', views.top100_games, name='top100_games'),

@@ -14,8 +14,17 @@ from .models import Award
 from .models import CalendarEvent
 from .models import UserProfile
 from django.contrib.auth.hashers import check_password
+from datetime import datetime
+from django.contrib.auth import logout
 
 
+#Bhavya: Logout view
+def logout_view(request):
+    logout(request)
+    return redirect('signin')
+
+
+#Bhavya: Signin view
 def signin_view(request):
     error_message = None
 
@@ -28,9 +37,28 @@ def signin_view(request):
             # Authenticate user using email and password
             user = UserProfile.objects.filter(email=email).first()
             if user and check_password(password, user.password):
-                # If authentication succeeds, log in the user
-                request.session['user_id'] = user.id
-                return redirect('homepage')  # Redirect to the homepage
+                # Get or initialize visit count from the session
+                visit_count = request.session.get('visit_count', 0)
+
+                # Check if the last login date matches the current date
+                last_login_date = request.session.get('last_login_date')
+                current_date = datetime.now().date()
+                if last_login_date != str(current_date):  # Convert current_date to string
+                    # If the last login date is not the current date, reset the visit count
+                    visit_count = 0
+
+                # Increment the visit count
+                visit_count += 1
+
+                # Update the session data
+                request.session['visit_count'] = visit_count
+                request.session['last_login_date'] = str(current_date)  # Convert current_date to string
+
+                # Print the visit count in the console
+                print(f"User {user.email} visited {visit_count} times today.")
+
+                # Redirect to the homepage
+                return redirect('homepage')
             else:
                 # If authentication fails, display an error message
                 error_message = 'Invalid email or password.'
@@ -40,6 +68,7 @@ def signin_view(request):
     return render(request, 'signin.html', {'signin_form': form, 'error_message': error_message})
 
 
+#Bhavya: Signup view
 def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
@@ -57,6 +86,7 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+#Bhavya: First signin view
 def signin1(request):
     if request.method == 'POST':
         form = SignInForm(request.POST)
@@ -69,18 +99,16 @@ def signin1(request):
 
     return render(request, 'signin1.html', {'form': form})
 
-
+#Umer: Home page view
 def homepage_view(request):
     return render(request, 'index.html')
 
+#Umer: Profile page view
 def profilepage_view(request):
     return render(request, 'profile.html')
 
 
-def profile_view(request):
-    return HttpResponse('Profile page!')
-
-
+#Haari: Edit profile view
 '''
 def edit_profile_view(request):
     return render(request, 'edit_user.html', {})
@@ -102,27 +130,15 @@ def edit_profile_view(request):
 	#else:
 		#messages.success(request, "You Must Be Logged In To Access That Page!!")
 		#return redirect('homepage')
-#
+
+
+#JasPreet: Game type view
 def game_type_view(request):
     game_types = GameType.objects.all()
     return render(request,'game_types.html',{'game_types':game_types})
 
 
-# View for game genre
-#def games_by_genre_view(request):
- #   games_by_genre= GameType.objects.all()
-  #  game_genre_selected= None
-   # games=GameDetail.objects.all()
-
-    # checking for game genre
-    #games_by_genre_id=request.GET.get('game_by_genre_id')
-    #if games_by_genre_id:
-    #    game_genre_selected=get_object_or_404(GameType,pk=games_by_genre_id)
-    #    games=games.filter(genre=game_genre_selected)
-
-    #return render(request,'games_by_genre.html',{'games_by_genre':games_by_genre , 'game_genre_selected':game_genre_selected,'games':games})
-
-
+#Jaspreet: Games by Genre
 def games_by_genre_view(request, game_type_id):
         game_genre = GameType.objects.get(id=game_type_id)
         sort_filter = request.GET.get('sort', '')
@@ -140,7 +156,7 @@ def games_by_genre_view(request, game_type_id):
 
         return render(request,'games_by_genre.html',{'games_by_genre':games_by_genre})
 
-
+#JasPreet: Upcoming releases
 def upcoming_release_view(request):
     upcoming_releases = UpcomingRelease.objects.all()
     response = HttpResponse(content_type="text/plain")
@@ -154,7 +170,7 @@ def upcoming_release_view(request):
 # def awards(request):
 
 
-
+#Haari: Most popular games
 def most_popular_games_view(request):
     popular_games = GameDetail.objects.order_by('-game_rating')[:50]
 
@@ -165,7 +181,7 @@ def most_popular_games_view(request):
     return render(request, 'most_popular_games.html', context)
 
 
-
+#Chandana: Top 100 games
 def top100_games(request):
     sort_filter = request.GET.get('sort', '')
 
@@ -186,6 +202,7 @@ def top100_games(request):
     return render(request, 'top100_games.html', context)
 
 
+#Ruchi: Game details view
 def game_detail_view(request, game_id):
     # Fetch the GameDetail object based on game_id
     game = get_object_or_404(GameDetail, pk=game_id)
@@ -199,6 +216,7 @@ def game_detail_view(request, game_id):
     return render(request, 'game_details.html', context)
 
 
+#Ruchi: Game news
 def game_news(request):
     # Retrieve all game news objects from the database
     game_news = GameNew.objects.all()
@@ -208,19 +226,20 @@ def game_news(request):
     return render(request, 'game_news.html', context)
 
 
-
+#Navjot: Awards list
 def awards_list(request):
     awards = Award.objects.all()
 
     return render(request, 'awards_list.html', {'awards': awards})
 
 
+#Navjot: Awards detail
 def award_detail(request, award_id):
     award = get_object_or_404(Award, pk=award_id)
     return render(request, 'award_detail.html', {'award': award})
 
 
-
+#Umer: Search view
 def search_view(request):
     query = request.GET.get('q', '')
     game_type_name = request.GET.get('game_type', '')  # Retrieve game type name from the query parameters
@@ -243,12 +262,14 @@ def search_view(request):
     return render(request, 'search_results.html', context)
 
 
+#Navjot: Upcoming releases
 def calendar_view(request):
     events = CalendarEvent.objects.all()
     return render(request, 'iadsapp/calendar.html', {'events': events})
 
-#FORGOT PASSWORD
-# views.py
+
+# Chandana: FORGOT PASSWORD
+
 from django.contrib.auth.forms import PasswordResetForm
 
 def forgot_password(request):
@@ -262,7 +283,7 @@ def forgot_password(request):
     return render(request, 'forgot_password.html', {'form': form})
 
 
-#FOOTER ITEMS
+#Chandana: FOOTER ITEMS
 def privacy_notice(request):
     return render(request, 'privacy_notice.html')
 
