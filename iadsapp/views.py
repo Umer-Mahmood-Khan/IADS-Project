@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
 from .models import GameDetail, UpcomingRelease, GameType
-from .forms import SignUpForm, SignInForm, UpdateUserForm,CustomPasswordResetForm
+from .forms import SignUpForm, SignInForm, UpdateUserForm,CustomPasswordResetForm, RateForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
@@ -295,3 +295,27 @@ def user_policy(request):
 
 def team_details(request):
     return render(request, 'team_details.html')
+
+def Rate(request, game_id):
+    game = Game.objects.get(gameID=game_id)
+    user = request.user
+
+    if request.method == 'POST':
+        form = RateForm(request.POST)
+        if form.is_valid():
+            rate = form.save(commit=False)
+            rate.user = user
+            rate.game = game
+            rate.save()
+            return HttpResponseRedirect(reverse('game_details', args=[game_id]))
+    else:
+        form = RateForm()
+
+    template = loader.get_template('rate.html')
+
+    context = {
+        'form': form,
+        'game': game,
+    }
+
+    return HttpResponse(template.render(context, request))

@@ -98,3 +98,30 @@ class UserProfile(models.Model):
 
     def __str__(self):
         return self.FirstName
+
+
+
+RATE_CHOICES = [
+    (1, '1 - Unplayable'),
+    (2, '2 - Awful'),
+    (3, '3 - Poor'),
+    (4, '4 - Mediocre'),
+    (5, '5 - Average'),
+    (6, '6 - Decent'),
+    (7, '7 - Good'),
+    (8, '8 - Very Good'),
+    (9, '9 - Excellent'),
+    (10, '10 - Outstanding'),
+]
+
+class Review(models.Model):
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField(max_length=3000,blank=True)
+    rate = models.PositiveSmallIntegerField(choices=RATE_CHOICES, blank=True)
+    likes = models.PositiveIntegerField(default=0)
+    unlikes = models.PositiveIntegerField(default=0)
+
+    def __str__(self):
+        return self.user.username

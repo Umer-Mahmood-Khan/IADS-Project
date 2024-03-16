@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import UserChangeForm
-from .models import UserProfile
+from .models import UserProfile, Review, RATE_CHOICES
 
 
 class SignUpForm(forms.ModelForm):
@@ -63,3 +63,11 @@ class CustomPasswordResetForm(PasswordResetForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
 
+
+class RateForm(forms.ModelForm):
+    text = forms.CharField(widget=forms.Textarea(attrs={'class': 'materialize-textarea'}), required=False)
+    rate = forms.ChoiceField(choices=RATE_CHOICES, widget=forms.Select(), required=True)
+
+    class Meta:
+        model: Review
+        fields = ('text', 'rate')
