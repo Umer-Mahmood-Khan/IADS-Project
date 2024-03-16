@@ -12,6 +12,8 @@ from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
 from .models import CalendarEvent
+from .models import UserProfile
+from django.contrib.auth.hashers import check_password
 
 
 def signin_view(request):
@@ -22,14 +24,15 @@ def signin_view(request):
         if form.is_valid():
             email = form.cleaned_data.get('email')
             password = form.cleaned_data.get('password')
-            # Authenticate user
-            user = authenticate(request, email=email, password=password)
-            if user is not None:
-                # User authenticated, log in the user
-                login(request, user)
-                return redirect('homepage')
+
+            # Authenticate user using email and password
+            user = UserProfile.objects.filter(email=email).first()
+            if user and check_password(password, user.password):
+                # If authentication succeeds, log in the user
+                request.session['user_id'] = user.id
+                return redirect('homepage')  # Redirect to the homepage
             else:
-                # Authentication failed, display error message
+                # If authentication fails, display an error message
                 error_message = 'Invalid email or password.'
     else:
         form = SignInForm()
