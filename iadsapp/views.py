@@ -260,3 +260,17 @@ def forgot_password(request):
     else:
         form = CustomPasswordResetForm()
     return render(request, 'forgot_password.html', {'form': form})
+
+
+#FOOTER ITEMS
+def privacy_notice(request):
+    return render(request, 'privacy_notice.html')
+
+def terms(request):
+    return render(request, 'terms.html')
+
+def user_policy(request):
+    return render(request, 'user_policy.html')
+
+def team_details(request):
+    return render(request, 'team_details.html')
