@@ -31,7 +31,7 @@ class SignInForm(forms.Form):
 
         return cleaned_data
 
-
+'''
 class UpdateUserForm(UserChangeForm):
     # Hide Password stuff
     password = None
@@ -51,6 +51,11 @@ class UpdateUserForm(UserChangeForm):
         self.fields['username'].label = ''
         self.fields['username'].help_text = '<span class="form-text text-muted"><small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small></span>'
 
+'''
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserProfile
+        fields = ['FirstName', 'LastName', 'email', 'profile_image', 'bio']
 
 #forgot password
 # forms.py

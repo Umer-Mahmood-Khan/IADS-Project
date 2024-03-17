@@ -89,6 +89,8 @@ class UserProfile(models.Model):
     LastName = models.CharField(max_length=50)
     email = models.EmailField(unique=True)
     password = models.CharField(max_length=100)  # Store hashed password
+    profile_image = models.ImageField(upload_to='profile_images/', null=True, blank=True)
+    bio = models.TextField(blank=True, null=True)
 
     def save(self, *args, **kwargs):
         # Hash the password before saving

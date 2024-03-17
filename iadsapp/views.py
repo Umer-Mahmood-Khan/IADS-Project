@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
 from .models import GameDetail, UpcomingRelease, GameType
-from .forms import SignUpForm, SignInForm, UpdateUserForm,CustomPasswordResetForm, RateForm
+from .forms import SignUpForm, SignInForm, CustomPasswordResetForm, RateForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
@@ -113,6 +113,7 @@ def profilepage_view(request):
 def edit_profile_view(request):
     return render(request, 'edit_user.html', {})
 '''
+'''
 def edit_profile_view(request):
 	#if request.user.is_authenticated:
 		#current_user = User.objects.get(id=request.user.id)
@@ -130,7 +131,11 @@ def edit_profile_view(request):
 	#else:
 		#messages.success(request, "You Must Be Logged In To Access That Page!!")
 		#return redirect('homepage')
-
+'''
+from .forms import EditProfileForm
+def edit_profile_view(request):
+    form = EditProfileForm()
+    return render(request, 'edit_user.html', {'form': form})
 
 #JasPreet: Game type view
 def game_type_view(request):

@@ -1,45 +1,58 @@
-{% extends 'base.html' %}
+{% load static %}
 
-{% block title %}
-Edit User Profile
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Profile</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-{% block content %}
+    <link rel="stylesheet" type="text/css" href="{% static '/css/edit_user.css' %}">
 
-<!-- Header-->
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
-        <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Update Profile</h1>
-            <p class="lead fw-normal text-white-50 mb-0">Update User Profile...</p>
+    <style>
+        .profile-pic{
+            max-width: 200px;
+            max-height:200px;
+            margin: 0 auto;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-fluid">
+        <br>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="card card-body">
+                    <a class="btn btn-warning" href="{% url 'profilepage_view' %}"> &#8592; Back to Profile</a>
+                    <hr>
+                    <h3 style="text-align: center">Account Settings</h3>
+                    <hr>
+                    <img class="profile-pic" src="{{request.user.customer.profile_pic.url}}" >
+
+                    {% if request.user.customer.profile_pic %}
+            <img class="profile-pic" src="{{ request.user.profile_pic.url }}" >
+        {% else %}
+            <img class="profile-pic" src="{% static 'img/user.png' %}" alt="Default Profile Pic">
+        {% endif %}
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="card card-body">
+                    <form method="POST" action="" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{form.as_p}}
+                        <input class="btn btn-primary" type="submit" name="Update Information">
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-</header>
+    <hr>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-6 offset-md-3">
-            <br/><br/>
-            <form method="POST" action="{% url 'edit_profile' %}">
-                {% csrf_token %}
-                
-                {{ user_form.as_p }}
-                
-                <br/><br/>
-                
-                <button type="submit" class="btn btn-secondary">
-                    Update Profile
-                </button>
-            </form>
-            <br/><br/>
-            <br/><br/>
-            <br/><br/>
-            <br/><br/>
-            <br/><br/>
-            <br/><br/>
-            <br/><br/>
-        </div>
-    </div>
-</div>
 
-{% endblock %}
+</body>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</html>
