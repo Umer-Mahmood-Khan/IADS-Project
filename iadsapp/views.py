@@ -11,11 +11,18 @@ from .forms import SignUpForm, SignInForm, CustomPasswordResetForm, RateForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
+
 from .models import CalendarEvent
 from .models import UserProfile
 from django.contrib.auth.hashers import check_password
 from datetime import datetime
 from django.contrib.auth import logout
+
+
+from .models import CalendarEvent
+
+# from iadsapp.models import GameType, GameDetail, UpcomingRelease
+
 
 
 #Bhavya: Logout view
@@ -242,7 +249,19 @@ def game_news(request):
     return render(request, 'game_news.html', context)
 
 
+
 #Navjot: Awards list
+
+# def awards_list(request):
+#     awards = Award.objects.all()
+#     return render(request, 'awards_list.html', {'awards': awards})
+
+def awards_list(request):
+    query = request.GET.get('search', '')
+
+    # Filter awards based on the search query
+    awards = Award.objects.filter(award_name__icontains=query)
+
 def awards_list(request):
     awards = Award.objects.all()
 
@@ -256,6 +275,7 @@ def award_detail(request, award_id):
 
 
 #Umer: Search view
+
 def search_view(request):
     query = request.GET.get('q', '')
     game_type_name = request.GET.get('game_type', '')  # Retrieve game type name from the query parameters
@@ -282,6 +302,7 @@ def search_view(request):
 def calendar_view(request):
     events = CalendarEvent.objects.all()
     return render(request, 'iadsapp/calendar.html', {'events': events})
+
 
 
 # Chandana: FORGOT PASSWORD
@@ -335,3 +356,4 @@ def Rate(request, game_id):
     }
 
     return HttpResponse(template.render(context, request))
+

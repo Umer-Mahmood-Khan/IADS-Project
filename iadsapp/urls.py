@@ -7,7 +7,9 @@ from django.conf.urls.static import static
 from .views import awards_list, award_detail
 
 from .views import calendar_view
+
 from django.contrib.auth import views as auth_views
+
 
 
 urlpatterns = [
@@ -25,10 +27,13 @@ urlpatterns = [
     path('top100/', views.top100_games, name='top100_games'),
     path('game_detail/<int:game_id>/', views.game_detail_view, name='game_detail'),
     path('game_news/', views.game_news, name='game_news'),
+
+
     path('games_by_genre/<int:game_type_id>/', views.games_by_genre_view, name='games_by_genre'),
     path('awards_list/', views.awards_list, name='awards_list'),  # Update 'views.awards' to 'views.awards_list'
     path('award_detail/<int:award_id>/', award_detail, name='award_detail'),
     path('calendar/', calendar_view, name='calendar'),
+
     path('forgot-password/', views.forgot_password, name='forgot_password'),
     #path('reset-password/<str:uidb64>/<str:token>/', views.reset_password, name='reset_password'),
     path('password_reset/', auth_views.PasswordResetView.as_view(template_name='forgot_password.html'), name='password_reset'),
@@ -39,6 +44,12 @@ urlpatterns = [
     path('terms/', views.terms, name='terms'),
     path('user_policy/', views.user_policy, name='user_policy'),
     path('team_details/', views.team_details, name='team_details'),
+
+
+    path('awards_list/', views.awards_list, name='awards_list'),  # Update 'views.awards' to 'views.awards_list'
+    path('award_detail/<int:award_id>/', award_detail, name='award_detail'),
+
+
 ]
 
 if settings.DEBUG:

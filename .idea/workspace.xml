@@ -5,15 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af6601b0-f06f-4217-b277-dae916759cf7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/iads-project/game_images/profile_images/dhoni.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iadsapp/migrations/0010_userprofile_bio_userprofile_profile_image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/iadsapp/static/css/edit_user.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iadsapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iads/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/iads/settings.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iadsapp/templates/edit_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/edit_user.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iadsapp/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/static/css/awardpage.css" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/static/css/awardpage.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/templates/award_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/award_detail.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -34,6 +31,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "navjot5263"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="344f1a43-161b-4ad1-9393-e5d42bc5d734" />
+        <option name="url" value="https://github.com/Umer-Mahmood-Khan/IADS-Project.git" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -46,22 +57,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Sprint3__templates",
-    "last_opened_file_path": "E:/IADS project until march 10/Commit for edit profile without auth/IADS-Project",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;Sprint3__templates&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/IADS project until march 10/Commit for edit profile without auth/IADS-Project&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
