@@ -24,17 +24,18 @@
   <li><a href="{% url 'upcoming_releases' %}">Calendar</a></li>
   <li><a href="{% url 'game_news' %}">Games News</a></li>
 </ul>
-<nav  style="background-color: #26a69a;">
+<nav class="light-blue">
   <div class="nav-wrapper">
     <style>
       .brand-logo img {
-          width: 50px;
-          height: 50px;
-          padding-left: 10px;
-          padding-top: 10px;
+                width: 65px;
+                height: 65px;
+                padding: 2px;
+                border-radius: 50%;
+
       }
   </style>
-    <a href="#!" class="brand-logo"><img src="{% static 'img/icons/game.png'%}" alt=""></a>
+    <a href="{% url 'homepage' %}" class="brand-logo"><img src="{% static 'img/icons/Untitled design.gif'%}" alt=""></a>
     <ul class="right hide-on-med-and-down">
       <!-- Dropdown Trigger -->
       <li><a href="{% url 'signin1' %}">Sign Up</a></li>
@@ -47,7 +48,7 @@
     <div class="section no-pad-bot">
       <div class="container">
         <br><br>
-        <h1 class="header center teal-text text-lighten-2">Find your favorite game</h1>
+        <h1 class="header center white-text text-lighten-2">Find your favorite game</h1>
         <div class="row">
             <form action="{% url 'search_view' %}" method="get">
                 <div class="row">
@@ -64,7 +65,7 @@
             </select>
 
         </div>
-        <button type="submit" class="waves-effect waves-light btn center-align" style="width: 950px;"><i class="material-icons left">search</i>Search</button>
+        <button type="submit" class="waves-effect light-blue btn center-align" style="width: 950px;"><i class="material-icons left">search</i>Search</button>
     </div>
             </form>
 
@@ -116,43 +117,37 @@
   </div>
 
 
-  
 
-  <!-- <footer class="page-footer teal">
+
+  <footer class="page-footer cyan">
     <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Company Bio</h5>
+                <p class="grey-text text-lighten-4">We're Group 5, dedicated to revolutionizing gaming experiences. Explore diverse genres, rate, comment, and stay updated on new releases and industry news. Your support fuels our passion for innovation. Join us in redefining gaming.</p>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Settings</h5>
+                <ul>
+                    <li><a class="white-text" href="{% url 'privacy_notice' %}">Privacy Notice</a></li>
+                    <li><a class="white-text" href="{% url 'terms' %}">Terms</a></li>
+                    <li><a class="white-text" href="{% url 'user_policy' %}">User Policy</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                    <li><a class="white-text" href="{% url 'team_details' %}">Team Details</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
-        </div>
-      </div>
     </div>
     <div class="footer-copyright">
-      <div class="container">
-      Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-      </div>
+        <div class="container">
+            Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Group 5</a>
+        </div>
     </div>
-  </footer> -->
+</footer>
 
 
   <!--  Scripts-->
