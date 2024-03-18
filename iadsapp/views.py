@@ -17,6 +17,7 @@ from .models import UserProfile
 from django.contrib.auth.hashers import check_password
 from datetime import datetime
 from django.contrib.auth import logout
+from .models import UpcomingRelease
 
 
 from .models import CalendarEvent
@@ -180,15 +181,23 @@ def games_by_genre_view(request, game_type_id):
     return render(request, 'games_by_genre.html', {'games_by_genre': games_by_genre, 'query': search_query, 'message': message})
 
 #JasPreet: Upcoming releases
+# def upcoming_release_view(request):
+#     upcoming_releases = UpcomingRelease.objects.all()
+#     response = HttpResponse(content_type="text/plain")
+#     for release in upcoming_releases:
+#         response.write(f"Game Name: {release.game_name}\n")
+#         response.write(f"Game Image: {release.game_image}\n")
+#         response.write(f"Country: {release.country}\n")
+#         response.write(f"Release Date: {release.game_release_date}\n\n")
+#     return response
+
+
+
+
 def upcoming_release_view(request):
     upcoming_releases = UpcomingRelease.objects.all()
-    response = HttpResponse(content_type="text/plain")
-    for release in upcoming_releases:
-        response.write(f"Game Name: {release.game_name}\n")
-        response.write(f"Game Image: {release.game_image}\n")
-        response.write(f"Country: {release.country}\n")
-        response.write(f"Release Date: {release.game_release_date}\n\n")
-    return response
+    return render(request, 'upcoming_releases.html', {'upcoming_releases': upcoming_releases})
+
 
 # def awards(request):
 
@@ -262,11 +271,18 @@ def awards_list(request):
     # Filter awards based on the search query
     awards = Award.objects.filter(award_name__icontains=query)
 
+# def awards_list(request):
+#     awards = Award.objects.all()
+#
+#     return render(request, 'awards_list.html', {'awards': awards})
+
 def awards_list(request):
-    awards = Award.objects.all()
+    query = request.GET.get('search', '')
+
+    # Filter awards based on the search query
+    awards = Award.objects.filter(award_name__icontains=query)
 
     return render(request, 'awards_list.html', {'awards': awards})
-
 
 #Navjot: Awards detail
 def award_detail(request, award_id):

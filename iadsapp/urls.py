@@ -9,8 +9,7 @@ from .views import awards_list, award_detail
 from .views import calendar_view
 
 from django.contrib.auth import views as auth_views
-
-
+from . import views
 
 urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
@@ -48,6 +47,7 @@ urlpatterns = [
 
     path('awards_list/', views.awards_list, name='awards_list'),  # Update 'views.awards' to 'views.awards_list'
     path('award_detail/<int:award_id>/', award_detail, name='award_detail'),
+path('upcoming-releases/', views.upcoming_release_view, name='upcoming_releases'),
 
 
 ]

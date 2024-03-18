@@ -62,7 +62,7 @@ class UpcomingRelease(models.Model):
     game_name = models.CharField(max_length=200)
     game_release_date = models.DateField()
     game_image = models.ImageField(upload_to='upcoming_images/')
-
+    desc_game = models.TextField(default='')
     def __str__(self):
         return self.game_name
 
