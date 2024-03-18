@@ -203,6 +203,7 @@ def upcoming_release_view(request):
 
 
 #Haari: Most popular games
+'''
 def most_popular_games_view(request):
     popular_games = GameDetail.objects.order_by('-game_rating')[:50]
 
@@ -211,7 +212,32 @@ def most_popular_games_view(request):
     }
 
     return render(request, 'most_popular_games.html', context)
+'''
 
+def most_popular_games_view(request):
+    sort_filter = request.GET.get('sort', '')
+    search_query = request.GET.get('query', '')  # Get the search query
+    popular_games = GameDetail.objects.all()
+
+    # Apply sorting based on the sort_filter parameter
+    if sort_filter == 'a_z':
+        popular_games = popular_games.order_by('game_name')
+    elif sort_filter == 'z_a':
+        popular_games = popular_games.order_by('-game_name')
+    elif sort_filter == 'rating':
+        popular_games = popular_games.order_by('-game_rating')
+    elif sort_filter == 'release_date':
+        popular_games = popular_games.order_by('-game_release', 'id')
+
+    popular_games = popular_games[:50]  # Slice the queryset after ordering
+
+    context = {
+        'popular_games': popular_games,
+        'query': search_query,
+        #'message': "No games found." if not popular_games else None
+    }
+
+    return render(request, 'most_popular_games.html', context)
 
 #Chandana: Top 100 games
 def top100_games(request):
