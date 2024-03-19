@@ -21,12 +21,17 @@
                 height: 65px;
                 padding: 2px;
                 border-radius: 50%;
-
             }
         </style>
         <a href="{% url 'homepage' %}" class="brand-logo"><img src="{% static 'img/icons/Untitled design.gif' %}" alt=""></a>
         <ul class="right hide-on-med-and-down">
-            <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% if user.is_authenticated %}
+                <!-- If user is authenticated, show Profile -->
+                <li><a href="{% url 'profilepage_view' %}">Profile</a></li>
+            {% else %}
+                <!-- If user is not authenticated, show Sign Up -->
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
             <!-- Dropdown Trigger -->
             <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
@@ -64,34 +69,4 @@
             <div class="col l3 s12">
                 <h5 class="white-text">Connect</h5>
                 <ul>
-                    <li><a class="white-text" href="{% url 'team_details' %}">Team Details</a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <div class="footer-copyright">
-        <div class="container">
-            Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Group 5</a>
-        </div>
-    </div>
-</footer>
-
-<!-- Scripts -->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="{% static 'js/materialize.js' %}"></script>
-<script src="{% static 'js/init.js' %}"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        // Initialize dropdown triggers
-        var dropdowns = document.querySelectorAll('.dropdown-trigger');
-        var dropdownInstances = M.Dropdown.init(dropdowns, {
-            belowOrigin: true // Displays dropdown below the trigger
-        });
-
-        // Initialize select elements
-        var selectElements = document.querySelectorAll('select');
-        var selectInstances = M.FormSelect.init(selectElements);
-    });
-</script>
-</body>
-</html>
+                    <li><a class="w

@@ -3,33 +3,23 @@ from django.contrib.auth.forms import UserChangeForm
 from .models import UserProfile, Review, RATE_CHOICES
 
 
-class SignUpForm(forms.ModelForm):
+from django import forms
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
+from django.contrib.auth.models import User
+
+
+
+class CustomUserCreationForm(UserCreationForm):
     class Meta:
-        model = UserProfile
-        fields = ['FirstName', 'LastName', 'email', 'password']
-        widgets = {
-            'password': forms.PasswordInput(),
-        }
-
-    reenter_password = forms.CharField(label='Re-enter Password', widget=forms.PasswordInput, min_length=8)
+        model = User
+        fields = ['username', 'first_name', 'last_name', 'email']
 
 
-class SignInForm(forms.Form):
-    email = forms.EmailField()
-    password = forms.CharField(widget=forms.PasswordInput)
+class CustomAuthenticationForm(AuthenticationForm):
+    class Meta:
+        model = User
 
-    def clean(self):
-        cleaned_data = super().clean()
-        email = cleaned_data.get('email')
-        password = cleaned_data.get('password')
 
-        # Perform custom validation for email and password if needed
-        if not email:
-            raise forms.ValidationError("Email field is required.")
-        if not password:
-            raise forms.ValidationError("Password field is required.")
-
-        return cleaned_data
 
 '''
 class UpdateUserForm(UserChangeForm):

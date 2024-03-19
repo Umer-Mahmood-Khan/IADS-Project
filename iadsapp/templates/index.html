@@ -37,8 +37,13 @@
   </style>
     <a href="{% url 'homepage' %}" class="brand-logo"><img src="{% static 'img/icons/Untitled design.gif'%}" alt=""></a>
     <ul class="right hide-on-med-and-down">
-      <!-- Dropdown Trigger -->
-      <li><a href="{% url 'signin1' %}">Sign Up</a></li>
+        {% if user.is_authenticated %}
+                <!-- If user is authenticated, show Profile -->
+                <li><a href="{% url 'profilepage_view' %}">Profile</a></li>
+        {% else %}
+                <!-- If user is not authenticated, show Sign Up -->
+                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
       <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
   </div>

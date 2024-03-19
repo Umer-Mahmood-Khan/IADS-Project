@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
 from .models import GameDetail, UpcomingRelease, GameType
-from .forms import SignUpForm, SignInForm, CustomPasswordResetForm, RateForm
+from .forms import CustomPasswordResetForm, RateForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
@@ -22,90 +22,40 @@ from .models import UpcomingRelease
 
 from .models import CalendarEvent
 
-# from iadsapp.models import GameType, GameDetail, UpcomingRelease
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import render, redirect
+from .forms import CustomUserCreationForm, CustomAuthenticationForm
 
 
-
-#Bhavya: Logout view
-def logout_view(request):
-    logout(request)
-    return redirect('signin')
-
-
-#Bhavya: Signin view
-def signin_view(request):
-    error_message = None
-
-    if request.method == 'POST':
-        form = SignInForm(request.POST)
-        if form.is_valid():
-            email = form.cleaned_data.get('email')
-            password = form.cleaned_data.get('password')
-
-            # Authenticate user using email and password
-            user = UserProfile.objects.filter(email=email).first()
-            if user and check_password(password, user.password):
-                # Get or initialize visit count from the session
-                visit_count = request.session.get('visit_count', 0)
-
-                # Check if the last login date matches the current date
-                last_login_date = request.session.get('last_login_date')
-                current_date = datetime.now().date()
-                if last_login_date != str(current_date):  # Convert current_date to string
-                    # If the last login date is not the current date, reset the visit count
-                    visit_count = 0
-
-                # Increment the visit count
-                visit_count += 1
-
-                # Update the session data
-                request.session['visit_count'] = visit_count
-                request.session['last_login_date'] = str(current_date)  # Convert current_date to string
-
-                # Print the visit count in the console
-                print(f"User {user.email} visited {visit_count} times today.")
-
-                # Redirect to the homepage
-                return redirect('homepage')
-            else:
-                # If authentication fails, display an error message
-                error_message = 'Invalid email or password.'
-    else:
-        form = SignInForm()
-
-    return render(request, 'signin.html', {'signin_form': form, 'error_message': error_message})
-
-
-#Bhavya: Signup view
 def signup(request):
     if request.method == 'POST':
-        form = SignUpForm(request.POST)
+        form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            # Check if passwords match
-            if form.cleaned_data['password'] == form.cleaned_data['reenter_password']:
-                # Save the user profile if the passwords match
-                form.save()
-                return redirect('signin')  # Redirect to the sign-in page
-            else:
-                form.add_error('reenter_password', 'Passwords do not match.')
+            form.save()
+            return redirect('signin')
     else:
-        form = SignUpForm()
-
+        form = CustomUserCreationForm()
     return render(request, 'signup.html', {'form': form})
 
 
-#Bhavya: First signin view
-def signin1(request):
+def signin(request):
     if request.method == 'POST':
-        form = SignInForm(request.POST)
+        form = CustomAuthenticationForm(data=request.POST)
         if form.is_valid():
-            # Add your authentication logic here
-            # For example, checking credentials against the database
-            return redirect('homepage')  # Replace 'home' with the URL of your home page
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('homepage')  # Redirect to the homepage after successful login
     else:
-        form = SignInForm()
+        form = CustomAuthenticationForm()
+    return render(request, 'signin.html', {'form': form})
 
-    return render(request, 'signin1.html', {'form': form})
+def signout(request):
+    logout(request)
+    return redirect('signin')  # Redirect to the sign-in page after logout
+
 
 #Umer: Home page view
 def homepage_view(request):
