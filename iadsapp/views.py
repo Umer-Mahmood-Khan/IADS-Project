@@ -58,8 +58,36 @@ def signout(request):
 
 
 #Umer: Home page view
+# def homepage_view(request):
+#     return render(request, 'index.html')
+
 def homepage_view(request):
-    return render(request, 'index.html')
+
+    # Check if the user is on the homepage
+    if request.path == '/':  # Adjust this path based on your homepage URL
+        # Check if 'visits' key exists in the session
+        if 'visits' in request.session:
+            # Increment the session visit count
+            request.session['visits'] += 1
+            print('session...',request.session['visits'])
+        else:
+            # Set the initial session visit count to 1
+            request.session['visits'] = 1
+    # else:
+    #     # If the user is not on the homepage, reset the visit count
+    #     request.session.pop('visits', None)
+
+    # Get the session visit count or set it to 0 if not present
+    session_count = request.session.get('visits', 0)
+
+    # Set a cookie with an expiration time of 10 seconds
+    response = render(request, 'index.html')
+    response.set_cookie('homepage_visits', session_count, max_age=8)
+
+    return response
+
+
+
 
 #Umer: Profile page view
 # def profilepage_view(request):

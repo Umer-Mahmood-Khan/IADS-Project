@@ -1,47 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="AutoImportSettings">
-    <option name="autoReloadType" value="SELECTIVE" />
-  </component>
   <component name="ChangeListManager">
-    <list default="true" id="af6601b0-f06f-4217-b277-dae916759cf7" name="Changes" comment="">
+    <list default="true" id="ea344b3f-2470-455d-9b77-1ba3a6ab8011" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/IADS-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IADS-Project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iadsapp/templates/award_detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/award_detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/iadsapp/templates/awards_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/awards_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/profile.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
-    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="CSS File" />
-        <option value="HTML File" />
-      </list>
-    </option>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;navjot5263&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="344f1a43-161b-4ad1-9393-e5d42bc5d734" />
-        <option name="url" value="https://github.com/Umer-Mahmood-Khan/IADS-Project.git" />
-      </UrlAndAccount>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -50,66 +22,43 @@
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 6
 }</component>
-  <component name="ProjectId" id="2dmiGFLIx2HoTuodFUYQYXylSXN" />
+  <component name="ProjectId" id="2dvOzjZxBEHlpt8AIKSkzaXGzno" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
-    &quot;RunOnceActivity.OpenDjangoStructureViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Sprint4&quot;,
-    &quot;last_opened_file_path&quot;: &quot;E:/IADS project until march 10/18-3 pull/IADS-Project&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenDjangoStructureViewOnStart": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "django.template.preview.state": "SHOW_EDITOR",
+    "git-widget-placeholder": "Sprint4",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
+        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
       </set>
     </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="af6601b0-f06f-4217-b277-dae916759cf7" name="Changes" comment="" />
-      <created>1710619558199</created>
+      <changelist id="ea344b3f-2470-455d-9b77-1ba3a6ab8011" name="Changes" comment="" />
+      <created>1710885349946</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1710619558199</updated>
-      <workItem from="1710619559331" duration="92000" />
-      <workItem from="1710620356351" duration="61000" />
-      <workItem from="1710620429129" duration="727000" />
-      <workItem from="1710625556651" duration="137000" />
-      <workItem from="1710645836765" duration="1168000" />
-      <workItem from="1710774185162" duration="188000" />
-      <workItem from="1710774376660" duration="302000" />
-      <workItem from="1710774825376" duration="3410000" />
-      <workItem from="1710868526345" duration="4026000" />
+      <updated>1710885349946</updated>
+      <workItem from="1710885351166" duration="107000" />
+      <workItem from="1710885467032" duration="93000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/iadsapp/views.py</url>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

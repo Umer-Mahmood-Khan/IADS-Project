@@ -73,11 +73,10 @@
               <a href="#!" class="secondary-content"><b>Show</b></a>
             </li>
 
-              <li class="collection-item avatar">
+               <li class="collection-item avatar">
               <i class="material-icons circle purple">folder</i>
-              <span class="title">Visits per days</span>
-              <p class="center-align"><b>5</b></p>
-              <a href="#!" class="secondary-content"><b>Show</b></a>
+              <span class="title">Visits per days</span><p class="center-align"><b>{{ request.COOKIES.homepage_visits|default:"0" }}</b></p>
+<!--              <a href="#!" class="secondary-content"><b>Show</b></a>-->
             </li>
 
 
