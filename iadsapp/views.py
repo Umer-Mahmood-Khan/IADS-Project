@@ -62,8 +62,16 @@ def homepage_view(request):
     return render(request, 'index.html')
 
 #Umer: Profile page view
+# def profilepage_view(request):
+#     return render(request, 'profile.html')
+from django.shortcuts import render
+from django.contrib.auth.decorators import login_required
+
+@login_required
 def profilepage_view(request):
-    return render(request, 'profile.html')
+    user = request.user
+    return render(request, 'profile.html', {'user': user})
+
 
 
 #Haari: Edit profile view
