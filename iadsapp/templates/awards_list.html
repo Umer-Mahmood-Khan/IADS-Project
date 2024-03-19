@@ -6,25 +6,33 @@
 {% endblock %}
 
 {% block content %}
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <h1 style="display: inline;">Awards List</h1>
+<div style="max-width: 100%; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1); background: linear-gradient(to right, #FFD700, #000000); color: #FFFFFF;">
 
-        <!-- Add the styled search box aligned to the right -->
-        <div style="display: flex; align-items: center; background-color: #f0f0f0; padding: 5px; border-radius: 5px;">
-            <form method="GET" action="{% url 'awards_list' %}" style="margin-right: 10px;">
-                <input type="text" name="search" placeholder="Search" style="width: 120px; border: none; outline: none;">
-                <button type="submit" style="background-color: #4CAF50; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Search</button>
-            </form>
-        </div>
+    <h1 style="text-align: left; font-family: 'Arial', sans-serif; margin-bottom: 30px;">Awards List</h1>
+
+    <!-- Search box aligned to the right -->
+    <div style="display: flex; justify-content: flex-end; margin-bottom: 20px;">
+        <form method="GET" action="{% url 'awards_list' %}" style="display: flex; align-items: center;">
+            <input type="text" name="search" placeholder="Search" style="width: 200px; padding: 10px; border: 2px solid #FFD700; border-radius: 5px; font-size: 16px; font-family: 'Arial', sans-serif; background-color: transparent; color: #FFFFFF;">
+            <button type="submit" style="background-color: #000000; color: #FFFFFF; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer; font-size: 16px; font-family: 'Arial', sans-serif;">Search</button>
+        </form>
     </div>
 
-    <ul style="list-style-type: none; padding: 0;">
-        <img src="{% static 'awards.png' %}" alt="Awards Image" class="right-image" style="margin-right: 10px;">
-<!--        <img src="{% static 'awards2.jpg' %}" alt="Awards Image" class="right-image">-->
+    <!-- Awards list -->
+    <div style="background-color: rgba(0, 0, 0, 0.5); border-radius: 10px; padding: 20px; text-align: left;">
 
-        {% for award in awards %}
-            <li><a href="{% url 'award_detail' award_id=award.id %}">{{ award.award_name }}</a></li>
-            <hr>
-        {% endfor %}
-    </ul>
+        <ul style="list-style-type: none; padding: 0;">
+            {% for award in awards %}
+                <li style="margin-bottom: 20px;">
+                    <a href="{% url 'award_detail' award_id=award.id %}" style="text-decoration: none; color: #FFFFFF; font-size: 20px; font-weight: bold; font-family: 'Arial', sans-serif;">{{ award.award_name }}</a>
+                </li>
+                <hr style="margin: 10px 0; border: none; border-top: 1px solid #FFFFFF;">
+            {% endfor %}
+        </ul>
+    </div>
+
+</div>
+
+<!-- Images outside the content block -->
+
 {% endblock %}

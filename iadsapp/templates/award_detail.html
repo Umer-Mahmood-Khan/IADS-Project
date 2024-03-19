@@ -1,37 +1,40 @@
-<!-- awards/templates/awards/award_detail.html -->
 {% extends 'base.html' %}
 {% load static %}
 
 {% block content %}
-    <h1>{{ award.award_name }} Details</h1>
-    <p>Date: {{ award.award_date }}</p>
-    <p>Description: {{ award.award_description }}</p>
-    <p>Game: {{ award.game_name }}</p>
-    {% if award.game_name == "Torment: Tides of Numenera" %}
-        <img src="{% static 'game1.png' %}" alt="Game 1 Detail Image">
-    {% elif award.game_name == "Undertale" %}
-        <img src="{% static 'game2.png' %}" alt="Undertale">
-    {% elif award.game_name == "Disco Elysium" %}
-        <img src="{% static 'game3.png' %}" alt="Disco Elysium">
-    {% elif award.game_name == "Wandersong" %}
-        <img src="{% static 'game4.png' %}" alt="Wandersong">
-    {% elif award.game_name == "Naval Campaigns Midway" %}
-        <img src="{% static 'game5.jpg' %}" alt="Naval Campaigns Midway">
-    {% elif award.game_name == "Pocky & Rocky with Becky" %}
-        <img src="{% static 'game7.png' %}" alt="Pocky & Rocky with Becky">
-    {% elif award.game_name == "Venture Kid" %}
-        <img src="{% static 'game8.png' %}" alt="Venture Kid">
-    {% elif award.game_name == "Madness Brutal Fighting" %}
-        <img src="{% static 'game9.png' %}" alt="Madness Brutal Fighting">
-    {% elif award.game_name == "Art of Rally" %}
-        <img src="{% static 'game10.png' %}" alt="Art of Rally">
-     {% elif award.game_name == "Nintendo Switch Sports" %}
-        <img src="{% static 'game11.png' %}" alt="Nintendo Switch Sports">
-     {% elif award.game_name == "Disney Sports Soccer" %}
-        <img src="{% static 'game12.png' %}" alt="Disney Sports Soccer">
-      {% elif award.game_name == "Simulassword" %}
-        <img src="{% static 'game13.png' %}" alt="Simulassword">
-    {% else %}
-        <p>No image available for this award</p>
-    {% endif %}
+    <div style="display: flex;">
+        <div>
+            <h1>{{ award.award_name }} Details</h1>
+            <p style="font-weight: bold; font-size: 24px;">Game: {{ award.game_name }}</p>
+            {% if award.game_name == "Torment: Tides of Numenera" %}
+                <img src="{% static 'game1.png' %}" alt="Game 1 Detail Image">
+            {% elif award.game_name == "Undertale" %}
+                <img src="{% static 'game2.png' %}" alt="Undertale">
+            {% elif award.game_name == "Disco Elysium" %}
+                <img src="{% static 'game3.png' %}" alt="Disco Elysium">
+            {% elif award.game_name == "Wandersong" %}
+                <img src="{% static 'game4.png' %}" alt="Wandersong">
+            {% elif award.game_name == "Naval Campaigns Midway" %}
+                <img src="{% static 'game5.jpg' %}" alt="Naval Campaigns Midway">
+            {% elif award.game_name == "Pocky & Rocky with Becky" %}
+                <img src="{% static 'game7.png' %}" alt="Pocky & Rocky with Becky">
+            {% elif award.game_name == "Venture Kid" %}
+                <img src="{% static 'game8.png' %}" alt="Venture Kid">
+            {% elif award.game_name == "Madness Brutal Fighting" %}
+                <img src="{% static 'game9.png' %}" alt="Madness Brutal Fighting">
+            {% elif award.game_name == "Art of Rally" %}
+                <img src="{% static 'game10.png' %}" alt="Art of Rally">
+            {% elif award.game_name == "Nintendo Switch Sports" %}
+                <img src="{% static 'game11.png' %}" alt="Nintendo Switch Sports">
+            {% elif award.game_name == "Disney Sports Soccer" %}
+                <img src="{% static 'game12.png' %}" alt="Disney Sports Soccer">
+            {% elif award.game_name == "Simulassword" %}
+                <img src="{% static 'game13.png' %}" alt="Simulassword">
+            {% else %}
+                <p>No image available for this award</p>
+            {% endif %}
+            <p>Date: {{ award.award_date }}</p>
+            <p>Description: {{ award.award_description }}</p>
+        </div>
+    </div>
 {% endblock %}
