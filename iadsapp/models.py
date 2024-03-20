@@ -57,6 +57,9 @@ class GameNew(models.Model):
         return self.title
 
 
+
+
+
 class UpcomingRelease(models.Model):
     country = models.CharField(max_length=100)
     game_name = models.CharField(max_length=200)
@@ -91,6 +94,15 @@ class CalendarEvent(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
     date = models.DateField()
+
+
+class CustomUser(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE, default=None)
+    bio = models.CharField(max_length=500, blank=True)
+    profile_pic = models.ImageField(upload_to='profile_pics/', blank=True)
+
+    def __str__(self):
+        return self.user.username
 
 
 class UserProfile(models.Model):

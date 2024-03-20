@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ea344b3f-2470-455d-9b77-1ba3a6ab8011" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/IADS-Project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/IADS-Project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/forms.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/forms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/static/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/static/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/templates/edit_user.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/edit_user.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/profile.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/iadsapp/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/views.py" afterDir="false" />
     </list>
@@ -34,6 +42,11 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "django.template.preview.state": "SHOW_EDITOR",
     "git-widget-placeholder": "Sprint4",
+    "last_opened_file_path": "E:/IADS project until march 10/edit profile success/IADS-Project",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
     "vue.rearranger.settings.migration": "true"
   }
@@ -41,7 +54,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-python-sdk-50da183f06c8-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13135.95" />
+        <option value="bundled-python-sdk-5a2391486177-2887949eec09-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-233.13763.11" />
       </set>
     </attachedChunks>
   </component>
@@ -55,6 +68,7 @@
       <updated>1710885349946</updated>
       <workItem from="1710885351166" duration="107000" />
       <workItem from="1710885467032" duration="93000" />
+      <workItem from="1710949005680" duration="1038000" />
     </task>
     <servers />
   </component>

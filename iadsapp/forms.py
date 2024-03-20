@@ -42,10 +42,16 @@ class UpdateUserForm(UserChangeForm):
         self.fields['username'].help_text = '<span class="form-text text-muted"><small>Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.</small></span>'
 
 '''
+from .models import CustomUser
+
 class EditProfileForm(forms.ModelForm):
+    #bio = forms.CharField(max_length=500, required=False)
+    bio = forms.CharField(widget=forms.Textarea(attrs={'rows': 4}), max_length=500, required=False)
+    profile_pic = forms.ImageField(required=False)
+
     class Meta:
-        model = UserProfile
-        fields = ['FirstName', 'LastName', 'email', 'profile_image', 'bio']
+        model = CustomUser
+        fields = ['bio', 'profile_pic']
 
 #forgot password
 # forms.py

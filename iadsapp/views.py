@@ -19,6 +19,8 @@ from datetime import datetime
 from django.contrib.auth import logout
 from .models import UpcomingRelease
 
+from .models import CustomUser
+
 
 from .models import CalendarEvent
 
@@ -31,7 +33,8 @@ def signup(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()  # Save the User instance
+            CustomUser.objects.create(user=user)
             return redirect('signin')
     else:
         form = CustomUserCreationForm()
@@ -94,13 +97,17 @@ def homepage_view(request):
 #     return render(request, 'profile.html')
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-
+'''
 @login_required
 def profilepage_view(request):
     user = request.user
     return render(request, 'profile.html', {'user': user})
-
-
+'''
+@login_required
+def profilepage_view(request):
+    user = request.user
+    custom_user = CustomUser.objects.get(user=user)
+    return render(request, 'profile.html', {'user': user, 'custom_user': custom_user})
 
 #Haari: Edit profile view
 '''
@@ -127,9 +134,17 @@ def edit_profile_view(request):
 		#return redirect('homepage')
 '''
 from .forms import EditProfileForm
+@login_required
 def edit_profile_view(request):
-    form = EditProfileForm()
-    return render(request, 'edit_user.html', {'form': form})
+    custom_user = request.user.customuser
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, request.FILES, instance=request.user.customuser)
+        if form.is_valid():
+            form.save()
+            return redirect('profilepage_view')
+    else:
+        form = EditProfileForm(instance=request.user.customuser)
+    return render(request, 'edit_user.html', {'form': form, 'custom_user': custom_user})
 
 #JasPreet: Game type view
 def game_type_view(request):
