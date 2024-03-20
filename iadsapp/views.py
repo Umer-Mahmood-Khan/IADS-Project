@@ -50,6 +50,8 @@ def signin(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
+                if not hasattr(user, 'customuser'):
+                    CustomUser.objects.create(user=user)
                 return redirect('homepage')  # Redirect to the homepage after successful login
     else:
         form = CustomAuthenticationForm()
