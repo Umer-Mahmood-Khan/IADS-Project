@@ -65,10 +65,19 @@ class CustomPasswordResetForm(PasswordResetForm):
         super().__init__(*args, **kwargs)
 
 
-class RateForm(forms.ModelForm):
-    text = forms.CharField(widget=forms.Textarea(attrs={'class': 'materialize-textarea'}), required=False)
-    rate = forms.ChoiceField(choices=RATE_CHOICES, widget=forms.Select(), required=True)
+class RatingCommentForm(forms.Form):
+    RATE_CHOICES = [
+        (1, '1 - Unplayable'),
+        (2, '2 - Awful'),
+        (3, '3 - Poor'),
+        (4, '4 - Mediocre'),
+        (5, '5 - Average'),
+        (6, '6 - Decent'),
+        (7, '7 - Good'),
+        (8, '8 - Very Good'),
+        (9, '9 - Excellent'),
+        (10, '10 - Outstanding'),
+    ]
 
-    class Meta:
-        model: Review
-        fields = ('text', 'rate')
+    ratings = forms.ChoiceField(choices=RATE_CHOICES, widget=forms.Select(), required=True)
+    comments = forms.CharField(widget=forms.Textarea(attrs={'class': 'materialize-textarea'}), required=False)

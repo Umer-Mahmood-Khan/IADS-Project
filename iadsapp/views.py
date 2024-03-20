@@ -7,7 +7,7 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
 from .models import GameDetail, UpcomingRelease, GameType
-from .forms import CustomPasswordResetForm, RateForm
+from .forms import CustomPasswordResetForm, RatingCommentForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
@@ -376,27 +376,40 @@ def user_policy(request):
 def team_details(request):
     return render(request, 'team_details.html')
 
-def Rate(request, game_id):
-    game = Game.objects.get(gameID=game_id)
-    user = request.user
+#
+from django.contrib.auth.decorators import login_required
+from .models import GameComment, GameRating
+from .forms import RatingCommentForm
 
-    if request.method == 'POST':
-        form = RateForm(request.POST)
+def game_detail_view(request, game_id):
+    game = get_object_or_404(GameDetail, pk=game_id)
+    comments = GameComment.objects.filter(game=game)
+    ratings = GameRating.objects.filter(game=game)
+    form = None
+
+    if request.method == 'POST' and request.user.is_authenticated:
+        form = RatingCommentForm(request.POST)
         if form.is_valid():
-            rate = form.save(commit=False)
-            rate.user = user
-            rate.game = game
-            rate.save()
-            return HttpResponseRedirect(reverse('game_details', args=[game_id]))
-    else:
-        form = RateForm()
-
-    template = loader.get_template('rate.html')
+            GameRating.objects.create(
+                game=game,
+                user=request.user,
+                rating=form.cleaned_data['ratings']  # Corrected rating field
+            )
+            GameComment.objects.create(
+                game=game,
+                user=request.user,
+                comment=form.cleaned_data['comments']
+            )
+            return redirect('game_detail', game_id=game_id)
+    elif request.user.is_authenticated:
+        form = RatingCommentForm()
 
     context = {
-        'form': form,
         'game': game,
+        'form': form,
+        'comments': comments,
+        'ratings': ratings,
     }
 
-    return HttpResponse(template.render(context, request))
+    return render(request, 'game_details.html', context)
 

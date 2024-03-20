@@ -27,6 +27,18 @@ class Rating(models.Model):
         return f"Rating: {self.rating}"
 
 
+RATE_CHOICES = [
+    (1, '1 - Unplayable'),
+    (2, '2 - Awful'),
+    (3, '3 - Poor'),
+    (4, '4 - Mediocre'),
+    (5, '5 - Average'),
+    (6, '6 - Decent'),
+    (7, '7 - Good'),
+    (8, '8 - Very Good'),
+    (9, '9 - Excellent'),
+    (10, '10 - Outstanding'),
+]
 class GameDetail(models.Model):
     # Define fields
     game_name = models.CharField(max_length=200)
@@ -36,6 +48,8 @@ class GameDetail(models.Model):
     game_platform = models.CharField(max_length=100)
     game_rating = models.DecimalField(max_digits=3, decimal_places=1)
     game_bio = models.TextField()
+    ratings = models.IntegerField(choices=RATE_CHOICES, blank=True, null=True)
+    comments = models.TextField(blank=True, null=True)
 
     # Define foreign key to GameType
     game_type = models.ForeignKey(GameType, on_delete=models.CASCADE)
@@ -45,6 +59,20 @@ class GameDetail(models.Model):
 
     class Meta:
         ordering=['game_type']
+
+from django.contrib.auth.models import User
+
+class GameComment(models.Model):
+    game = models.ForeignKey(GameDetail, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class GameRating(models.Model):
+    game = models.ForeignKey(GameDetail, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    rating = models.IntegerField(choices=RATE_CHOICES)
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 class GameNew(models.Model):
