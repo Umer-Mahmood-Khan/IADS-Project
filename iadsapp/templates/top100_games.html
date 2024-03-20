@@ -1,5 +1,6 @@
 <!-- top100_games.html -->
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}
     Top 100 Games
@@ -35,10 +36,14 @@
                             <div class="col s12 m6 l3">
                                 <div class="card">
                                     <div class="card-image" style="height: 200px; overflow: hidden;">
-                                        <img src="{{ game.game_image.url }}" alt="{{ game.game_name }}" class="game-image" style="object-fit: cover; height: 100%;">
+                                        <a href="{% url 'game_detail' game_id=game.id %}">
+                                            <img src="{% static game.game_image %}" alt="{{ game.game_name }}" class="game-image" style="object-fit: cover; height: 100%;">
+                                        </a>
                                     </div>
                                     <div class="card-content" style="height: 100px;">
-                                        <span class="card-title" style="font-size: 1rem; font-weight: bold; line-height: 1.25rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">{{ game.game_name }}</span>
+                                        <span class="card-title" style="font-size: 1rem; font-weight: bold; line-height: 1.25rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                                            <a href="{% url 'game_detail' game_id=game.id %}" class="game-link">{{ game.game_name }}</a>
+                                        </span>
                                         <p style="font-size: 0.8rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">Rating: {{ game.game_rating }}</p>
                                     </div>
                                 </div>

@@ -5,9 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea344b3f-2470-455d-9b77-1ba3a6ab8011" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/iadsapp/migrations/0013_gamedetail_comments_gamedetail_ratings_gamecomment_and_more.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/iadsapp/templates/top100_games.html" beforeDir="false" afterPath="$PROJECT_DIR$/iadsapp/templates/top100_games.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +25,9 @@
   &quot;associatedIndex&quot;: 6
 }</component>
   <component name="ProjectId" id="2dvOzjZxBEHlpt8AIKSkzaXGzno" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -65,7 +68,7 @@
       <workItem from="1710885467032" duration="93000" />
       <workItem from="1710949005680" duration="1038000" />
       <workItem from="1710954927891" duration="550000" />
-      <workItem from="1710955496034" duration="359000" />
+      <workItem from="1710955496034" duration="1326000" />
     </task>
     <servers />
   </component>
