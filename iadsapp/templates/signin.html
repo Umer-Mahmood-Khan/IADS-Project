@@ -4,43 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up - GameCriticHub</title>
-    <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+    <title>Sign In - GameCriticHub</title>
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
 </head>
 <body>
-    <div class="signup-container">
+    <div class="signin-container">
         <h1 class="project-name">GameCriticHub</h1>
-        <h2>Sign Up</h2>
-        <form method="post" action="{% url 'signup' %}">
+        <h2>Sign In</h2>
+        <form method="post" action="{% url 'signin' %}">
             {% csrf_token %}
             <div class="form-group">
                 {{ form.username.label_tag }}
                 {{ form.username }}
             </div>
             <div class="form-group">
-                {{ form.first_name.label_tag }}
-                {{ form.first_name }}
+                {{ form.password.label_tag }}
+                {{ form.password }}
             </div>
-            <div class="form-group">
-                {{ form.last_name.label_tag }}
-                {{ form.last_name }}
-            </div>
-            <div class="form-group">
-                {{ form.email.label_tag }}
-                {{ form.email }}
-            </div>
-            <div class="form-group">
-                {{ form.password1.label_tag }}
-                {{ form.password1 }}
-            </div>
-            <div class="form-group">
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
-            </div>
-            <button type="submit" class="btn-signup">Sign Up</button>
+            <button type="submit" class="btn-signin">Sign In</button>
         </form>
-        <div class="existing-account">
-            <p>Already have an account? <a href="{% url 'signin' %}">Sign In</a></p>
+        <div class="forgot-password">
+            <p><a href="{% url 'forgot_password' %}">Forgot password?</a></p>
+        </div>
+        <div class="new-to-gamecritichub">
+            <p>New to GameCriticHub? <a href="{% url 'signup' %}">Sign Up</a></p>
         </div>
     </div>
 </body>
