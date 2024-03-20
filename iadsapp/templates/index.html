@@ -16,15 +16,15 @@
   <!-- Dropdown Structure -->
 <ul id="dropdown1" class="dropdown-content">
 <!--  <li><a href="">Calender</a></li>-->
-  <li><a href="{% url 'top100_games' %}">Top 100 Games</a></li>
-  <li><a href="{% url 'most_popular_games' %}">Most Popular</a></li>
-  <li><a href="{% url 'game_type' %}">Games by Genre</a></li>
-  <li><a href="{% url 'awards_list' %}">Awards</a></li>
+  <li><a class="blue-grey-text darken-3" href="{% url 'top100_games' %}">Top 100 Games</a></li>
+  <li><a class="blue-grey-text darken-3" href="{% url 'most_popular_games' %}">Most Popular</a></li>
+  <li><a class="blue-grey-text darken-3" href="{% url 'game_type' %}">Games by Genre</a></li>
+  <li><a class="blue-grey-text darken-3" href="{% url 'awards_list' %}">Awards</a></li>
   <li class="divider"></li>
-  <li><a href="{% url 'upcoming_releases' %}">Calendar</a></li>
-  <li><a href="{% url 'game_news' %}">Games News</a></li>
+  <li><a class="blue-grey-text darken-3" href="{% url 'upcoming_releases' %}">Calendar</a></li>
+  <li><a class="blue-grey-text darken-3" href="{% url 'game_news' %}">Games News</a></li>
 </ul>
-<nav class="light-blue">
+<nav class="blue-grey darken-4">
   <div class="nav-wrapper">
     <style>
       .brand-logo img {
@@ -39,12 +39,12 @@
     <ul class="right hide-on-med-and-down">
         {% if user.is_authenticated %}
                 <!-- If user is authenticated, show Profile -->
-                <li><a href="{% url 'profilepage_view' %}">Profile</a></li>
+                <li><a class="white-text" href="{% url 'profilepage_view' %}">Profile</a></li>
         {% else %}
                 <!-- If user is not authenticated, show Sign Up -->
-                <li><a href="{% url 'signup' %}">Sign Up</a></li>
+                <li><a class="white-text" href="{% url 'signup' %}">Sign Up</a></li>
         {% endif %}
-      <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
+      <li><a class="dropdown-trigger white-text" href="#!" data-target="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
     </ul>
   </div>
 </nav>
@@ -70,7 +70,7 @@
             </select>
 
         </div>
-        <button type="submit" class="waves-effect light-blue btn center-align" style="width: 950px;"><i class="material-icons left">search</i>Search</button>
+        <button type="submit" class="waves-effect blue-grey darken-4 btn center-align" style="width: 950px;"><i class="material-icons left">search</i>Search</button>
     </div>
             </form>
 
@@ -124,7 +124,7 @@
 
 
 
-  <footer class="page-footer cyan">
+  <footer class="page-footer blue-grey darken-4">
     <div class="container">
         <div class="row">
             <div class="col l6 s12">
