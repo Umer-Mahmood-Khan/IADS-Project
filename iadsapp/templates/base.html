@@ -13,6 +13,15 @@
     <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
 </head>
 <body>
+<ul id="dropdown1" class="dropdown-content">
+            <li><a href="{% url 'top100_games' %}">Top 100 Games</a></li>
+            <li><a href="{% url 'most_popular_games' %}">Most Popular</a></li>
+            <li><a href="{% url 'game_type' %}">Games by Genre</a></li>
+            <li><a href="{% url 'awards_list' %}">Awards</a></li>
+            <li class="divider"></li>
+            <li><a href="{% url 'upcoming_releases' %}">Calendar</a></li>
+            <li><a href="{% url 'game_news' %}">Games News</a></li>
+        </ul>
 <nav class="light-blue">
     <div class="nav-wrapper">
         <style>
@@ -36,15 +45,7 @@
             <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
         </ul>
         <!-- Dropdown Structure -->
-        <ul id="dropdown1" class="dropdown-content">
-            <li><a href="{% url 'top100_games' %}">Top 100 Games</a></li>
-            <li><a href="{% url 'most_popular_games' %}">Most Popular</a></li>
-            <li><a href="{% url 'game_type' %}">Games by Genre</a></li>
-            <li><a href="{% url 'awards_list' %}">Awards</a></li>
-            <li class="divider"></li>
-            <li><a href="{% url 'upcoming_releases' %}">Calendar</a></li>
-            <li><a href="{% url 'game_news' %}">Games News</a></li>
-        </ul>
+
     </div>
 </nav>
 
@@ -69,4 +70,15 @@
             <div class="col l3 s12">
                 <h5 class="white-text">Connect</h5>
                 <ul>
-                    <li><a class="w
+                    <li><a class="white-text" href="{% url 'team_details' %}">Team Details</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js'%}"></script>
+  <script src="{% static 'js/init.js'%}"></script>
