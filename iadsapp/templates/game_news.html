@@ -1,42 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>Game News</title>
+{% extends 'base.html' %}  <!-- Extend from the base template -->
 
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-    <style>
-        /* Add custom styles here */
-        body {
-            background-color: #f5f5f5;
-        }
-        .container {
-            width: 90%;
-            margin: 0 auto;
-        }
-        .card {
-            width: 100%;
-        }
-        /* Add more styles as needed */
-    </style>
-</head>
-<body>
-<nav class="cyan" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo" style="margin-left: -60px;"><b>IGDB</b></a>
-        <ul class="right hide-on-med-and-down">
-            <li><a href="#" style="font-size: 25px;"><b>Menu</b></a></li>
-        </ul>
-        <ul id="nav-mobile" class="sidenav">
-            <li><a href="#">Navbar Link</a></li>
-        </ul>
-        <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i>Menu</a>
-    </div>
-</nav>
+{% block title %}Game News{% endblock %}  <!-- Set the title block -->
+
+{% block content %}  <!-- Insert content into the content block -->
 
 <div class="container">
     <div class="section">
@@ -45,13 +11,13 @@
         <!-- Display each game news item -->
         <div class="row">
             <div class="col s12 m12">
-                <h2 class="header" style="margin-left: 30px;"><b>{{ news.title }}</b></h2>
-                <h6 style="margin-left:  30px;"><b>{{ news.bio }}</b></h6>
-                <div>
+                <h2 class="header center-align"><b>{{ news.title }}</b></h2>  <!-- Center-align the title -->
+                <h6 class="center-align"><b>{{ news.bio }}</b></h6>  <!-- Center-align the bio -->
+                <div class="center-align">  <!-- Center-align the image -->
                     <br>
-                    <img src="{{ news.image.url }}" style="margin-left:  30px; width: 1200px">
+                    <img src="{{ news.image.url }}" style="max-width: 40%; height: auto;">  <!-- Adjust image width -->
                 </div>
-                <div style="margin-left:  30px; width: 1200px;">
+                <div style="margin-left: auto; margin-right: auto; max-width: 1200px; text-align: left;">  <!-- Center-align text and limit width -->
                     <p>{{ news.description | linebreaks }}</p>
                 </div>
             </div>
@@ -60,13 +26,4 @@
         {% endfor %}
     </div>
 </div>
-
-
-
-<!--  Scripts-->
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="js/materialize.js"></script>
-<script src="js/init.js"></script>
-</body>
-</html>
-
+{% endblock %}  <!-- End of content block -->

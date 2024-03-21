@@ -31,7 +31,7 @@
                 <form action="" method="get"> <!-- Change the action to an empty string -->
                     <div class="input-field" style="display: flex;">
                         <input id="search" type="text" name="query" placeholder="Search Game">
-                        <button type="submit" class="btn" style="color: #00b0ff ; background-color: transparent"><i class="material-icons">search</i></button>
+                        <button type="submit" class="btn" style="color: #37474F ; background-color: transparent"><i class="material-icons">search</i></button>
                     </div>
                 </form>
             </div>
@@ -67,11 +67,11 @@
                         </div>
                         <div class="card-content" style="height: 150px;">
                             <span class="card-title" style="font-size: 1rem; font-weight: bold; line-height: 1.25rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                                <a href="{% url 'game_detail' game.id %}">{{ game.game_name }}</a>
+                                <a class="blue-grey-text text-darken-4" href="{% url 'game_detail' game.id %}">{{ game.game_name }}</a>
                             </span>
                             <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; font-weight: bold;" >{{ game.game_release }}</p>
                             <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
-                                <span style="color: orange; font-size: 24px;">&#9733;</span> {{ game.game_rating }}
+                                <span style="color: yellow; font-size: 24px;">&#9733;</span> {{ game.game_rating }}
                             </p>
                         </div>
                     </div>

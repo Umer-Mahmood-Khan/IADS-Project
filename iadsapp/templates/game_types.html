@@ -7,10 +7,10 @@
     <div class="row">
         <!-- Left Column: Game Genres -->
         <div class="left-column" >
-            <h2 class="gradient-text" style="color:navy">Games Genres</h2>
+            <h2 class="gradient-text blue-grey-text text-darken-4">Games Genres</h2>
             <ul class="game-types">
                 {% for game in game_types %}
-                    <li class="game-type" style="font-size: 25px" ><a href="{% url 'games_by_genre' game.id %}">{{ game.name }}</a></li>
+                    <li class="game-type" style="font-size: 25px" ><a class="blue-grey-text text-darken-3" href="{% url 'games_by_genre' game.id %}">{{ game.name }}</a></li>
                 {% endfor %}
             </ul>
         </div>

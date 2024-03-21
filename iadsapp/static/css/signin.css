@@ -1,5 +1,9 @@
 /* Add styles to make the signin form more compact */
 
+body {
+    font-family: Arial, sans-serif;
+}
+
 .signin-container {
     max-width: 400px;
     margin: 0 auto;

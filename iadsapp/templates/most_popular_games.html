@@ -18,7 +18,7 @@ Most Popular Games
         <!-- Game Filter Section -->
         <div class="row">
 
-            <div class="col s12 m6" style="color: #00acc1">
+            <div class="col s12 m6" style="color: #37474F">
                 <h3 style="margin-top: 0;">Most Popular Games</h3>
             </div>
 
@@ -52,7 +52,7 @@ Most Popular Games
                         </div>
                         <div class="card-content" style="height: 150px;">
                             <span class="card-title" style="font-size: 1rem; font-weight: bold; line-height: 1.25rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
-                                <a href="{% url 'game_detail' game.id %}">{{ game.game_name }}</a>
+                                <a class="blue-grey-text darken-4" href="{% url 'game_detail' game.id %}">{{ game.game_name }}</a>
                             </span>
                             <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">{{ game.game_release }}</p>
                             <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">{{ game.game_type }}</p>

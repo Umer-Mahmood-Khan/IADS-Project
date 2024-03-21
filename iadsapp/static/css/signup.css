@@ -1,5 +1,10 @@
 /* Add styles to make the signup form more compact */
 
+
+body {
+    font-family: Arial, sans-serif;
+}
+
 .signup-container {
     max-width: 400px;
     margin: 0 auto;
