@@ -2,42 +2,74 @@
 {% load static %}
 
 {% block content %}
-<div style="max-width: 1000px; margin: 0 auto; padding: 20px; background-color: #f0f0f0; border-radius: 10px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);">
-    <h1 style="font-size: 42px; margin-bottom: 20px; text-align: center; color: #333; font-family: 'Arial', sans-serif;">{{ award.award_name }} Details</h1>
+<style>
+    .image-container img {
+        transition: transform 0.3s ease;
+        border-radius: 10px;
+    }
+
+    .image-container:hover img {
+        transform: scale(1.1);
+    }
+
+    .details-container {
+        background-color: #ffffff;
+        padding: 30px;
+        border-radius: 15px;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+        color: #333;
+        max-width: 800px;
+    }
+
+    .details-container h2 {
+        font-size: 28px;
+        margin-bottom: 15px;
+        font-family: 'Arial', sans-serif;
+    }
+
+    .details-container p {
+        font-size: 20px;
+        margin-bottom: 15px;
+        font-family: 'Arial', sans-serif;
+    }
+</style>
+
+<div style="max-width: 1200px; margin: 0 auto; padding: 30px; background-color: #b1ddf8; border-radius: 15px; box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.2);">
+    <h1 style="font-size: 48px; margin-bottom: 30px; text-align: center; color: #333; font-family: 'Arial', sans-serif;">{{ award.award_name }} Details</h1>
     <div style="display: flex; align-items: center; justify-content: center;">
-        <div style="margin-right: 40px; background-color: #acc7ea; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);">
+        <div style="margin-right: 60px;" class="image-container">
             {% if award.game_name == "Torment: Tides of Numenera" %}
-                <img src="{% static 'game1.png' %}" alt="Game 1 Detail Image" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game1.png' %}" alt="Game 1 Detail Image" style="width: 300px; height: auto;">
             {% elif award.game_name == "Undertale" %}
-                <img src="{% static 'game2.png' %}" alt="Undertale" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game2.png' %}" alt="Undertale" style="width: 300px; height: auto;">
             {% elif award.game_name == "Disco Elysium" %}
-                <img src="{% static 'game3.png' %}" alt="Disco Elysium" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game3.png' %}" alt="Disco Elysium" style="width: 300px; height: auto;">
             {% elif award.game_name == "Wandersong" %}
-                <img src="{% static 'game4.png' %}" alt="Wandersong" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game4.png' %}" alt="Wandersong" style="width: 300px; height: auto;">
             {% elif award.game_name == "Naval Campaigns Midway" %}
-                <img src="{% static 'game5.jpg' %}" alt="Naval Campaigns Midway" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game5.jpg' %}" alt="Naval Campaigns Midway" style="width: 300px; height: auto;">
             {% elif award.game_name == "Pocky & Rocky with Becky" %}
-                <img src="{% static 'game7.png' %}" alt="Pocky & Rocky with Becky" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game7.png' %}" alt="Pocky & Rocky with Becky" style="width: 300px; height: auto;">
             {% elif award.game_name == "Venture Kid" %}
-                <img src="{% static 'game8.png' %}" alt="Venture Kid" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game8.png' %}" alt="Venture Kid" style="width: 300px; height: auto;">
             {% elif award.game_name == "Madness Brutal Fighting" %}
-                <img src="{% static 'game9.png' %}" alt="Madness Brutal Fighting" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game9.png' %}" alt="Madness Brutal Fighting" style="width: 300px; height: auto;">
             {% elif award.game_name == "Art of Rally" %}
-                <img src="{% static 'game10.png' %}" alt="Art of Rally" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game10.png' %}" alt="Art of Rally" style="width: 300px; height: auto;">
             {% elif award.game_name == "Nintendo Switch Sports" %}
-                <img src="{% static 'game11.png' %}" alt="Nintendo Switch Sports" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game11.png' %}" alt="Nintendo Switch Sports" style="width: 300px; height: auto;">
             {% elif award.game_name == "Disney Sports Soccer" %}
-                <img src="{% static 'game12.png' %}" alt="Disney Sports Soccer" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game12.png' %}" alt="Disney Sports Soccer" style="width: 300px; height: auto;">
             {% elif award.game_name == "Simulassword" %}
-                <img src="{% static 'game13.png' %}" alt="Simulassword" style="width: 200px; height: auto; border-radius: 10px;">
+                <img src="{% static 'game13.png' %}" alt="Simulassword" style="width: 300px; height: auto;">
             {% else %}
                 <p>No image available for this award</p>
             {% endif %}
         </div>
-        <div style="background-color: #35538d; padding: 20px; border-radius: 10px; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);">
-            <p style="font-weight: bold; font-size: 24px; margin-bottom: 10px; color: #fff; font-family: 'Arial', sans-serif;">Game: {{ award.game_name }}</p>
-            <p style="font-size: 22px; margin-bottom: 10px; color: #fff; font-family: 'Arial', sans-serif;">Date: {{ award.award_date }}</p>
-            <p style="font-size: 22px; color: #fff; font-family: 'Arial', sans-serif;">Description: {{ award.award_description }}</p>
+        <div class="details-container">
+            <h2>Game: {{ award.game_name }}</h2>
+            <p>Date: {{ award.award_date }}</p>
+            <p>Description: {{ award.award_description }}</p>
         </div>
     </div>
 </div>
