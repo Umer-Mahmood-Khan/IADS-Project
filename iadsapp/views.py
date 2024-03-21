@@ -59,7 +59,7 @@ def signin(request):
 
 def signout(request):
     logout(request)
-    return redirect('signin')  # Redirect to the sign-in page after logout
+    return redirect('homepage')  # Redirect to the sign-in page after logout
 
 
 #Umer: Home page view
