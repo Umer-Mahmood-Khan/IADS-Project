@@ -8,12 +8,12 @@
         <div class="col s12 m12">
           <div class="card">
             <div class="card-image">
-              <img src="{% static 'img/icons/gamebanner.jpg' %}">
+              <img src="{% static 'img/profile_bg.jpg' %}">
                  {% if custom_user.profile_pic %}
                         <!--<img class="profile-pic" src="{{ custom_user.profile_pic.url }}" >-->
                         <img id="img-custom-circle-actor1" src="{{ custom_user.profile_pic.url }}" alt="Profile Pic">
                     {% else %}
-                        <img id="img-custom-circle-actor" src="{% static 'img/user.png' %}" alt="Default Profile Pic">
+                        <img id="img-custom-circle-actor" src="{% static 'img/profile_image1.jpg' %}" alt="Default Profile Pic">
                     {% endif %}
               <!--<img id="img-custom-circle-actor" src="{% static 'img/user.png'%}">-->
               <span style="font-size: 30px;" class="card-title">{{ user.first_name }}</span>
@@ -28,8 +28,8 @@
               <li class="collection-item">Bio:<p><b>{{ custom_user.bio }} </b></p></li>
 
             </ul>
-              <a href="{% url 'edit_profile' %}" class="btn">Edit Profile</a>
-              <a href="{% url 'signout' %}" class="btn">Logout</a>
+              <a href="{% url 'edit_profile' %}" class="btn blue-grey darken-4">Edit Profile</a>  <!-- Changed button color -->
+              <a href="{% url 'signout' %}" class="btn blue-grey darken-4">Logout</a>  <!-- Changed button color -->
           </div>
         <div class="col s12 m8 ">
           <ul class="collection">
@@ -60,29 +60,6 @@
           </div>
         </div>
       </div>
-
-      <br><br>
-      <h4 class="orange-text">Known for:</h4>
-      <div class=" divider"></div>
-  <div>
-      <div class="col s12 m4">
-        <div class="card">
-          <div class="card-image">
-            <img width="300" height="350" src="{% static 'img/fifa1.jpg'%}">
-          </div>
-          <div class="card-content">
-            <span class="card-title"><b>FIFA 10</b></span>
-            <span class="right"><i class="material-icons">date_range</i>2010</span>
-            <p><b>Game</b></p>
-          </div>
-        </div>
-      </div>
-   </div>
-      <div class="col s12 m12 center-align">
-        <a class="waves-effect waves-light btn"><i class="material-icons left">add</i>Load more</a>
-      </div>
-
-    </div>
 
 </div>
 </div>
