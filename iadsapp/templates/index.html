@@ -40,6 +40,7 @@
         {% if user.is_authenticated %}
                 <!-- If user is authenticated, show Profile -->
                 <li><a class="white-text" href="{% url 'profilepage_view' %}">Profile</a></li>
+                <li><a class="white-text" href="{%  url 'signout' %}">Sign Out</a></li>
         {% else %}
                 <!-- If user is not authenticated, show Sign Up -->
                 <li><a class="white-text" href="{% url 'signup' %}">Sign Up</a></li>
