@@ -12,6 +12,8 @@ urlpatterns = [
     path('profile/', views.profilepage_view, name='profilepage_view'),
     path('search/', views.search_view, name='search_view'),
     path('edit_profile/', views.edit_profile_view, name='edit_profile'),
+    path('update_password/', views.update_password, name='update_password'),
+
     path('game_type/', views.game_type_view, name='game_type'),
     path('most_popular_games/', views.most_popular_games_view, name='most_popular_games'),
     path('upcoming_releases/', views.upcoming_release_view, name='upcoming_releases'),

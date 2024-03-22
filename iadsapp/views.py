@@ -157,6 +157,29 @@ def edit_profile_view(request):
         form = EditProfileForm(instance=request.user.customuser)
     return render(request, 'edit_user.html', {'form': form, 'custom_user': custom_user})
 
+
+
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib import messages
+
+from .forms import CustomPasswordChangeForm
+
+def update_password(request):
+    if request.method == 'POST':
+        form = CustomPasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            user = form.save()
+            update_session_auth_hash(request, user)  # Important to keep the user logged in
+            messages.success(request, 'Your password was successfully updated!')
+            logout(request)  # Logout the user
+            return redirect('signin')
+        else:
+            messages.error(request, 'Please correct the error below.')
+    else:
+        form = CustomPasswordChangeForm(request.user)
+    return render(request, 'update_password.html', {'form': form})
+
 #JasPreet: Game type view
 def game_type_view(request):
     game_types = GameType.objects.all()
