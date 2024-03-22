@@ -22,9 +22,10 @@
         <!-- Game Search and Filter Section -->
         <div class="row">
             <!-- Back button to game_type.html -->
-            <div class="col s12 text-right" style="color: #00b8d4">
-                <a href="{% url 'game_type' %}" class="btn">Back</a>
-            </div>
+            <!-- Back button to game_type.html -->
+<div class="col s12 text-right" >
+    <a href="{% url 'game_type' %}" class="btn" style="background-color: #37474F; color: white;">Back</a>
+</div>
 
             <!-- Game Search -->
             <div class="col s12 m6">
@@ -71,7 +72,7 @@
                             </span>
                             <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; font-weight: bold;" >{{ game.game_release }}</p>
                             <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
-                                <span style="color: yellow; font-size: 24px;">&#9733;</span> {{ game.game_rating }}
+                                <span style="color: orange; font-size: 24px;">&#9733;</span> {{ game.game_rating }}
                             </p>
                         </div>
                     </div>
