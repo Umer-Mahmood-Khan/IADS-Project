@@ -7,13 +7,19 @@ Search Results
 {% load static %}
 <div class="container">
     <div class="section">
-        <h3 style="margin-top: 0;">Search Results for "{{ query }}"</h3>
+        <h4 class="header blue-grey-text darken-4 " style="display: inline-block; font-size: 2.5rem;">Search results for "{{ query }}"</h4>
 
         <!-- Game List Section -->
         <div class="row">
             {% for result in results %}
                 <div class="col s12 m6 l3">
                     <div class="card" style="height: 365px;">
+                        <style>
+                        .card-image:hover {
+                            transform: scale(1.05); /* Example hover effect: increase size */
+                            transition: transform 0.3s ease; /* Example transition effect */
+                        }
+                    </style>
                         <div class="card-image" style="height: 200px; width: 100%; overflow: hidden;">
                             <img src="{% static '' %}{{ result.game_image }}" alt="{{ result.game_name }}" class="game-image" style="width: 100%; height: auto; object-fit: contain;">
                         </div>
@@ -24,7 +30,7 @@ Search Results
                             <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">{{ result.game_release }}</p>
                             <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">{{ result.game_platform }}</p>
                             <p style="font-size: 1.0rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">
-                                <span style="color: yellow; font-size: 24px;">&#9733;</span> {{ result.game_rating }}
+                                <span style="color: orange; font-size: 24px;">&#9733;</span> {{ result.game_rating }}
                             </p>
                         </div>
                     </div>
