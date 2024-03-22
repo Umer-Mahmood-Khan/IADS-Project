@@ -1,196 +1,91 @@
-<!DOCTYPE html>
-{% load static%}
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Game Details
+{% endblock %}
 
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Game details</title>
-
-  <!-- CSS  -->
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <style>
-    /* Add custom styles here */
-    body {
-      background-color: #f5f5f5;
-    }
-    .container {
-      width: 90%;
-      margin: 0 auto;
-    }
-    .card {
-      width: 100%;
-    }
-    /* Add more styles as needed */
-  </style>
-</head>
-<body>
-  <nav class="cyan" role="navigation">
-    <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo", style="margin-left: -60px;"><b>IGDB</b></a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#", style= "font-size: 25px;"><b>Menu</b></a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i>Menu</a>
-    </div>
-  </nav>
-
-  <div class="container ">
+{% block content %}
+<div class="container">
     <div class="section">
+        <!--   Icon Section   -->
+        <div class="row">
+            <div class="col s12">
+                <h2 class="header" style="margin-left: 35px;"><b>Game Details</b></h2>
+                <div class="card horizontal" style="width: 100%; max-width: 1200px; margin: 0 auto;">
+                    <div class="card-image">
+                        <img src="{% static '' %}{{ game.game_image }}" alt="{{ game.game_name }}" style="height: 720px; width: 700px;">
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <span class="card-title" style="font-size: 30px;"><b>{{ game.game_name }}</b></span>
+                            <span><b>{{ game.game_release }}</b></span>
+                            <br><br>
+                            <p>
+                                {{ game.game_bio }}
+                            </p>
+                            <br>
+                            <div class="divider"></div>
+                            <br>
+                            <p>Company: <b>{{ game.game_production }}</b></p>
+                            <p>Platforms: <b>{{ game.game_platform }}</b></p>
+                            <p>Genre: <b>{{ game.game_type }}</b></p>
+                            <br>
+{#                            <ul class="collection">#}
+{#                                <li class="collection-item avatar">#}
+{#                                    <img src="img/10.jpg" alt="" class="circle">#}
+{#                                    <span class="title" style="font-size: 17px; color: blueviolet;"><b>PCGamer Rating</b></span>#}
+{#                                    <p><b>{{ game.game_rating }}</b></p>#}
+{#                                    <a href="#!" class="secondary-content"><i class="material-icons" style="color: #4DD0ED;">grade</i></a>#}
+{#                                </li>#}
+{#                                <li class="collection-item avatar">#}
+{#                                    <img src="img/10.jpg" alt="" class="circle">#}
+{#                                    <span class="title" style="font-size: 17px; color: blueviolet;"><b>PCGamer Rating</b></span>#}
+{#                                    <p><b>{{ game.game_rating }}</b></p>#}
+{#                                    <a href="#!" class="secondary-content"><i class="material-icons" style="color: #4DD0ED;">grade</i></a>#}
+{#                                </li>#}
+{#                            </ul>#}
+                            <!-- Display existing comments -->
+                            <h3>Comments</h3>
+                            {% for comment in comments %}
+                                <p>{{ comment.comment }} - {{ comment.user.username }}, {{ comment.created_at }}</p>
+                            {% empty %}
+                                <p>No comments yet.</p>
+                            {% endfor %}
+                        
+                        <!-- Display existing ratings -->
+                        <h3>Ratings</h3>
+                        {% for rating in ratings %}
+                            <p>{{ rating.rating }} - {{ rating.user.username }}, {{ rating.created_at }}</p>
+                        {% empty %}
+                            <p>No ratings yet.</p>
+                        {% endfor %}
 
-      <!--   Icon Section   -->
-      <div class="row">
-      <a href="javascript:history.go(-1);" class="btn-flat white-text blue-grey darken-4" style="margin-left: 10px;"><i class="material-icons left"></i>Back</a>
-        <div class="col s12">
-          <h2 class="header", style="margin-left: 35px;"><b>Game Details</b></h2>
-          <div class="card horizontal ", style="width: 1200px; margin-left: 35px;">
-            <div class="card-image">
-              <img src="{% static '' %}{{ game.game_image }}" alt="{{ game.game_name }}", style="height: 900px; width: 700px;">
-
-            </div>
-            <div class="card-stacked">
-              <div class="card-content">
-                <span class = "card-title", style="font-size: 30px;"><b>{{ game.game_name }}</b></span>
-                <span><b>{{ game.game_release }}</b></span>
-                <br>
-                  <br>
-                <p>
-                    {{ game.game_bio }}
-                    <br>
-                  <br>
-                <div class="divider"></div>
-                <br>
-                <p>Company:  <b> {{ game.game_production }}</b></p>
-                <p>Platforms:  <b> {{ game.game_platform }}</b></p>
-                <p>Genre:  <b> {{ game.game_type }}</b></p>
-                  <br>
-
-                <ul class="collection">
-                  <li class="collection-item avatar">
-                    <img src="img/10.jpg" alt="" class="circle">
-                    <span class="title", style="font-size: 17px; color: blueviolet;"><b>PCGamer Rating</b></span>
-                    <p><b>{{ game.game_rating }}</b></p>
-                    <a href="#!" class="secondary-content"><i class="material-icons", style="color: #4DD0ED;">grade</i></a>
-                  </li>
-                  <li class="collection-item avatar">
-                    <img src="img/10.jpg" alt="" class="circle">
-                    <span class="title", style="font-size: 17px; color: blueviolet;"><b>PCGamer Rating</b></span>
-                    <p><b>{{ game.game_rating }}</b></p>
-                    <a href="#!" class="secondary-content"><i class="material-icons", style="color: #4DD0ED;">grade</i></a>
-                  </li>
-                  </ul>
-{#                  <br>#}
-{#                  <center><div>#}
-{#                    <a class="cyan btn"><i class="material-icons left"><span class="material-symbols-outlined">#}
-{#                      star#}
-{#                      </span></i>Rate</a>#}
-{#                    <a class="cyan btn"><i class="material-icons left"><span class="material-symbols-outlined">#}
-{#                      playlist_add#}
-{#                      </span></i>Watchlist</a>#}
-{#                    <a class="cyan btn"><i class="material-icons left"><span class="material-symbols-outlined">#}
-{#                      playlist_add_check#}
-{#                      </span></i>Watched</a>#}
-{#                    </div></center>#}
-
-                    <!-- Add this form for rating and commenting -->
-                    <!-- Add this form for rating and commenting -->
-{#            <form method="post">#}
-{#    {% csrf_token %}#}
-{#    <div class="input-field">#}
-{#        {{ form.ratings.label_tag }}#}
-{#        <br>#}
-{#        {{ form.ratings }}#}
-{#    </div>#}
-{#    <div class="input-field">#}
-{#        {{ form.comments.label_tag }}#}
-{#        <br>#}
-{#        {{ form.comments }}#}
-{#    </div>#}
-{#    <button type="submit" class="btn">Submit</button>#}
-{#</form>#}
-   
-
-                  <h4>User Reviews:</h4>
-<!-- Display ratings and comments -->
-{#<div>#}
-{#    <p>Ratings: {{ game.ratings }}</p>#}
-{#    <p>Comments: {{ game.comments }}</p>#}
-{#</div>#}
-{#                    <form method="post">#}
-{#    {% csrf_token %}#}
-{#    {% if user.is_authenticated %}#}
-{#    <div class="input-field">#}
-{#        {{ form.ratings.label_tag }}#}
-{#        <br>#}
-{#        {{ form.ratings }}#}
-{#    </div>#}
-{#    <div class="input-field">#}
-{#        {{ form.comments.label_tag }}#}
-{#        <br>#}
-{#        {{ form.comments }}#}
-{#    </div>#}
-{#    <button type="submit" class="btn">Submit</button>#}
-{#    {% else %}#}
-{#    <h6><p>Please <a href="{% url 'signin' %}">login</a> to rate and comment.</p></h6>#}
-{#    {% endif %}#}
-{#</form>#}
-
-<!-- Display existing comments -->
-<h3>Comments</h3>
-{% for comment in comments %}
-    <p>{{ comment.comment }} - {{ comment.user.username }}, {{ comment.created_at }}</p>
-{% empty %}
-    <p>No comments yet.</p>
-{% endfor %}
-
-<!-- Display existing ratings -->
-<h3>Ratings</h3>
-{% for rating in ratings %}
-    <p>{{ rating.rating }} - {{ rating.user.username }}, {{ rating.created_at }}</p>
-{% empty %}
-    <p>No ratings yet.</p>
-{% endfor %}
-
-<!-- Add new comment and rating -->
-              
-              
+                            <!-- Add new comment -->
 <form method="post">
     {% csrf_token %}
     {% if user.is_authenticated %}
-    <div class="input-field">
-        {{ form.ratings.label_tag }}
-        <br>
-        {{ form.ratings }}
-    </div>
-    <div class="input-field">
-        {{ form.comments.label_tag }}
-        <br>
-        {{ form.comments }}
-    </div>
-    <button type="submit" class="btn">Submit</button>
+        <div class="input-field">
+            {{ form.comments.label_tag }}
+            <br>
+            {{ form.comments }}
+        </div>
+        <div class="input-field">
+            {{ form.ratings.label_tag }}
+            <br>
+            {{ form.ratings }}
+        </div>
+        <button type="submit" class="btn">Submit</button>
     {% else %}
         <br>
-    <p>Please <a href="{% url 'signin' %}">login</a> to rate and comment.</p>
+        <p>Please <a href="{% url 'signin' %}">login</a> to rate and comment.</p>
     {% endif %}
 </form>
-              
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-</body>
-</html>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
