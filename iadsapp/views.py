@@ -41,6 +41,12 @@ def signup(request):
     return render(request, 'signup.html', {'form': form})
 
 
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib import messages
+from .forms import CustomAuthenticationForm  # Import your custom authentication form
+from django.contrib.auth.models import User
+
 def signin(request):
     if request.method == 'POST':
         form = CustomAuthenticationForm(data=request.POST)
@@ -53,6 +59,9 @@ def signin(request):
                 if not hasattr(user, 'customuser'):
                     CustomUser.objects.create(user=user)
                 return redirect('homepage')  # Redirect to the homepage after successful login
+            else:
+                # Add an error message for invalid credentials
+                messages.error(request, 'Invalid username or password')
     else:
         form = CustomAuthenticationForm()
     return render(request, 'signin.html', {'form': form})
