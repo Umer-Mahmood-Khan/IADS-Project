@@ -21,8 +21,10 @@
   <li><a class="blue-grey-text darken-3" href="{% url 'game_type' %}">Games by Genre</a></li>
   <li><a class="blue-grey-text darken-3" href="{% url 'awards_list' %}">Awards</a></li>
   <li class="divider"></li>
-  <li><a class="blue-grey-text darken-3" href="{% url 'upcoming_releases' %}">Calendar</a></li>
-  <li><a class="blue-grey-text darken-3" href="{% url 'game_news' %}">Games News</a></li>
+  {% if user.is_authenticated %}
+    <li><a class="blue-grey-text darken-3" href="{% url 'upcoming_releases' %}">Calendar</a></li>
+  {% endif %}
+    <li><a class="blue-grey-text darken-3" href="{% url 'game_news' %}">Games News</a></li>
 </ul>
 <nav class="blue-grey darken-4">
   <div class="nav-wrapper">

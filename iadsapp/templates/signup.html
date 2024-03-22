@@ -14,28 +14,34 @@
         <form method="post" action="{% url 'signup' %}">
             {% csrf_token %}
             <div class="form-group">
-                {{ form.username.label_tag }}
-                {{ form.username }}
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
             </div>
             <div class="form-group">
-                {{ form.first_name.label_tag }}
-                {{ form.first_name }}
+                <label for="first_name">First Name:</label>
+                <input type="text" id="first_name" name="first_name">
             </div>
             <div class="form-group">
-                {{ form.last_name.label_tag }}
-                {{ form.last_name }}
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="last_name" name="last_name">
             </div>
             <div class="form-group">
-                {{ form.email.label_tag }}
-                {{ form.email }}
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="form-group">
-                {{ form.password1.label_tag }}
-                {{ form.password1 }}
+                <label for="password1">Password:</label>
+                <input type="password" id="password1" name="password1" required>
+                <ul id="password-instructions" class="form-text text-muted" style="display: none;">
+                    <li>Your password can't be too similar to your other personal information.</li>
+                    <li>Your password must contain at least 8 characters.</li>
+                    <li>Your password can't be a commonly used password.</li>
+                    <li>Your password can't be entirely numeric.</li>
+                </ul>
             </div>
             <div class="form-group">
-                {{ form.password2.label_tag }}
-                {{ form.password2 }}
+                <label for="password2">Confirm Password:</label>
+                <input type="password" id="password2" name="password2" required>
             </div>
             <button type="submit" class="btn-signup">Sign Up</button>
         </form>
@@ -43,5 +49,15 @@
             <p>Already have an account? <a href="{% url 'signin' %}">Sign In</a></p>
         </div>
     </div>
+
+    <script>
+        document.getElementById('password1').addEventListener('focus', function() {
+            document.getElementById('password-instructions').style.display = 'block';
+        });
+
+        document.getElementById('password1').addEventListener('blur', function() {
+            document.getElementById('password-instructions').style.display = 'none';
+        });
+    </script>
 </body>
 </html>

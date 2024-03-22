@@ -197,6 +197,7 @@ def games_by_genre_view(request, game_type_id):
 
 
 
+@login_required
 def upcoming_release_view(request):
     upcoming_releases = UpcomingRelease.objects.all()
     return render(request, 'upcoming_releases.html', {'upcoming_releases': upcoming_releases})
