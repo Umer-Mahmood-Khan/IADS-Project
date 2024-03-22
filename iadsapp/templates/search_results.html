@@ -7,8 +7,9 @@ Search Results
 {% load static %}
 <div class="container">
     <div class="section">
-        <h4 class="header blue-grey-text darken-4 " style="display: inline-block; font-size: 2.5rem;">Search results for "{{ query }}"</h4>
-
+        <div class="col s12 m6" style="color: #37474F">
+                <h4 style="margin-top: 0;">Search Results for "{{ query }}"</h4>
+            </div>
         <!-- Game List Section -->
         <div class="row">
             {% for result in results %}
