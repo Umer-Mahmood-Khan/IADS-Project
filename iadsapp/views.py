@@ -118,7 +118,10 @@ def profilepage_view(request):
 def profilepage_view(request):
     user = request.user
     custom_user = CustomUser.objects.get(user=user)
-    return render(request, 'profile.html', {'user': user, 'custom_user': custom_user})
+    games_rated_count = GameRating.objects.filter(user=request.user).count()
+    user_comments = GameComment.objects.filter(user=request.user)
+    user_ratings = GameRating.objects.filter(user=request.user)
+    return render(request, 'profile.html', {'user': user, 'custom_user': custom_user, 'games_rated_count': games_rated_count, 'user_comments': user_comments, 'user_ratings': user_ratings})
 
 #Haari: Edit profile view
 '''

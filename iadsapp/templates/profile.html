@@ -35,17 +35,10 @@
           <ul class="collection">
 
             <li class="collection-item avatar">
-              <i class="material-icons circle green">rate_review</i>
-              <span class="title">Comments</span>
-              <p class="center-align"><b>5</b></p>
-              <a href="#!" class="secondary-content"><b>Show</b></a>
-            </li>
-
-            <li class="collection-item avatar">
               <i class="material-icons circle red">rate_review</i>
-              <span class="title">Rated</span>
-              <p class="center-align"><b>5</b></p>
-              <a href="#!" class="secondary-content"><b>Show</b></a>
+              <span class="title">Reviewed Games</span>
+              <p class="center-align"><b>{{ games_rated_count }}</b></p>
+              <a href="#" class="show-button secondary-content"><b>Show</b></a>
             </li>
 
                <li class="collection-item avatar">
@@ -53,9 +46,30 @@
               <span class="title">Visits per days</span><p class="center-align"><b>{{ request.COOKIES.homepage_visits|default:"0" }}</b></p>
 <!--              <a href="#!" class="secondary-content"><b>Show</b></a>-->
             </li>
-
-
           </ul>
+        
+             <div class="message-field" style="display: none;">
+             <h5> User History </h5>
+        <!-- Display user comments -->
+        <h6 style="font-weight: bold">Comments:</h6>
+        {% for comment in user_comments %}
+            <p>Game - {{ comment.game }}</p>
+            <p>Comment: {{ comment.comment }}</p>
+            <hr>
+        {% empty %}
+            <p>No comments yet.</p>
+        {% endfor %}
+
+        <!-- Display user ratings -->
+        <h6 style="font-weight: bold">Ratings:</h6>
+        {% for rating in user_ratings %}
+            <p>Game - {{ rating.game }}</p>
+            <p>Rating: {{ rating.rating }}</p>
+            <hr>
+        {% empty %}
+            <p>No ratings yet.</p>
+        {% endfor %}
+    </div>
         </div>
           </div>
         </div>
@@ -65,4 +79,25 @@
 </div>
 </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const showButton = document.querySelector('.show-button');
+        const messageField = document.querySelector('.message-field');
+
+        if (!showButton || !messageField) {
+            console.error('Show button or message field not found.');
+            return;
+        }
+
+        showButton.addEventListener('click', function () {
+            // Toggle the visibility of the message field
+            if (messageField.style.display === 'none' || messageField.style.display === '') {
+                messageField.style.display = 'block';
+            } else {
+                messageField.style.display = 'none';
+            }
+        });
+    });
+</script>
+
 {% endblock %}

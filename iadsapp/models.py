@@ -176,3 +176,18 @@ class Review(models.Model):
 
     def __str__(self):
         return self.user.username
+
+
+from django.db import models
+from django.contrib.auth.models import User
+from .models import GameDetail
+
+class UserReview(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    game = models.ForeignKey(GameDetail, on_delete=models.CASCADE)
+    comment = models.TextField(blank=True, null=True)
+    rating = models.PositiveSmallIntegerField(choices=RATE_CHOICES, blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.game.game_name}"
