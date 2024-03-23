@@ -8,7 +8,7 @@
         <div class="col s12 m12">
           <div class="card">
             <div class="card-image">
-              <img src="{% static 'img/profile_bg.jpg' %}">
+              <img src="{% static 'img/gamebg.jpg' %}">
                  {% if custom_user.profile_pic %}
                         <!--<img class="profile-pic" src="{{ custom_user.profile_pic.url }}" >-->
                         <img id="img-custom-circle-actor1" src="{{ custom_user.profile_pic.url }}" alt="Profile Pic">
@@ -16,7 +16,8 @@
                         <img id="img-custom-circle-actor" src="{% static 'img/profile_image1.jpg' %}" alt="Default Profile Pic">
                     {% endif %}
               <!--<img id="img-custom-circle-actor" src="{% static 'img/user.png'%}">-->
-              <span style="font-size: 30px;" class="card-title">{{ user.first_name }}</span>
+              <span style="font-size: 40px; font-weight: bold;" class="card-title">{{ user.first_name }}</span>
+
             </div>
           <div class="card-content">
         <div class="row">
