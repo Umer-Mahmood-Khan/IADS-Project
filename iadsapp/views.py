@@ -78,30 +78,55 @@ def signout(request):
 # def homepage_view(request):
 #     return render(request, 'index.html')
 
+# def homepage_view(request):
+#
+#     # Check if the user is on the homepage
+#     if request.path == '/':  # Adjust this path based on your homepage URL
+#         # Check if 'visits' key exists in the session
+#         if 'visits' in request.session:
+#             # Increment the session visit count
+#             request.session['visits'] += 1
+#             print('session...',request.session['visits'])
+#         else:
+#             # Set the initial session visit count to 1
+#             request.session['visits'] = 1
+#     # else:
+#     #     # If the user is not on the homepage, reset the visit count
+#     #     request.session.pop('visits', None)
+#
+#     # Get the session visit count or set it to 0 if not present
+#     session_count = request.session.get('visits', 0)
+#
+#     # Set a cookie with an expiration time of 10 seconds
+#     response = render(request, 'index.html')
+#     response.set_cookie('homepage_visits', session_count, max_age=8)
+#
+#     return response
+
+
 def homepage_view(request):
+    if request.user.is_authenticated:
+        visit_key = 'homepage_visits'
 
-    # Check if the user is on the homepage
-    if request.path == '/':  # Adjust this path based on your homepage URL
-        # Check if 'visits' key exists in the session
-        if 'visits' in request.session:
-            # Increment the session visit count
-            request.session['visits'] += 1
-            print('session...',request.session['visits'])
-        else:
-            # Set the initial session visit count to 1
-            request.session['visits'] = 1
-    # else:
-    #     # If the user is not on the homepage, reset the visit count
-    #     request.session.pop('visits', None)
+        if visit_key not in request.session:
+            request.session[visit_key] = []
 
-    # Get the session visit count or set it to 0 if not present
-    session_count = request.session.get('visits', 0)
+        current_time_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        request.session[visit_key].append(current_time_str)
 
-    # Set a cookie with an expiration time of 10 seconds
-    response = render(request, 'index.html')
-    response.set_cookie('homepage_visits', session_count, max_age=8)
+        # Limit the list to the last 5 visits
+        request.session[visit_key] = request.session[visit_key][-15:]
 
-    return response
+        # Set cookies for username, visit count, and last visits
+        response = HttpResponse(render(request, 'index.html'))
+        response.set_cookie('username', request.user.username)
+        response.set_cookie('homepage_visits', len(request.session[visit_key]))
+        response.set_cookie('last_visits', ','.join(request.session[visit_key]))
+
+        return response
+
+    return render(request, 'index.html')
+
 
 
 
@@ -124,7 +149,16 @@ def profilepage_view(request):
     games_rated_count = GameRating.objects.filter(user=request.user).count()
     user_comments = GameComment.objects.filter(user=request.user)
     user_ratings = GameRating.objects.filter(user=request.user)
-    return render(request, 'profile.html', {'user': user, 'custom_user': custom_user, 'games_rated_count': games_rated_count, 'user_comments': user_comments, 'user_ratings': user_ratings})
+
+    last_visits_str = request.COOKIES.get('last_visits')
+
+    last_visits = []
+    if last_visits_str:
+        last_visits = [datetime.strptime(visit, '%Y-%m-%d %H:%M:%S') for visit in last_visits_str.split(',')]
+
+    # print(last_visits)
+
+    return render(request, 'profile.html', {'user': user, 'custom_user': custom_user, 'games_rated_count': games_rated_count, 'user_comments': user_comments, 'user_ratings': user_ratings,'last_visits': last_visits})
 
 #Haari: Edit profile view
 '''
