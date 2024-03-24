@@ -28,5 +28,16 @@
             {% endfor %}
         </ul>
     </div>
+
+    <!-- Pagination -->
+    <div style="text-align: left;">
+        {% if awards.has_previous %}
+            <a href="?page={{ awards.previous_page_number }}" style="text-decoration: none; color: #FFFFFF; font-size: 16px; font-family: 'Arial', sans-serif; margin-right: 20px;">Previous</a>
+        {% endif %}
+        
+        {% if awards.has_next %}
+            <a href="?page={{ awards.next_page_number }}" style="text-decoration: none; color: #FFFFFF; font-size: 16px; font-family: 'Arial', sans-serif;">Next</a>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

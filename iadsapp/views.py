@@ -6,19 +6,22 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.db.models import Avg
+from django.shortcuts import render, get_object_or_404
+from django.core.paginator import Paginator
+
 from .models import GameDetail, UpcomingRelease, GameType
 from .forms import CustomPasswordResetForm, RatingCommentForm
 from django.shortcuts import render, get_object_or_404
 from .models import GameDetail, GameType, GameNew
 from .models import Award
-
+from django.core.paginator import Paginator
 from .models import CalendarEvent
 from .models import UserProfile
 from django.contrib.auth.hashers import check_password
 from datetime import datetime
 from django.contrib.auth import logout
 from .models import UpcomingRelease
-from datetime import date
+
 from .models import CustomUser
 
 
@@ -75,60 +78,31 @@ def signout(request):
 # def homepage_view(request):
 #     return render(request, 'index.html')
 
-
-
-# def homepage_view(request):
-#     visit_key=None
-#     if request.user.is_authenticated: # if authenticated user
-#         today_date = date.today()
-#
-#         # visit_key = f"visits_{request.user.id}_{request.user.username}-{today_date}"
-#         visit_key = f"{request.user.username} visited the homepage at {today_date}"
-#
-#         print(visit_key)
-#
-#         print(request.session.keys())  # Print all keys in the session
-#         print(request.session.get(visit_key))  # Print the value of 'visit_key' in the session
-#
-#
-#         if visit_key in request.session:
-#             request.session[visit_key] += 1
-#         else:
-#             request.session[visit_key] = 1
-#
-#     # Get the session visit count for the current day
-#     today_visit_count = request.session.get(visit_key, 0)
-#
-#     # Set a cookie with an expiration time of 10 seconds
-#     response = render(request, 'index.html')
-#     response.set_cookie('homepage_visits', today_visit_count, max_age=100)
-#
-#     return response
-#
-
-
 def homepage_view(request):
-    if request.user.is_authenticated:
-        visit_key = 'homepage_visits'
 
-        if visit_key not in request.session:
-            request.session[visit_key] = []
+    # Check if the user is on the homepage
+    if request.path == '/':  # Adjust this path based on your homepage URL
+        # Check if 'visits' key exists in the session
+        if 'visits' in request.session:
+            # Increment the session visit count
+            request.session['visits'] += 1
+            print('session...',request.session['visits'])
+        else:
+            # Set the initial session visit count to 1
+            request.session['visits'] = 1
+    # else:
+    #     # If the user is not on the homepage, reset the visit count
+    #     request.session.pop('visits', None)
 
-        current_time_str = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        request.session[visit_key].append(current_time_str)
+    # Get the session visit count or set it to 0 if not present
+    session_count = request.session.get('visits', 0)
 
-        # Limit the list to the last 5 visits
-        request.session[visit_key] = request.session[visit_key][-15:]
+    # Set a cookie with an expiration time of 10 seconds
+    response = render(request, 'index.html')
+    response.set_cookie('homepage_visits', session_count, max_age=8)
 
-        # Set cookies for username, visit count, and last visits
-        response = HttpResponse(render(request, 'index.html'))
-        response.set_cookie('username', request.user.username)
-        response.set_cookie('homepage_visits', len(request.session[visit_key]))
-        response.set_cookie('last_visits', ','.join(request.session[visit_key]))
+    return response
 
-        return response
-
-    return render(request, 'index.html')
 
 
 
@@ -150,16 +124,7 @@ def profilepage_view(request):
     games_rated_count = GameRating.objects.filter(user=request.user).count()
     user_comments = GameComment.objects.filter(user=request.user)
     user_ratings = GameRating.objects.filter(user=request.user)
-
-    last_visits_str = request.COOKIES.get('last_visits')
-
-    last_visits = []
-    if last_visits_str:
-        last_visits = [datetime.strptime(visit, '%Y-%m-%d %H:%M:%S') for visit in last_visits_str.split(',')]
-
-    print(last_visits)
-
-    return render(request, 'profile.html', {'user': user, 'custom_user': custom_user, 'games_rated_count': games_rated_count, 'user_comments': user_comments, 'user_ratings': user_ratings,"last_visits": last_visits})
+    return render(request, 'profile.html', {'user': user, 'custom_user': custom_user, 'games_rated_count': games_rated_count, 'user_comments': user_comments, 'user_ratings': user_ratings})
 
 #Haari: Edit profile view
 '''
@@ -271,9 +236,20 @@ def games_by_genre_view(request, game_type_id):
 
 
 @login_required
+
+
 def upcoming_release_view(request):
-    upcoming_releases = UpcomingRelease.objects.all()
-    return render(request, 'upcoming_releases.html', {'upcoming_releases': upcoming_releases})
+    upcoming_releases = UpcomingRelease.objects.all().order_by('game_release_date')  # Sort by release date
+    paginator = Paginator(upcoming_releases, 8)  # Show 8 upcoming releases per page
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    # Add functionality: Count the total number of upcoming releases
+    total_releases = UpcomingRelease.objects.count()
+
+    return render(request, 'upcoming_releases.html', {'page_obj': page_obj, 'total_releases': total_releases})
+
 
 
 # def awards(request):
@@ -385,7 +361,20 @@ def awards_list(request):
     # Filter awards based on the search query
     awards = Award.objects.filter(award_name__icontains=query)
 
-    return render(request, 'awards_list.html', {'awards': awards})
+    # Pagination
+    paginator = Paginator(awards, 10)  # Show 10 awards per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    # Additional context data, such as total count of awards
+    total_awards_count = Award.objects.all().count()
+
+    return render(request, 'awards_list.html', {
+        'awards': page_obj,
+        'total_awards_count': total_awards_count,
+        'query': query,
+    })
+
 
 #Navjot: Awards detail
 def award_detail(request, award_id):
