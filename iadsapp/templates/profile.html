@@ -41,14 +41,41 @@
               <p class="center-align"><b>{{ games_rated_count }}</b></p>
               <a href="#" class="show-button secondary-content"><b>Show</b></a>
             </li>
+{##}
+{#               <li class="collection-item avatar">#}
+{#              <i class="material-icons circle purple">games</i>#}
+{#              <span class="title">Visits per days</span><p class="center-align"><b>{{ request.COOKIES.homepage_visits|default:"0" }}</b></p>#}
+{#<!--              <a href="#!" class="secondary-content"><b>Show</b></a>-->#}
+{#            </li>#}
 
-               <li class="collection-item avatar">
-              <i class="material-icons circle purple">games</i>
-              <span class="title">Visits per days</span><p class="center-align"><b>{{ request.COOKIES.homepage_visits|default:"0" }}</b></p>
-<!--              <a href="#!" class="secondary-content"><b>Show</b></a>-->
-            </li>
+
+          <li class="collection-item avatar">
+    <i class="material-icons circle purple">games</i>
+    <span class="title">Visits to Homepage</span>
+    <p class="center-align">
+{#        <b>Username: {{ request.user.username }}</b><br>#}
+        <b>{{ request.COOKIES.homepage_visits|default:"0" }}</b><br>
+    <br>
+              <p> Last Visited :</p>
+        {% if last_visits %}
+            <ul>
+                {% for visit in last_visits %}
+                    <li>{{ visit|date:"Y-m-d h:i:s a" }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </p>
+{#              <a href="#" id="show-visits" class="show-button secondary-content"><b>Show</b></a>#}
+
+</li>
+
+
+
+
+
+
           </ul>
-        
+
              <div class="message-field" style="display: none;">
              <h5> User History </h5>
         <!-- Display user comments -->
