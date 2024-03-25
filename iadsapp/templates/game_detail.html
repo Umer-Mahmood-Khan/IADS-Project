@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Detail</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'iadsapp/game_detail_style.css' %}">
+
+</head>
+<body>
+    {% for game_detail in game_details %}
+        <div class="game-container">
+            <div class="game-image-container">
+                <img src="{% static '' %}{{ game_detail.game_image }}" alt="{{ game_detail.game_name }}" class="game-image">
+            </div>
+            <div class="game-details-container">
+                <h2 class="game-name">{{ game_detail.game_name }}</h2>
+                <p><strong>Production:</strong> {{ game_detail.game_production }}</p>
+                <p><strong>Released on </strong> {{ game_detail.game_release }}</p>
+                <p><strong>Rating:</strong> {{ game_detail.game_rating }}</p>
+                <p><strong> Platform </strong> {{ game_detail.game_platform }}</p>
+                <p>{{ game_detail.game_bio }}</p>
+
+
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>

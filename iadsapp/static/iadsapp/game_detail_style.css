@@ -1,0 +1,23 @@
+.game-container {
+    display: flex;
+    padding: 20px;
+    margin-bottom: 18px;
+}
+
+.game-image-container {
+    flex: 0 0 auto;
+    margin-right: 40px;
+}
+
+.game-details-container {
+    flex: 1;
+}
+
+.game-image {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.game-name {
+    color: #ff0080; /* Changing the color of the game name */
+}

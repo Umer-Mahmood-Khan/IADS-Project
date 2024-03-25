@@ -1,0 +1,62 @@
+.signup-container {
+    max-width: 400px;
+    margin: 50px auto 20px; /* Adjust the top margin to bring the container down */
+    padding: 20px; /* Increase padding for better spacing */
+    background-color: rgba(149, 149, 149, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 10px; /* Reduce bottom margin for tighter spacing */
+}
+
+label {
+    display: block;
+    margin-bottom: 3px; /* Reduce bottom margin for tighter spacing */
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: calc(100% - 22px); /* Reduce input width and adjust for padding */
+    padding: 8px; /* Reduce padding for tighter spacing */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #37474F;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #37474F;
+}
+
+.existing-account {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.existing-account a {
+    color: white;
+    text-decoration: none;
+}
+
+.existing-account a:hover {
+    text-decoration: underline;
+}
+
+.project-name {
+    background-color: #37474F;
+    padding: 10px;
+    color: #ffffff;
+    text-align: center;
+}

@@ -1,0 +1,167 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>NexaGame</title>
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="{% static 'css/materialize.css'%}" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="{% static 'css/style.css'%}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+
+<body>
+  <!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+<!--  <li><a href="">Calender</a></li>-->
+  <li><a class="blue-grey-text darken-3" href="{% url 'top100_games' %}">Top 100 Games</a></li>
+  <li><a class="blue-grey-text darken-3" href="{% url 'most_popular_games' %}">Most Popular</a></li>
+  <li><a class="blue-grey-text darken-3" href="{% url 'game_type' %}">Games by Genre</a></li>
+  <li><a class="blue-grey-text darken-3" href="{% url 'awards_list' %}">Awards</a></li>
+  <li class="divider"></li>
+  {% if user.is_authenticated %}
+    <li><a class="blue-grey-text darken-3" href="{% url 'upcoming_releases' %}">Calendar</a></li>
+  {% endif %}
+    <li><a class="blue-grey-text darken-3" href="{% url 'game_news' %}">Games News</a></li>
+</ul>
+<nav class="blue-grey darken-4">
+  <div class="nav-wrapper">
+    <style>
+      .brand-logo img {
+                width: 65px;
+                height: 65px;
+                padding: 2px;
+                border-radius: 50%;
+
+      }
+  </style>
+    <a href="{% url 'homepage' %}" class="brand-logo"><img src="{% static 'img/icons/logo02.png'%}" alt=""></a>
+    <ul class="right hide-on-med-and-down">
+        {% if user.is_authenticated %}
+                <!-- If user is authenticated, show Profile -->
+                <li><a class="white-text" href="{% url 'profilepage_view' %}">Profile</a></li>
+                <li><a class="white-text" href="{%  url 'signout' %}">Sign Out</a></li>
+        {% else %}
+                <!-- If user is not authenticated, show Sign Up -->
+                <li><a class="white-text" href="{% url 'signup' %}">Sign Up</a></li>
+        {% endif %}
+      <li><a class="dropdown-trigger white-text" href="#!" data-target="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
+    </ul>
+  </div>
+</nav>
+
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <h1 class="header center white-text text-lighten-2">Find your favorite game</h1>
+        <div class="row">
+            <form action="{% url 'search_view' %}" method="get">
+                <div class="row">
+                        <div class="input-field col s12">
+                            <input id="search" type="text"  class="validate white-text"  name="q">
+            <label for="search">Search</label>
+        </div>
+{#        <div class="input-field col s12">#}
+{#            <select name="game_type" >#}
+{#                <option value="" selected>All</option>#}
+{#                {% for game_type in game_types %}#}
+{#                    <option value="{{ game_type.name }}">{{ game_type.name }}</option>#}
+{#                {% endfor %}#}
+{#            </select>#}
+{##}
+{#        </div>#}
+        <button type="submit" class="waves-effect blue-grey darken-4 btn center-align" style="width: 950px;"><i class="material-icons left">search</i>Search</button>
+    </div>
+            </form>
+
+        </div>
+  
+        
+        <br><br>
+
+      </div>
+    </div>
+    <div class="parallax"><img src="{% static 'img/b.webp'%}" alt="Unsplashed background img 1"></div>
+  </div>
+
+
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">sports_esports</i></h2>
+            <h5 class="center">Find your favorite game</h5>
+
+            <p class="light">Discovering your favorite game is an adventure in itself, and our website is your ultimate companion on this journey. With a vast array of titles spanning genres, platforms, and eras, finding that perfect game tailored to your preferences is easier than ever.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">games</i></h2>
+            <h5 class="center">Create gamelist and more</h5>
+
+            <p class="light">Welcome to our comprehensive game list! Explore a diverse range of titles across various genres, platforms, and eras. Whether you're seeking the latest releases or timeless classics, you're bound to find something to suit your gaming preferences.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">rate_review</i></h2>
+            <h5 class="center">Review your favorite games</h5>
+
+            <p class="light">Share Your Gaming Passion: We believe that every gamer has a story to tell about their favorite games. Whether it's a heartfelt journey through a captivating narrative, an adrenaline-fueled battle against epic foes, or the simple joy of exploring a beautifully crafted world, we want to hear from you!</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+  <footer class="page-footer blue-grey darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Company Bio</h5>
+                <p class="grey-text text-lighten-4">We're Group 5, dedicated to revolutionizing gaming experiences. Explore diverse genres, rate, comment, and stay updated on new releases and industry news. Your support fuels our passion for innovation. Join us in redefining gaming.</p>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Settings</h5>
+                <ul>
+                    <li><a class="white-text" href="{% url 'privacy_notice' %}">Privacy Notice</a></li>
+                    <li><a class="white-text" href="{% url 'terms' %}">Terms</a></li>
+                    <li><a class="white-text" href="{% url 'user_policy' %}">User Policy</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                    <li><a class="white-text" href="{% url 'team_details' %}">Team Details</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="footer-copyright">
+        <div class="container">
+            Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Group 5</a>
+        </div>
+    </div>
+</footer>
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js'%}"></script>
+  <script src="{% static 'js/init.js'%}"></script>
+
+  </body>
+</html>

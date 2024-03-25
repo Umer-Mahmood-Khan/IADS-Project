@@ -1,0 +1,155 @@
+{% extends 'base.html' %}
+{% block content %}
+<style>
+    /* Add custom styles here */
+    .container {
+        width: 90%;
+        margin: 0 auto;
+    }
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .card {
+        flex: 1 1 calc(25% - 20px); /* Adjust card width to fit 4 cards in a row */
+        margin-bottom: 20px;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: box-shadow 0.3s ease;
+    }
+    .card:hover {
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    .card img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+    .card-content {
+        text-align: center;
+    }
+    .game-name {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        cursor: pointer; /* Add cursor pointer to indicate clickability */
+        color: #333; /* Default color */
+        transition: color 0.3s; /* Smooth transition */
+    }
+    .game-name:hover {
+        color: #007bff; /* Change color on hover to blue */
+    }
+    .game-details {
+        font-size: 16px;
+    }
+    .search-container {
+        margin-bottom: 20px;
+    }
+    .search-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+    .timer {
+        font-size: 18px;
+        font-weight: bold;
+        color: #ffffff; /* Change timer text color to white */
+        background-color: #FF5733; /* Change timer background color for good contrast */
+        padding: 5px 10px; /* Adjust padding */
+        border-radius: 8px; /* Adjust border-radius */
+        margin-top: 10px;
+        display: none; /* Initially hide the timer */
+        opacity: 0; /* Initially hidden */
+        transform: translateY(-20px); /* Initially positioned above */
+        transition: opacity 0.5s, transform 0.5s ease; /* Transition animation */
+    }
+    .timer.active {
+        display: block; /* Show the timer */
+        opacity: 1; /* Fade in */
+        transform: translateY(0); /* Move down */
+    }
+</style>
+<div class="container">
+    <h1>Upcoming Releases</h1>
+
+    <!-- Search Filter -->
+    <div class="search-container">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search...">
+    </div>
+
+    <div class="card-container">
+        {% for release in page_obj %}
+        <div class="card">
+            <img src="{{ release.game_image.url }}" alt="{{ release.game_name }}">
+            <div class="card-content">
+                <!-- Add onclick event to trigger countdown timer -->
+                <p class="game-name" onclick="showTimer('{{ release.game_release_date }}', '{{ release.id }}')">{{ release.game_name }}</p>
+                <p class="game-details"><strong>Release Date:</strong> {{ release.game_release_date }}</p>
+                <p class="game-details"><strong>Country:</strong> {{ release.country }}</p>
+                <p class="game-details"><strong>Description:</strong> {{ release.desc_game }}</p> <!-- Add description -->
+                <!-- Display countdown timer -->
+                <div class="timer" id="timer_{{ release.id }}"></div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <!-- Pagination links -->
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+
+
+<script>
+    // JavaScript function to calculate days left until the release date
+    function showTimer(releaseDate, gameId) {
+        const releaseDateObj = new Date(releaseDate);
+        const currentDate = new Date();
+        const timeDifference = releaseDateObj - currentDate;
+        const daysLeft = Math.ceil(timeDifference / (1000 * 60 * 60 * 24)); // Convert milliseconds to days
+        const timerElement = document.getElementById('timer_' + gameId); // Get timer element by game ID
+
+        if (timerElement) {
+            timerElement.innerText = `Days left: ${daysLeft}`;
+            timerElement.classList.add('active'); // Show the timer with animation
+        }
+    }
+
+    // JavaScript for filtering cards based on search input
+    document.getElementById('searchInput').addEventListener('input', function() {
+        const searchQuery = this.value.toLowerCase();
+        const cards = document.querySelectorAll('.card');
+
+        cards.forEach(function(card) {
+            const gameName = card.querySelector('.game-name').innerText.toLowerCase();
+            if (gameName.includes(searchQuery)) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+</script>
+
+{% endblock %}

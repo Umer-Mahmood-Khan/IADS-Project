@@ -1,0 +1,5 @@
+/* Add this CSS in your stylesheet */
+.align-right {
+    float: right;
+    margin-left: 10px; /* Adjust margin as needed */
+}

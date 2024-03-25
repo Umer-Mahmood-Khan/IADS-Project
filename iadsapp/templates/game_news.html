@@ -1,0 +1,29 @@
+{% extends 'base.html' %}  <!-- Extend from the base template -->
+
+{% block title %}Game News{% endblock %}  <!-- Set the title block -->
+
+{% block content %}  <!-- Insert content into the content block -->
+
+<div class="container">
+    <div class="section">
+        <!-- Loop through all game news items -->
+        {% for news in game_news %}
+        <!-- Display each game news item -->
+        <div class="row">
+            <div class="col s20 m20">
+                <h2 ><b>{{ news.title }}</b></h2>  <!-- Center-align the title -->
+                <h6><b>{{ news.bio }}</b></h6>  <!-- Center-align the bio -->
+                <div>  <!-- Center-align the image -->
+                    <br>
+                    <img src="{{ news.image.url }}" style="max-width: 90%; height: auto;">  <!-- Adjust image width -->
+                </div>
+                <div style="margin-left: auto; margin-right: auto; max-width: 1200px; text-align: left;">  <!-- Center-align text and limit width -->
+                    <p>{{ news.description | linebreaks }}</p>
+                </div>
+            </div>
+        </div>
+        <!-- End of game news item -->
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}  <!-- End of content block -->

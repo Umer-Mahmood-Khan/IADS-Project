@@ -1,0 +1,66 @@
+<!-- top100_games.html -->
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Top 100 Games
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="section">
+            <!-- Game List Section -->
+            <div class="row">
+                <!-- Left Column: Top 100 Games -->
+                <div class="col s12 m8">
+                    <h4 class="header blue-grey-text darken-3" style="display: inline-block; font-size: 2.5rem;">Top 100 Games On Ratings</h4>
+                </div>
+
+                <!-- Right Column: Alphabetical Filter -->
+                <div class="col s12 m4 right-align">
+                    <div class="input-field">
+                        <form id="filterForm" method="get">
+                            <select name="sort" onchange="document.getElementById('filterForm').submit();">
+                                <option value="" {% if not request.GET.sort %}selected{% endif %}>No Filter</option>
+                                <option value="a_m" {% if request.GET.sort == "a_m" %}selected{% endif %}>A-M</option>
+                                <option value="n_z" {% if request.GET.sort == "n_z" %}selected{% endif %}>N-Z</option>
+                            </select>
+                            <label>Sort Alphabetically</label>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="col s12">
+                    <div class="row">
+                        {% for game in top_games %}
+                            <div class="col s12 m6 l3">
+                                <div class="card">
+                                     <style>
+                        .card-image:hover {
+                            transform: scale(1.05); /* Example hover effect: increase size */
+                            transition: transform 0.3s ease; /* Example transition effect */
+                        }
+                    </style>
+                                    <div class="card-image" style="height: 200px; overflow: hidden;">
+                                        <a href="{% url 'game_detail' game_id=game.id %}">
+                                            <img src="{% static game.game_image %}" alt="{{ game.game_name }}" class="game-image" style="object-fit: cover; height: 100%;">
+                                        </a>
+                                    </div>
+                                    <div class="card-content" style="height: 100px;">
+                                        <span class="card-title" style="font-size: 1rem; font-weight: bold; line-height: 1.25rem; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;">
+                                            <a class="blue-grey-text darken-4" href="{% url 'game_detail' game_id=game.id %}" class="game-link">{{ game.game_name }}</a>
+                                        </span>
+                                        <span style="color: #FF5733; font-size: 24px;">&#9733;</span>Rating: {{ game.game_rating }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {% if forloop.counter|divisibleby:4 and not forloop.last %}
+                                </div><div class="row">
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

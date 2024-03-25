@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/awardpage.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{% static 'css/materialize.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+    <link href="{% static 'css/style.css' %}" type="text/css" rel="stylesheet" media="screen,projection"/>
+</head>
+<body>
+<ul id="dropdown1" class="dropdown-content">
+            <li><a class="blue-grey-text darken-3" href="{% url 'top100_games' %}">Top 100 Games</a></li>
+            <li><a class="blue-grey-text darken-3" href="{% url 'most_popular_games' %}">Most Popular</a></li>
+            <li><a class="blue-grey-text darken-3" href="{% url 'game_type' %}">Games by Genre</a></li>
+            <li><a class="blue-grey-text darken-3" href="{% url 'awards_list' %}">Awards</a></li>
+            <li class="divider"></li>
+            <li class="divider"></li>
+  {% if user.is_authenticated %}
+    <li><a class="blue-grey-text darken-3" href="{% url 'upcoming_releases' %}">Calendar</a></li>
+  {% endif %}
+    <li><a class="blue-grey-text darken-3" href="{% url 'game_news' %}">Games News</a></li>
+</ul>
+<nav class="blue-grey darken-4">
+    <div class="nav-wrapper">
+        <style>
+            .brand-logo img {
+                width: 65px;
+                height: 65px;
+                padding: 2px;
+                border-radius: 50%;
+            }
+        </style>
+        <a href="{% url 'homepage' %}" class="brand-logo"><img src="{% static 'img/icons/logo02.png' %}" alt=""></a>
+        <ul class="right hide-on-med-and-down">
+            {% if user.is_authenticated %}
+                <!-- If user is authenticated, show Profile -->
+                <li><a class="white-text" href="{% url 'profilepage_view' %}">Profile</a></li>
+            {% else %}
+                <!-- If user is not authenticated, show Sign Up -->
+                <li><a class="white-text" href="{% url 'signup' %}">Sign Up</a></li>
+            {% endif %}
+            <!-- Dropdown Trigger -->
+            <li><a class="dropdown-trigger white-text" href="#!" data-target="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
+        </ul>
+        <!-- Dropdown Structure -->
+
+    </div>
+</nav>
+
+{% block content %}
+{% endblock %}
+
+<footer class="page-footer blue-grey darken-4">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 s12">
+                <h5 class="white-text">Company Bio</h5>
+                <p class="grey-text text-lighten-4">We're Group 5, dedicated to revolutionizing gaming experiences. Explore diverse genres, rate, comment, and stay updated on new releases and industry news. Your support fuels our passion for innovation. Join us in redefining gaming.</p>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Settings</h5>
+                <ul>
+                    <li><a class="white-text" href="{% url 'privacy_notice' %}">Privacy Notice</a></li>
+                    <li><a class="white-text" href="{% url 'terms' %}">Terms</a></li>
+                    <li><a class="white-text" href="{% url 'user_policy' %}">User Policy</a></li>
+                </ul>
+            </div>
+            <div class="col l3 s12">
+                <h5 class="white-text">Connect</h5>
+                <ul>
+                    <li><a class="white-text" href="{% url 'team_details' %}">Team Details</a></li>
+                </ul>
+            </div>
+        </div>
+       <div class="row">
+            <div class="col l6 s12">
+                Made by <a class="brown-text text-lighten-3" href="http://materializecss.com">Group 5</a>
+            </div>
+    </div>
+    </div>
+</footer>
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="{% static 'js/materialize.js'%}"></script>
+  <script src="{% static 'js/init.js'%}"></script>

@@ -1,0 +1,82 @@
+/* Add styles to make the signin form more compact */
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.signin-container {
+    max-width: 400px;
+    margin: 50px auto 20px;
+    padding: 20px;
+
+    background-color: rgba(149, 149, 149, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group {
+    margin-bottom: 10px;
+}
+
+label {
+    display: block;
+    margin-bottom: 3px;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #37474F;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #37474F;
+}
+
+.forgot-password {
+    margin-top: 10px;
+    text-align: right;
+}
+
+.forgot-password a {
+    color: white;
+    text-decoration: none;
+}
+
+.forgot-password a:hover {
+    text-decoration: underline;
+}
+
+.new-to-gamecritichub {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.new-to-gamecritichub a {
+    color: white;
+    text-decoration: none;
+}
+
+.new-to-gamecritichub a:hover {
+    text-decoration: underline;
+}
+
+.project-name {
+    background-color: #37474F; /* Set the background color to match the button */
+    padding: 10px; /* Adjust padding as needed */
+    color: #ffffff; /* Set the text color to white */
+    text-align: center; /* Center the text */
+}

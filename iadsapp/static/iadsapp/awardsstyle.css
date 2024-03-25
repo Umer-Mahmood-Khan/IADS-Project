@@ -1,0 +1,13 @@
+/* styles.css */
+
+.image-container {
+    display: flex;
+    justify-content: flex-end;  /* Align to the right */
+    align-items: center;        /* Align vertically centered */
+    margin-bottom: 20px;
+}
+
+.side-by-side-image {
+    width: 48%;
+    height: auto;
+}

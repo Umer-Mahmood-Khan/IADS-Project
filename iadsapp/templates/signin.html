@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In - GameCriticHub</title>
+     <style>
+        body {
+            background-image: url('{% static "img/gamesignin01.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .signin-container {
+            text-align: center; /* Center align content */
+        }
+
+        form {
+            width: 300px; /* Set form width */
+            margin: 0 auto; /* Center the form horizontally */
+        }
+
+        .form-group {
+            text-align: left; /* Align form labels to the left */
+            margin-bottom: 15px; /* Add space between form fields */
+        }
+
+        .form-group input {
+            width: 100%; /* Set input fields to fill container width */
+            padding: 10px; /* Adjust input field padding */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .btn-signin {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin-top: 10px; /* Add space between input fields and button */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .btn-signin:hover {
+            background-color: #45a049;
+        }
+
+        .forgot-password,
+        .new-to-gamecritichub {
+            margin-top: 20px; /* Add space between links and form */
+        }
+    </style>
+    <link rel="stylesheet" href="{% static 'css/signin.css' %}">
+</head>
+<body>
+    <div class="signin-container">
+        <h1 class="project-name">NexaGame</h1>
+        <h2>Sign In</h2>
+        {% if form.errors %}
+            <div class="error-message">
+                <p>Invalid username or password. Please try again.</p>
+            </div>
+        {% endif %}
+        <form method="post" action="{% url 'signin' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.username.label_tag }}
+                {{ form.username }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label_tag }}
+                {{ form.password }}
+            </div>
+            <button type="submit" class="btn-signin">Sign In</button>
+        </form>
+        <div class="forgot-password">
+            <p><a href="{% url 'forgot_password' %}">Forgot password?</a></p>
+        </div>
+        <div class="new-to-gamecritichub">
+            <p>New to NexaGame? <a href="{% url 'signup' %}">Sign Up</a></p>
+        </div>
+    </div>
+</body>
+</html>

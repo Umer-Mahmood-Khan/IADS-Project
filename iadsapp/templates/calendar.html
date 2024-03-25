@@ -1,0 +1,16 @@
+<!-- templates/iadsapp/calendar.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+    Calendar
+{% endblock %}
+
+{% block content %}
+    <h1>Calendar</h1>
+    <div>
+        {% for event in events %}
+            <p>{{ event.title }} - {{ event.date }}</p>
+            <p>{{ event.description }}</p>
+        {% endfor %}
+    </div>
+{% endblock %}
